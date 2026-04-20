@@ -102,7 +102,6 @@
     .modal-box input:focus{border-color:var(--primary);outline:none}
     .modal-box input::placeholder{color:var(--text4)}
     
-    /* SUGGESTIONS - VERTICAL LIST */
     .sug-list{display:flex;flex-direction:column;gap:8px;margin:10px 0;max-height:65vh;overflow-y:auto;padding-right:4px}
     .sug-item{background:var(--bg3);border-radius:10px;padding:10px;display:flex;gap:10px;align-items:center;cursor:pointer;transition:all .15s;border:1px solid transparent}
     .sug-item:active{transform:scale(.98);background:var(--bg6);border-color:var(--primary)}
@@ -325,7 +324,6 @@
     const esc = s => { if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML; };
     const fmt = s => { if(!s||isNaN(s)||!isFinite(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+String(sec).padStart(2,'0'); };
     
-    // SVG placeholder yang clean - dipake buat fallback
     const musicIconSVG = '<svg viewBox="0 0 24 24" class="img-placeholder"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
     
     let app = { sections:[], tracks:[], settings:{ autoRestore:true, autoResume:true, directLinkSupport:false }, suggestions:[] };
@@ -334,20 +332,28 @@
     let popupWin = null, marqueeTimers = [], toastTimer = null;
     
     // ✅ FIX UTAMA: setImage() yang bener - gambar PASTI muncul
-    function setImage(container, imgUrl){
+    function setImage(container, imgUrl, feedBaseUrl = ''){
       if(!container) return;
-      
-      // Reset container dulu
       container.innerHTML = '';
+      container.style.position = 'relative';
       
-      // Kalau gak ada URL, langsung tampilkan placeholder
       if(!imgUrl){
         container.innerHTML = musicIconSVG;
         return;
       }
       
-      // Buat element img
+      // ✅ Resolve relative URL ke absolute
+      let finalUrl = imgUrl.trim();
+      if(!/^https?:\/\//i.test(finalUrl) && feedBaseUrl){
+        try{ finalUrl = new URL(finalUrl, feedBaseUrl).href; }catch(e){ console.warn('URL resolve failed:', e); }
+      }
+      
+      // ✅ Cache busting + CORS hint
+      const sep = finalUrl.includes('?') ? '&' : '?';
+      finalUrl = finalUrl + sep + 't=' + Date.now();
+      
       const img = new Image();
+      img.crossOrigin = 'anonymous';
       img.loading = 'lazy';
       img.style.width = '100%';
       img.style.height = '100%';
@@ -355,16 +361,29 @@
       img.style.borderRadius = container.style.borderRadius || '10px';
       img.style.display = 'block';
       
-      // ✅ Onload: pasang image ke container
+      // Placeholder sementara
+      const placeholder = document.createElement('div');
+      placeholder.className = 'img-placeholder';
+      placeholder.innerHTML = musicIconSVG;
+      placeholder.style.position = 'absolute';
+      placeholder.style.top = '0';
+      placeholder.style.left = '0';
+      placeholder.style.width = '100%';
+      placeholder.style.height = '100%';
+      placeholder.style.display = 'flex';
+      placeholder.style.alignItems = 'center';
+      placeholder.style.justifyContent = 'center';
+      placeholder.style.background = 'var(--bg6)';
+      placeholder.style.borderRadius = container.style.borderRadius || '10px';
+      container.appendChild(placeholder);
+      
       img.onload = () => {
-        // Pastikan container masih ada dan belum di-overwrite
         if(container && !container.dataset.fallback){
           container.innerHTML = '';
           container.appendChild(img);
         }
       };
       
-      // ✅ Onerror: fallback ke placeholder SVG
       img.onerror = () => {
         if(container && !container.dataset.fallback){
           container.dataset.fallback = '1';
@@ -372,60 +391,73 @@
         }
       };
       
-      // ✅ Set src terakhir - trigger load/error
-      // Tambah timestamp buat bypass cache kalau perlu
-      const separator = imgUrl.includes('?') ? '&' : '?';
-      img.src = imgUrl + separator + 't=' + Date.now();
-      
-      // ✅ Tampilkan placeholder SEMENTARA sambil loading
-      // Tapi JANGAN overwrite container, biar onload bisa ganti
-      if(!container.dataset.hasPlaceholder){
-        container.dataset.hasPlaceholder = '1';
-        const placeholder = document.createElement('div');
-        placeholder.className = 'img-placeholder';
-        placeholder.innerHTML = musicIconSVG;
-        placeholder.style.position = 'absolute';
-        placeholder.style.top = '0';
-        placeholder.style.left = '0';
-        placeholder.style.width = '100%';
-        placeholder.style.height = '100%';
-        placeholder.style.display = 'flex';
-        placeholder.style.alignItems = 'center';
-        placeholder.style.justifyContent = 'center';
-        placeholder.style.background = 'var(--bg6)';
-        placeholder.style.borderRadius = container.style.borderRadius || '10px';
-        container.style.position = 'relative';
-        container.appendChild(placeholder);
-        
-        // Hapus placeholder kalau image berhasil load
-        const originalOnload = img.onload;
-        img.onload = function(e) {
-          if(originalOnload) originalOnload.call(this, e);
-          const ph = container.querySelector('.img-placeholder');
-          if(ph) ph.remove();
-        };
-      }
+      img.src = finalUrl;
     }
     
-    // ✅ Helper: generate image HTML dengan fallback robust
-    function getImageHTML(imgUrl, className = '', sizeClass = ''){
+    // ✅ FIX: getImageHTML dengan fallback robust + URL resolve
+    function getImageHTML(imgUrl, className = '', sizeClass = '', feedBaseUrl = ''){
       if(!imgUrl) return `<div class="${className} ${sizeClass}">${musicIconSVG}</div>`;
       
-      // Escape URL buat attribute
-      const safeUrl = esc(imgUrl);
-      const separator = safeUrl.includes('?') ? '&amp;' : '?';
-      const cacheBust = separator + 't=' + Date.now();
+      let finalUrl = imgUrl.trim();
+      if(!/^https?:\/\//i.test(finalUrl) && feedBaseUrl){
+        try{ finalUrl = new URL(finalUrl, feedBaseUrl).href; }catch(e){}
+      }
+      
+      const safeUrl = esc(finalUrl);
+      const sep = safeUrl.includes('?') ? '&amp;' : '?';
+      const cacheBust = sep + 't=' + Date.now();
       
       return `
         <div class="${className} ${sizeClass}" style="position:relative">
           <img src="${safeUrl}${cacheBust}" 
                alt="" 
                loading="lazy" 
+               crossorigin="anonymous"
                style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"
                onerror="this.onerror=null;this.parentElement.innerHTML='${musicIconSVG.replace(/'/g,"\\'")}';">
           <div class="img-placeholder" style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg6);border-radius:inherit">${musicIconSVG}</div>
         </div>
       `.trim();
+    }
+    
+    // ✅ FIX: Helper ambil image URL dari XML dengan namespace handling
+    function extractImageURL(element, baseUrl = ''){
+      if(!element) return null;
+      let url = null;
+      
+      // iTunes image namespace
+      const itunesImg = element.querySelector('itunes\\:image') || element.querySelector('image');
+      if(itunesImg){
+        url = itunesImg.getAttribute('href') || itunesImg.getAttribute('url');
+      }
+      
+      // Fallback: image tag content
+      if(!url){
+        const img = element.querySelector('image');
+        if(img){
+          url = img.textContent?.trim() || img.getAttribute('url');
+        }
+      }
+      
+      // Fallback: enclosure with image type
+      if(!url){
+        const enc = element.querySelector('enclosure');
+        if(enc?.getAttribute('type')?.startsWith('image/')){
+          url = enc.getAttribute('url');
+        }
+      }
+      
+      // Resolve relative URL
+      if(url && baseUrl && !/^https?:\/\//i.test(url)){
+        try{ url = new URL(url, baseUrl).href; }catch(e){ console.warn('Relative URL resolve failed:', url, e); }
+      }
+      
+      // Clean URL
+      if(url){
+        url = url.trim().split(/[?\s]/)[0];
+      }
+      
+      return url;
     }
     
     function init() {
@@ -477,7 +509,7 @@
       const t=app.tracks[i];
       $('playerTitle').textContent=t.title||'Tanpa judul'; 
       $('playerDesc').textContent=t.desc?(t.desc.length>40?t.desc.substring(0,40)+'...':t.desc):'-';
-      setImage($('playerImg'), t.image);
+      setImage($('playerImg'), t.image, t.feedBaseUrl);
       audio.src=t.link; 
       audio.load(); 
       updatePlayUI(); 
@@ -638,7 +670,7 @@
     
     function addDirectTrack(url, title){
       const cleanTitle = (title||url.split('/').pop()||'Audio').replace(/\.[^/.]+$/,'').replace(/[^a-z0-9\s\-_]/gi,' ').trim();
-      const newTrack = {id: Math.random().toString(36).substr(2,9),secId: 'direct_section',title: cleanTitle,link: url.trim(),image: null,desc: 'Direct audio link',duration: '',pubDate: new Date().toISOString(),liked: false};
+      const newTrack = {id: Math.random().toString(36).substr(2,9),secId: 'direct_section',title: cleanTitle,link: url.trim(),image: null,desc: 'Direct audio link',duration: '',pubDate: new Date().toISOString(),liked: false, feedBaseUrl: ''};
       let sec = app.sections.find(s=>s.id==='direct_section');
       if(!sec){app.sections.unshift({id: 'direct_section',title: '🎵 Direct Links',desc: 'Audio yang ditambahkan via link langsung',date: new Date().toISOString(),count: 0,image: null});}
       app.tracks.unshift(newTrack);
@@ -666,29 +698,34 @@
           return;
         }
         let xml='';
+        let feedUrl='';
         if(state.importType==='file'){
           const f=$('fileInput').files[0]; if(!f) throw new Error('Pilih file RSS/XML dulu'); xml=await f.text();
         }else{
-          const u=$('urlInput').value.trim(); if(!u) throw new Error('Masukkan URL feed'); if(!/^https?:\/\//i.test(u)) throw new Error('URL harus http/https');
-          for(const fetchUrl of [u, `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`]){
+          feedUrl=$('urlInput').value.trim(); if(!feedUrl) throw new Error('Masukkan URL feed'); if(!/^https?:\/\//i.test(feedUrl)) throw new Error('URL harus http/https');
+          for(const fetchUrl of [feedUrl, `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`]){
             try{ const r=await fetch(fetchUrl,{mode:'cors'}); if(!r.ok)throw new Error('HTTP '+r.status); xml=await r.text(); break; }catch(err){}
           }
           if(!xml) throw new Error('Gagal ambil feed/CORS blocked');
         }
-        parseXML(xml); closeModal('importModal'); toast(' Podcast diimport!'); syncPopup();
+        parseXML(xml, false, feedUrl); closeModal('importModal'); toast(' Podcast diimport!'); syncPopup();
       }catch(e){ console.error(e); toast(e.message,'✗'); }
       finally{ btn.classList.remove('loading'); btn.disabled=false; }
     };
     
-    function parseXML(xml, isSuggestion=false) {
+    function parseXML(xml, isSuggestion=false, feedBaseUrl='') {
       const p=new DOMParser(), doc=p.parseFromString(xml,'text/xml');
       if(doc.querySelector('parsererror')) throw new Error('XML invalid');
       const ch=doc.querySelector('channel, feed');
+      if(!ch) throw new Error('Struktur RSS tidak valid');
+      
       const categories = [];
       const catElements = doc.querySelectorAll('itunes\\:category, category');
       catElements.forEach(cat=>{const text = cat.getAttribute('text');if(text) categories.push(text);});
-      const itunesImage = ch?.querySelector('itunes\\:image');
-      const imageUrl = itunesImage ? itunesImage.getAttribute('href') : null;
+      
+      // ✅ Ambil image dengan helper yang bener
+      const imageUrl = extractImageURL(ch, feedBaseUrl);
+      
       const metadata = {
         title: ch?.querySelector('title')?.textContent?.trim()||'Podcast',
         image: imageUrl,
@@ -702,12 +739,17 @@
         categories: categories,
         xml
       };
+      
       if(isSuggestion) return metadata;
+      
       const items=doc.querySelectorAll('item, entry');
       if(items.length===0) throw new Error('Gak ada episode');
+      
       const secId='sec_'+Date.now();
       const siteLink = metadata.link;
+      
       app.sections.push({id:secId,title:metadata.title,desc:metadata.desc,date:metadata.lastBuildDate||'-',count:0,siteLink,author:metadata.author,copyright:metadata.copyright,language:metadata.language,explicit:metadata.explicit,categories:metadata.categories,image:metadata.image});
+      
       items.forEach(item=>{
         const t=item.querySelector('title')?.textContent?.trim()||'Tanpa Judul'; 
         let url='';
@@ -715,12 +757,28 @@
         if(enc&&enc.getAttribute('type')?.startsWith('audio/')) url=enc.getAttribute('url');
         if(!url){ const lnk=item.querySelector('link'); if(lnk?.getAttribute('href')) url=lnk.getAttribute('href'); else if(lnk?.textContent) url=lnk.textContent.trim(); }
         if(!url||!/\.(mp3|m4a|aac|ogg|wav|opus)(\?|#|$)/i.test(url)) return;
+        
         let dur=item.querySelector('itunes\\:duration')?.textContent?.trim()||''; 
         if(dur&&!/^\d+:\d{2}(:\d{2})?$/.test(dur)) dur='';
-        const epImage = item.querySelector('itunes\\:image')?.getAttribute('href') || imageUrl;
-        app.tracks.push({id:Math.random().toString(36).substr(2,9),secId,title:t,link:url,image:epImage,desc:item.querySelector('description, summary, itunes\\:summary')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',duration:dur,pubDate:item.querySelector('pubDate, published, updated')?.textContent||'',liked:false});
+        
+        // ✅ Ambil image episode dengan helper + fallback ke channel image
+        const epImage = extractImageURL(item, feedBaseUrl) || imageUrl;
+        
+        app.tracks.push({
+          id:Math.random().toString(36).substr(2,9),
+          secId,
+          title:t,
+          link:url,
+          image:epImage,
+          feedBaseUrl: feedBaseUrl, // ✅ Simpan baseUrl buat setImage nanti
+          desc:item.querySelector('description, summary, itunes\\:summary')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',
+          duration:dur,
+          pubDate:item.querySelector('pubDate, published, updated')?.textContent||'',
+          liked:false
+        });
         app.sections.at(-1).count++;
       });
+      
       if(app.tracks.length===0) throw new Error('Gak ada audio valid');
       saveData(); render(); toast(` ${app.tracks.length} episode diimport`); syncPopup();
     }
@@ -743,11 +801,11 @@
               try{ const r = await fetch(proxyUrl, { mode: 'cors' }); if(r.ok){ xml = await r.text(); break; } }catch(e){}
             }
             if(!xml) continue;
-            const meta = parseXML(xml, true);
+            const meta = parseXML(xml, true, feedUrl);
             meta.url = feedUrl;
             app.suggestions.push(meta);
-            // ✅ Pake getImageHTML yang robust
-            html += `<div class="sug-item" onclick="showPodcastDetail('${esc(feedUrl)}')">${getImageHTML(meta.image, 'sug-item-img', '')}<div class="sug-item-info"><div class="sug-item-title">${esc(meta.title)}</div><div class="sug-item-desc">${esc(meta.desc.substring(0,80))}${meta.desc.length>80?'...':''}</div></div><button class="sug-item-add" onclick="event.stopPropagation();openSuggestionImport('${esc(feedUrl)}')">+ Tambah</button></div>`;
+            // ✅ Pake getImageHTML dengan feedBaseUrl
+            html += `<div class="sug-item" onclick="showPodcastDetail('${esc(feedUrl)}')">${getImageHTML(meta.image, 'sug-item-img', '', feedUrl)}<div class="sug-item-info"><div class="sug-item-title">${esc(meta.title)}</div><div class="sug-item-desc">${esc(meta.desc.substring(0,80))}${meta.desc.length>80?'...':''}</div></div><button class="sug-item-add" onclick="event.stopPropagation();openSuggestionImport('${esc(feedUrl)}')">+ Tambah</button></div>`;
           }catch(e){ console.warn('Skip suggestion:', feedUrl, e); }
         }
         if(app.suggestions.length===0) throw new Error('Gak ada podcast valid');
@@ -762,8 +820,8 @@
       const podcast = app.suggestions.find(s=>s.url===url);
       if(!podcast) return;
       state.currentDetailUrl = url;
-      // ✅ Pake getImageHTML yang robust
-      const imgHtml = getImageHTML(podcast.image, 'detail-img', '');
+      // ✅ Pake getImageHTML dengan feedBaseUrl
+      const imgHtml = getImageHTML(podcast.image, 'detail-img', '', url);
       let html = `
         <div class="detail-header">
           ${imgHtml}
@@ -846,8 +904,8 @@
         if(t.secId!==lastSec){lastSec=t.secId;const s=secMap[t.secId];if(s){const ds=s.date?new Date(s.date).toLocaleDateString('id-ID',{year:'numeric',month:'short'}):'-';
         html+=`<div class="section"><div class="sec-header"><div><h3>${esc(s.title)}</h3><p>${esc(s.desc).substring(0,100)}${s.desc.length>100?'...':''}</p><div class="meta"><span><i class="far fa-calendar"></i> ${ds}</span><span><i class="fas fa-list"></i> ${s.count} ep</span></div></div><button class="sec-del" onclick="deleteSection('${s.id}',event)"><i class="fas fa-trash"></i></button></div><div class="playlist">`;}}
         const act=ri===state.idx?' active':'';
-        // ✅ Pake getImageHTML yang robust buat item playlist
-        const imgHtml = getImageHTML(t.image, 'item-img', '');
+        // ✅ Pake getImageHTML dengan feedBaseUrl
+        const imgHtml = getImageHTML(t.image, 'item-img', '', t.feedBaseUrl);
         const dur=t.duration?`<p><i class="fas fa-clock"></i> ${esc(t.duration)}</p>`:'';
         html+=`<div class="item${act}" onclick="playAt(${ri})" role="listitem">${imgHtml}<div class="item-info"><div class="marquee-wrap"><h4 class="marquee-text">${esc(t.title)}</h4></div>${dur}</div><div class="item-actions"><button onclick="event.stopPropagation();toggleLike(${ri})" class="${t.liked?'liked':''}"><i class="${t.liked?'fas':'far'} fa-heart"></i></button><button onclick="event.stopPropagation();dlTrack(${ri})"><i class="fas fa-download"></i></button></div></div>`;
       });
@@ -961,12 +1019,17 @@
           }
           tt.textContent=e.data.title||'Pilih podcast/Import dulu';td.textContent=e.data.desc||'';
           if(e.data.image){
+            let finalUrl = e.data.image.trim();
+            if(e.data.feedBaseUrl && !/^https?:\\/\\//i.test(finalUrl)){
+              try{ finalUrl = new URL(finalUrl, e.data.feedBaseUrl).href; }catch(err){}
+            }
+            const sep = finalUrl.includes('?') ? '&' : '?';
+            finalUrl = finalUrl + sep + 't=' + Date.now();
             const img=new Image();
+            img.crossOrigin='anonymous';
             img.onload=()=>{cv.innerHTML='';cv.appendChild(img);checkMarquee('tt');checkMarquee('td');};
             img.onerror=()=>{cv.innerHTML=musicIcon;};
-            const sep = e.data.image.includes('?') ? '&' : '?';
-            img.src = e.data.image + sep + 't=' + Date.now();
-            // Placeholder sementara
+            img.src = finalUrl;
             cv.innerHTML = '<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg6);border-radius:12px">'+musicIcon+'</div>';
           }else{cv.innerHTML=musicIcon;}
           document.getElementById('pb').innerHTML='<i class="fas fa-'+(e.data.playing?'pause':'play')+'"></i>';document.getElementById('fl').style.width=(e.data.time||0)+'%';document.getElementById('seekBar').setAttribute('aria-valuenow',Math.round(e.data.time||0));document.getElementById('tm').textContent=e.data.timeTxt||'0:00 / 0:00';
@@ -986,6 +1049,7 @@
         title: t ? (t.title||'Pilih podcast/Import dulu') : 'Pilih podcast/Import dulu',
         desc: t ? (t.desc||'-') : '-',
         image: t ? (t.image||null) : null,
+        feedBaseUrl: t ? (t.feedBaseUrl||'') : '',
         playing: state.playing && !isEmpty,
         shuffle: state.shuffle,
         repeat: state.repeat,
