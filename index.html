@@ -28,17 +28,18 @@
     
     .main-wrapper{display:flex;flex:1;overflow:hidden;position:relative;max-width:100vw}
     
-    .sidebar{width:200px;background:var(--bg);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:10px;gap:6px;overflow-y:auto;flex-shrink:0;z-index:50;height:calc(100vh - 56px);padding-bottom:100px;position:relative}
-    .sidebar button{background:var(--bg4);color:var(--text2);border:none;padding:10px 12px;border-radius:8px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:10px;font-size:12px;transition:background .15s;min-height:42px}
+    /* ✅ SIDEBAR DIPERKETAT */
+    .sidebar{width:200px;background:var(--bg);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:6px 8px 8px;gap:3px;overflow-y:auto;flex-shrink:0;z-index:50;height:calc(100vh - 56px);position:relative}
+    .sidebar button{background:var(--bg4);color:var(--text2);border:none;padding:7px 10px;border-radius:8px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px;font-size:12px;transition:background .15s;min-height:34px}
     .sidebar button:active{transform:scale(.98);background:var(--bg7);color:#fff}
     .sidebar button i{width:16px;text-align:center;font-size:13px}
     
-    .dev-credit{margin-top:auto;padding:8px 10px;background:linear-gradient(135deg,var(--bg7),var(--bg8));border:1px solid var(--border3);border-radius:10px;box-shadow:0 4px 12px rgba(0,123,255,0.15);display:flex;align-items:center;justify-content:space-between;animation:glowPulse 3s ease-in-out infinite}
+    .dev-credit{margin-top:4px;padding:5px 8px;background:linear-gradient(135deg,var(--bg7),var(--bg8));border:1px solid var(--border3);border-radius:8px;box-shadow:0 4px 12px rgba(0,123,255,0.15);display:flex;align-items:center;justify-content:space-between;animation:glowPulse 3s ease-in-out infinite}
     @keyframes glowPulse{0%,100%{box-shadow:0 4px 12px rgba(0,123,255,0.15)}50%{box-shadow:0 4px 20px rgba(0,123,255,0.35)}}
     .dev-name{font-size:10px;font-weight:700;letter-spacing:0.5px;background:linear-gradient(90deg,#00d4ff,#7b2fff,#ff2f92);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 0 10px rgba(123,47,255,0.3);cursor:pointer;transition:transform .2s,filter .2s;text-decoration:none;display:block}
     .dev-name:hover{transform:scale(1.05);filter:brightness(1.2)}
     .dev-name:active{transform:scale(0.98)}
-    .dev-gh{width:24px;height:24px;display:flex;align-items:center;justify-content:center;color:var(--text2);transition:all .2s;border-radius:6px;text-decoration:none}
+    .dev-gh{width:22px;height:22px;display:flex;align-items:center;justify-content:center;color:var(--text2);transition:all .2s;border-radius:6px;text-decoration:none}
     .dev-gh:hover{color:#fff;background:var(--bg6);transform:translateY(-1px)}
     .dev-gh:active{transform:scale(0.95)}
     
@@ -78,8 +79,6 @@
     .player-controls{display:flex;align-items:center;gap:8px}
     .player-img{width:42px;height:42px;border-radius:10px;background:var(--bg6);flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
     .player-img img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block}
-    .player-img .img-placeholder{width:18px;height:18px;fill:#444;display:block}
-    .player-img .img-placeholder svg{width:100%;height:100%}
     
     .player-info{flex:1 1 0%;min-width:0;overflow:hidden}
     .player-info h4{font-size:12px;color:#ddd;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -107,8 +106,6 @@
     .sug-item:active{transform:scale(.98);background:var(--bg6);border-color:var(--primary)}
     .sug-item-img{width:60px;height:60px;border-radius:8px;background:var(--bg6);flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
     .sug-item-img img{width:100%;height:100%;object-fit:cover;display:block}
-    .sug-item-img .img-placeholder{width:28px;height:28px;fill:#444;display:block}
-    .sug-item-img .img-placeholder svg{width:100%;height:100%}
     .sug-item-info{flex:1;min-width:0}
     .sug-item-title{font-size:12px;font-weight:600;color:#ddd;margin-bottom:3px;line-height:1.2;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
     .sug-item-desc{font-size:9px;color:var(--text4);line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -118,8 +115,6 @@
     .detail-header{position:relative;margin-bottom:12px}
     .detail-img{width:100%;aspect-ratio:1;border-radius:12px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:10px;box-shadow:0 8px 24px rgba(0,0,0,.4);position:relative}
     .detail-img img{width:100%;height:100%;object-fit:cover;display:block}
-    .detail-img .img-placeholder{width:64px;height:64px;fill:#444;display:block}
-    .detail-img .img-placeholder svg{width:100%;height:100%}
     .detail-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.3}
     .detail-meta{display:flex;flex-direction:column;gap:8px}
     .detail-row{display:flex;gap:8px;align-items:flex-start;font-size:11px}
@@ -191,7 +186,7 @@
       .search-box{font-size:13px;padding:9px 11px}
       .modal{padding:10px}
       .modal-box{max-height:85vh;padding:14px}
-      .dev-credit{margin-top:6px;padding:7px 9px}
+      .dev-credit{margin-top:4px;padding:5px 8px}
       .dev-name{font-size:9px}
       .dev-gh{width:22px;height:22px}
       .sug-item{padding:8px}
@@ -226,7 +221,8 @@
         <button onclick="toggleRepeat()"><i class="fas fa-redo"></i>Mode Ulang</button>
         <button onclick="openPopup()"><i class="fas fa-external-link-alt"></i>Mini Player</button>
         <button onclick="clearAll()"><i class="fas fa-trash-can"></i>Hapus Semua</button>
-        <button onclick="window.open('https://sumaterapodcastpro.chatango.com/','_blank')" style="margin-top:auto"><i class="fas fa-comments"></i>Komunitas</button>
+        <!-- ✅ HAPUS margin-top:auto, udah dirapetin via CSS -->
+        <button onclick="window.open('https://sumaterapodcastpro.chatango.com/','_blank')"><i class="fas fa-comments"></i>Komunitas</button>
         
         <div class="dev-credit">
           <a href="https://jirankun.github.io/portofoliozhyllan" target="_blank" rel="noopener noreferrer" class="dev-name" title="Portofolio Zhyllan">ZHYLLAN-FYLLAH</a>
@@ -324,34 +320,25 @@
     const esc = s => { if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML; };
     const fmt = s => { if(!s||isNaN(s)||!isFinite(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+String(sec).padStart(2,'0'); };
     
-    const musicIconSVG = '<svg viewBox="0 0 24 24" class="img-placeholder"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
-    
     let app = { sections:[], tracks:[], settings:{ autoRestore:true, autoResume:true, directLinkSupport:false }, suggestions:[] };
     let state = { idx:0, playing:false, shuffle:false, repeat:0, tab:'all', importType:'url', currentDetailUrl:'' };
     const audio = $('audio');
     let popupWin = null, marqueeTimers = [], toastTimer = null;
     
-    // ✅ FIX UTAMA: setImage() yang bener - gambar PASTI muncul
+    // ✅ NO SVG FALLBACK - Debug mode. Kalau error, container kosong.
     function setImage(container, imgUrl, feedBaseUrl = ''){
       if(!container) return;
       container.innerHTML = '';
       container.style.position = 'relative';
-      
-      if(!imgUrl){
-        container.innerHTML = musicIconSVG;
-        return;
-      }
-      
-      // ✅ Resolve relative URL ke absolute
+      if(!imgUrl) return;
+
       let finalUrl = imgUrl.trim();
       if(!/^https?:\/\//i.test(finalUrl) && feedBaseUrl){
-        try{ finalUrl = new URL(finalUrl, feedBaseUrl).href; }catch(e){ console.warn('URL resolve failed:', e); }
+        try{ finalUrl = new URL(finalUrl, feedBaseUrl).href; }catch(e){ console.warn('Rel URL fail:', e); }
       }
-      
-      // ✅ Cache busting + CORS hint
       const sep = finalUrl.includes('?') ? '&' : '?';
       finalUrl = finalUrl + sep + 't=' + Date.now();
-      
+
       const img = new Image();
       img.crossOrigin = 'anonymous';
       img.loading = 'lazy';
@@ -360,103 +347,35 @@
       img.style.objectFit = 'cover';
       img.style.borderRadius = container.style.borderRadius || '10px';
       img.style.display = 'block';
-      
-      // Placeholder sementara
-      const placeholder = document.createElement('div');
-      placeholder.className = 'img-placeholder';
-      placeholder.innerHTML = musicIconSVG;
-      placeholder.style.position = 'absolute';
-      placeholder.style.top = '0';
-      placeholder.style.left = '0';
-      placeholder.style.width = '100%';
-      placeholder.style.height = '100%';
-      placeholder.style.display = 'flex';
-      placeholder.style.alignItems = 'center';
-      placeholder.style.justifyContent = 'center';
-      placeholder.style.background = 'var(--bg6)';
-      placeholder.style.borderRadius = container.style.borderRadius || '10px';
-      container.appendChild(placeholder);
-      
-      img.onload = () => {
-        if(container && !container.dataset.fallback){
-          container.innerHTML = '';
-          container.appendChild(img);
-        }
-      };
-      
-      img.onerror = () => {
-        if(container && !container.dataset.fallback){
-          container.dataset.fallback = '1';
-          container.innerHTML = musicIconSVG;
-        }
-      };
-      
+      img.onerror = () => { container.innerHTML = ''; console.warn('Img fail:', imgUrl); };
+      img.onload = () => { container.innerHTML = ''; container.appendChild(img); };
       img.src = finalUrl;
     }
     
-    // ✅ FIX: getImageHTML dengan fallback robust + URL resolve
+    // ✅ NO SVG FALLBACK - Helper HTML
     function getImageHTML(imgUrl, className = '', sizeClass = '', feedBaseUrl = ''){
-      if(!imgUrl) return `<div class="${className} ${sizeClass}">${musicIconSVG}</div>`;
-      
+      if(!imgUrl) return `<div class="${className} ${sizeClass}"></div>`;
       let finalUrl = imgUrl.trim();
       if(!/^https?:\/\//i.test(finalUrl) && feedBaseUrl){
         try{ finalUrl = new URL(finalUrl, feedBaseUrl).href; }catch(e){}
       }
-      
       const safeUrl = esc(finalUrl);
       const sep = safeUrl.includes('?') ? '&amp;' : '?';
       const cacheBust = sep + 't=' + Date.now();
-      
-      return `
-        <div class="${className} ${sizeClass}" style="position:relative">
-          <img src="${safeUrl}${cacheBust}" 
-               alt="" 
-               loading="lazy" 
-               crossorigin="anonymous"
-               style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"
-               onerror="this.onerror=null;this.parentElement.innerHTML='${musicIconSVG.replace(/'/g,"\\'")}';">
-          <div class="img-placeholder" style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg6);border-radius:inherit">${musicIconSVG}</div>
-        </div>
-      `.trim();
+      return `<div class="${className} ${sizeClass}" style="position:relative"><img src="${safeUrl}${cacheBust}" alt="" loading="lazy" crossorigin="anonymous" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit" onerror="this.style.display='none';console.warn('Img fail in list:', '${safeUrl}');"></div>`;
     }
     
-    // ✅ FIX: Helper ambil image URL dari XML dengan namespace handling
     function extractImageURL(element, baseUrl = ''){
       if(!element) return null;
       let url = null;
-      
-      // iTunes image namespace
       const itunesImg = element.querySelector('itunes\\:image') || element.querySelector('image');
-      if(itunesImg){
-        url = itunesImg.getAttribute('href') || itunesImg.getAttribute('url');
-      }
-      
-      // Fallback: image tag content
-      if(!url){
-        const img = element.querySelector('image');
-        if(img){
-          url = img.textContent?.trim() || img.getAttribute('url');
-        }
-      }
-      
-      // Fallback: enclosure with image type
-      if(!url){
-        const enc = element.querySelector('enclosure');
-        if(enc?.getAttribute('type')?.startsWith('image/')){
-          url = enc.getAttribute('url');
-        }
-      }
-      
-      // Resolve relative URL
+      if(itunesImg) url = itunesImg.getAttribute('href') || itunesImg.getAttribute('url');
+      if(!url){ const img = element.querySelector('image'); if(img) url = img.textContent?.trim() || img.getAttribute('url'); }
+      if(!url){ const enc = element.querySelector('enclosure'); if(enc?.getAttribute('type')?.startsWith('image/')) url = enc.getAttribute('url'); }
       if(url && baseUrl && !/^https?:\/\//i.test(url)){
-        try{ url = new URL(url, baseUrl).href; }catch(e){ console.warn('Relative URL resolve failed:', url, e); }
+        try{ url = new URL(url, baseUrl).href; }catch(e){ console.warn('Rel URL extract fail:', url, e); }
       }
-      
-      // Clean URL
-      if(url){
-        url = url.trim().split(/[?\s]/)[0];
-      }
-      
+      if(url) url = url.trim().split(/[?\s]/)[0];
       return url;
     }
     
@@ -503,7 +422,8 @@
       });
     }
     
-    function loadTrack(i,autoPlay=true) {
+    // ✅ FIX: LANGSUNG GANTI & PLAY TANPA JEDA
+    function loadTrack(i, autoPlay=true) {
       if(i<0||i>=app.tracks.length)return; 
       state.idx=i; 
       const t=app.tracks[i];
@@ -523,8 +443,19 @@
           toast(` ▶ Lanjut dari ${fmt(savedPos)}`, 'info');
         }
       }
-      if(autoPlay&&state.playing) audio.play().catch(()=>{});
+      if(autoPlay) {
+        state.playing = true;
+        updatePlayUI();
+        audio.play().catch(e => { 
+          console.warn('Auto play blocked:', e);
+          state.playing=false; 
+          updatePlayUI(); 
+        });
+      }
     }
+    
+    // ✅ Langsung panggil loadTrack dengan autoPlay=true, hapus togglePlay() ganda
+    function playAt(i){ loadTrack(i, true); closeSidebarMobile(); }
     
     function setupEvents() {
       document.addEventListener('keydown', e=>{
@@ -543,141 +474,43 @@
       });
     }
     
-    function toggleSidebar(e) {
-      if(e && e.target !== $('overlay')) return;
-      $('sidebar').classList.toggle('active');
-      $('overlay').classList.toggle('active');
-    }
+    function toggleSidebar(e) { if(e && e.target !== $('overlay')) return; $('sidebar').classList.toggle('active'); $('overlay').classList.toggle('active'); }
     function closeModal(id) { $(id)?.classList.remove('active'); }
     function setTab(t) {
       state.tab = t;
-      document.querySelectorAll('.tab').forEach(b=>{
-        const active = b.dataset.tab===t;
-        b.classList.toggle('active',active); b.setAttribute('aria-selected',active);
-      });
-      if(t==='suggestions'){
-        $('playlistContainer').style.display='none';
-        $('suggestionsContainer').style.display='block';
-        loadSuggestions();
-      }else{
-        $('playlistContainer').style.display='block';
-        $('suggestionsContainer').style.display='none';
-        render();
-      }
+      document.querySelectorAll('.tab').forEach(b=>{ const active = b.dataset.tab===t; b.classList.toggle('active',active); b.setAttribute('aria-selected',active); });
+      if(t==='suggestions'){ $('playlistContainer').style.display='none'; $('suggestionsContainer').style.display='block'; loadSuggestions(); }
+      else{ $('playlistContainer').style.display='block'; $('suggestionsContainer').style.display='none'; render(); }
     }
     function toggleSetting(k) {
       app.settings[k] = !app.settings[k]; saveData();
-      if(k==='autoRestore'){
-        $('toggleRestore').classList.toggle('active', app.settings.autoRestore);
-        $('toggleRestore').setAttribute('aria-checked', app.settings.autoRestore);
-        toast(app.settings.autoRestore?' Auto-restore ON':' Auto-restore OFF');
-      }
-      if(k==='autoResume'){
-        $('toggleResume').classList.toggle('active', app.settings.autoResume);
-        $('toggleResume').setAttribute('aria-checked', app.settings.autoResume);
-        toast(app.settings.autoResume?' Auto-resume ON':' Auto-resume OFF');
-      }
-      if(k==='directLinkSupport'){
-        $('toggleDirectLink').classList.toggle('active', app.settings.directLinkSupport);
-        $('toggleDirectLink').setAttribute('aria-checked', app.settings.directLinkSupport);
-        updateDirectLinkUI();
-        toast(app.settings.directLinkSupport?' Direct Link ON':' Direct Link OFF');
-      }
+      if(k==='autoRestore'){ $('toggleRestore').classList.toggle('active', app.settings.autoRestore); $('toggleRestore').setAttribute('aria-checked', app.settings.autoRestore); toast(app.settings.autoRestore?' Auto-restore ON':' Auto-restore OFF'); }
+      if(k==='autoResume'){ $('toggleResume').classList.toggle('active', app.settings.autoResume); $('toggleResume').setAttribute('aria-checked', app.settings.autoResume); toast(app.settings.autoResume?' Auto-resume ON':' Auto-resume OFF'); }
+      if(k==='directLinkSupport'){ $('toggleDirectLink').classList.toggle('active', app.settings.directLinkSupport); $('toggleDirectLink').setAttribute('aria-checked', app.settings.directLinkSupport); updateDirectLinkUI(); toast(app.settings.directLinkSupport?' Direct Link ON':' Direct Link OFF'); }
     }
     
-    function updateDirectLinkUI(){
-      const btn=$('typeDirect');
-      if(!btn)return;
-      if(app.settings.directLinkSupport){
-        btn.style.display='flex';
-        btn.setAttribute('aria-hidden','false');
-      }else{
-        btn.style.display='none';
-        btn.setAttribute('aria-hidden','true');
-        if(state.importType==='direct') switchImport('url');
-      }
-    }
-    
-    function resetSettings() {
-      if(confirm('Reset pengaturan ke default? Data podcast & favorit TETAP ADA.')){
-        app.settings = {autoRestore:true, autoResume:true, directLinkSupport:false}; saveData();
-        $('toggleRestore').classList.add('active'); $('toggleRestore').setAttribute('aria-checked','true');
-        $('toggleResume').classList.add('active'); $('toggleResume').setAttribute('aria-checked','true');
-        $('toggleDirectLink').classList.remove('active'); $('toggleDirectLink').setAttribute('aria-checked','false');
-        updateDirectLinkUI();
-        toast(' Pengaturan direset');
-      }
-    }
-    function wipeAllData(e){
-      e?.stopPropagation();
-      if(!confirm('HAPUS SEMUA DATA termasuk favorit?\n\nIni tidak bisa dibatalkan!'))return;
-      app = { sections:[], tracks:[], settings:{autoRestore:true, autoResume:true, directLinkSupport:false}, suggestions:[] };
-      saveData(); audio.pause(); audio.src=''; state.idx=0; state.playing=false;
-      $('playerTitle').textContent='Pilih podcast/Import dulu'; $('playerDesc').textContent='-';
-      updatePlayUI(); 
-      setImage($('playerImg'), null);
-      render(); 
-      toast(' Semua data dihapus'); 
-      syncPopup();
-      updateDirectLinkUI();
-      Object.keys(localStorage).forEach(k=>{if(k.startsWith('pod_pos_'))localStorage.removeItem(k);});
-    }
-    
+    function updateDirectLinkUI(){ const btn=$('typeDirect'); if(!btn)return; if(app.settings.directLinkSupport){ btn.style.display='flex'; btn.setAttribute('aria-hidden','false'); }else{ btn.style.display='none'; btn.setAttribute('aria-hidden','true'); if(state.importType==='direct') switchImport('url'); } }
+    function resetSettings() { if(confirm('Reset pengaturan ke default? Data podcast & favorit TETAP ADA.')){ app.settings = {autoRestore:true, autoResume:true, directLinkSupport:false}; saveData(); $('toggleRestore').classList.add('active'); $('toggleRestore').setAttribute('aria-checked','true'); $('toggleResume').classList.add('active'); $('toggleResume').setAttribute('aria-checked','true'); $('toggleDirectLink').classList.remove('active'); $('toggleDirectLink').setAttribute('aria-checked','false'); updateDirectLinkUI(); toast(' Pengaturan direset'); } }
+    function wipeAllData(e){ e?.stopPropagation(); if(!confirm('HAPUS SEMUA DATA termasuk favorit?\n\nIni tidak bisa dibatalkan!'))return; app = { sections:[], tracks:[], settings:{autoRestore:true, autoResume:true, directLinkSupport:false}, suggestions:[] }; saveData(); audio.pause(); audio.src=''; state.idx=0; state.playing=false; $('playerTitle').textContent='Pilih podcast/Import dulu'; $('playerDesc').textContent='-'; updatePlayUI(); setImage($('playerImg'), null); render(); toast(' Semua data dihapus'); syncPopup(); updateDirectLinkUI(); Object.keys(localStorage).forEach(k=>{if(k.startsWith('pod_pos_'))localStorage.removeItem(k);}); }
     function openSettings(e) { e?.stopPropagation(); $('settingsModal').classList.add('active'); }
     
-    function toast(msg, icon='') {
-      if(toastTimer) clearTimeout(toastTimer);
-      document.querySelector('.toast')?.remove();
-      const t = document.createElement('div'); t.className='toast';
-      t.innerHTML=`<i class="fas fa-${icon===''?'check':icon==='✗'?'times':'info'}"></i>${msg}`;
-      document.body.appendChild(t);
-      toastTimer = setTimeout(()=>{t?.remove()},2500);
-    }
+    function toast(msg, icon='') { if(toastTimer) clearTimeout(toastTimer); document.querySelector('.toast')?.remove(); const t = document.createElement('div'); t.className='toast'; t.innerHTML=`<i class="fas fa-${icon===''?'check':icon==='✗'?'times':'info'}"></i>${msg}`; document.body.appendChild(t); toastTimer = setTimeout(()=>{t?.remove()},2500); }
     
-    function openImport(type) {
-      state.importType = type || 'url'; switchImport(state.importType);
-      $('importModal').classList.add('active'); $('fileInput').value=''; $('urlInput').value=''; $('directInput').value=''; $('directTitle').value='';
-      setTimeout(()=>{
-        const input = state.importType==='file'?$('fileInput'):state.importType==='direct'?$('directInput'):$('urlInput');
-        input?.focus();
-      },100);
-    }
+    function openImport(type) { state.importType = type || 'url'; switchImport(state.importType); $('importModal').classList.add('active'); $('fileInput').value=''; $('urlInput').value=''; $('directInput').value=''; $('directTitle').value=''; setTimeout(()=>{ const input = state.importType==='file'?$('fileInput'):state.importType==='direct'?$('directInput'):$('urlInput'); input?.focus(); },100); }
     function switchImport(type) {
       state.importType = type;
       const isFile=type==='file', isDirect=type==='direct', isUrl=type==='url';
-      $('typeFile').style.background=isFile?'var(--primary)':'var(--bg5)';
-      $('typeFile').style.color=isFile?'#fff':'var(--text2)'; $('typeFile').setAttribute('aria-selected',isFile);
-      $('typeUrl').style.background=isUrl?'var(--primary)':'var(--bg5)';
-      $('typeUrl').style.color=isUrl?'#fff':'var(--text2)'; $('typeUrl').setAttribute('aria-selected',isUrl);
-      $('typeDirect').style.background=isDirect?'var(--primary)':'var(--bg5)';
-      $('typeDirect').style.color=isDirect?'#fff':'var(--text2)'; $('typeDirect').setAttribute('aria-selected',isDirect);
-      $('fileInput').style.display=isFile?'block':'none';
-      $('urlInput').style.display=isUrl?'block':'none';
-      $('directInput').style.display=isDirect?'block':'none';
-      $('directTitle').style.display=isDirect?'block':'none';
+      $('typeFile').style.background=isFile?'var(--primary)':'var(--bg5)'; $('typeFile').style.color=isFile?'#fff':'var(--text2)'; $('typeFile').setAttribute('aria-selected',isFile);
+      $('typeUrl').style.background=isUrl?'var(--primary)':'var(--bg5)'; $('typeUrl').style.color=isUrl?'#fff':'var(--text2)'; $('typeUrl').setAttribute('aria-selected',isUrl);
+      $('typeDirect').style.background=isDirect?'var(--primary)':'var(--bg5)'; $('typeDirect').style.color=isDirect?'#fff':'var(--text2)'; $('typeDirect').setAttribute('aria-selected',isDirect);
+      $('fileInput').style.display=isFile?'block':'none'; $('urlInput').style.display=isUrl?'block':'none'; $('directInput').style.display=isDirect?'block':'none'; $('directTitle').style.display=isDirect?'block':'none';
       if(isFile) setTimeout(()=>$('fileInput')?.click(),50);
-      if(isDirect){
-        $('directInput').placeholder='https://cdn.example.com/audio.mp3';
-        setTimeout(()=>$('directInput')?.focus(),50);
-      }
+      if(isDirect){ $('directInput').placeholder='https://cdn.example.com/audio.mp3'; setTimeout(()=>$('directInput')?.focus(),50); }
     }
     
-    function isValidAudioUrl(url){
-      if(!url) return false;
-      try{ new URL(url); }catch(e){ return false; }
-      return /\.(mp3|m4a|aac|ogg|wav|opus|flac)(\?|#|$)/i.test(url);
-    }
+    function isValidAudioUrl(url){ if(!url) return false; try{ new URL(url); }catch(e){ return false; } return /\.(mp3|m4a|aac|ogg|wav|opus|flac)(\?|#|$)/i.test(url); }
     
-    function addDirectTrack(url, title){
-      const cleanTitle = (title||url.split('/').pop()||'Audio').replace(/\.[^/.]+$/,'').replace(/[^a-z0-9\s\-_]/gi,' ').trim();
-      const newTrack = {id: Math.random().toString(36).substr(2,9),secId: 'direct_section',title: cleanTitle,link: url.trim(),image: null,desc: 'Direct audio link',duration: '',pubDate: new Date().toISOString(),liked: false, feedBaseUrl: ''};
-      let sec = app.sections.find(s=>s.id==='direct_section');
-      if(!sec){app.sections.unshift({id: 'direct_section',title: '🎵 Direct Links',desc: 'Audio yang ditambahkan via link langsung',date: new Date().toISOString(),count: 0,image: null});}
-      app.tracks.unshift(newTrack);
-      app.sections.find(s=>s.id==='direct_section').count++;
-      saveData();
-      return newTrack;
-    }
+    function addDirectTrack(url, title){ const cleanTitle = (title||url.split('/').pop()||'Audio').replace(/\.[^/.]+$/,'').replace(/[^a-z0-9\s\-_]/gi,' ').trim(); const newTrack = {id: Math.random().toString(36).substr(2,9),secId: 'direct_section',title: cleanTitle,link: url.trim(),image: null,desc: 'Direct audio link',duration: '',pubDate: new Date().toISOString(),liked: false, feedBaseUrl: ''}; let sec = app.sections.find(s=>s.id==='direct_section'); if(!sec){app.sections.unshift({id: 'direct_section',title: '🎵 Direct Links',desc: 'Audio yang ditambahkan via link langsung',date: new Date().toISOString(),count: 0,image: null});} app.tracks.unshift(newTrack); app.sections.find(s=>s.id==='direct_section').count++; saveData(); return newTrack; }
     
     $('btnImport').onclick = async (e) => {
       e?.stopPropagation(); const btn=$('btnImport');
@@ -685,29 +518,14 @@
         btn.classList.add('loading'); btn.disabled=true;
         if(state.importType==='direct'){
           if(!app.settings.directLinkSupport) throw new Error('Fitur Direct Link belum diaktifkan di Pengaturan');
-          const url = $('directInput').value.trim();
-          const title = $('directTitle').value.trim();
+          const url = $('directInput').value.trim(); const title = $('directTitle').value.trim();
           if(!url) throw new Error('Masukkan URL audio dulu bre');
           if(!isValidAudioUrl(url)) throw new Error('URL harus berakhiran .mp3/.m4a/.aac/.ogg/.wav/.opus');
-          addDirectTrack(url, title);
-          closeModal('importModal');
-          toast(' Audio ditambahkan!');
-          render(); syncPopup();
-          loadTrack(0, false);
-          btn.classList.remove('loading'); btn.disabled=false;
-          return;
+          addDirectTrack(url, title); closeModal('importModal'); toast(' Audio ditambahkan!'); render(); syncPopup(); loadTrack(0, false); btn.classList.remove('loading'); btn.disabled=false; return;
         }
-        let xml='';
-        let feedUrl='';
-        if(state.importType==='file'){
-          const f=$('fileInput').files[0]; if(!f) throw new Error('Pilih file RSS/XML dulu'); xml=await f.text();
-        }else{
-          feedUrl=$('urlInput').value.trim(); if(!feedUrl) throw new Error('Masukkan URL feed'); if(!/^https?:\/\//i.test(feedUrl)) throw new Error('URL harus http/https');
-          for(const fetchUrl of [feedUrl, `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`]){
-            try{ const r=await fetch(fetchUrl,{mode:'cors'}); if(!r.ok)throw new Error('HTTP '+r.status); xml=await r.text(); break; }catch(err){}
-          }
-          if(!xml) throw new Error('Gagal ambil feed/CORS blocked');
-        }
+        let xml=''; let feedUrl='';
+        if(state.importType==='file'){ const f=$('fileInput').files[0]; if(!f) throw new Error('Pilih file RSS/XML dulu'); xml=await f.text(); }
+        else{ feedUrl=$('urlInput').value.trim(); if(!feedUrl) throw new Error('Masukkan URL feed'); if(!/^https?:\/\//i.test(feedUrl)) throw new Error('URL harus http/https'); for(const fetchUrl of [feedUrl, `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`]){ try{ const r=await fetch(fetchUrl,{mode:'cors'}); if(!r.ok)throw new Error('HTTP '+r.status); xml=await r.text(); break; }catch(err){} } if(!xml) throw new Error('Gagal ambil feed/CORS blocked'); }
         parseXML(xml, false, feedUrl); closeModal('importModal'); toast(' Podcast diimport!'); syncPopup();
       }catch(e){ console.error(e); toast(e.message,'✗'); }
       finally{ btn.classList.remove('loading'); btn.disabled=false; }
@@ -716,285 +534,105 @@
     function parseXML(xml, isSuggestion=false, feedBaseUrl='') {
       const p=new DOMParser(), doc=p.parseFromString(xml,'text/xml');
       if(doc.querySelector('parsererror')) throw new Error('XML invalid');
-      const ch=doc.querySelector('channel, feed');
-      if(!ch) throw new Error('Struktur RSS tidak valid');
-      
-      const categories = [];
-      const catElements = doc.querySelectorAll('itunes\\:category, category');
-      catElements.forEach(cat=>{const text = cat.getAttribute('text');if(text) categories.push(text);});
-      
-      // ✅ Ambil image dengan helper yang bener
+      const ch=doc.querySelector('channel, feed'); if(!ch) throw new Error('Struktur RSS tidak valid');
+      const categories = []; doc.querySelectorAll('itunes\\:category, category').forEach(cat=>{const text = cat.getAttribute('text');if(text) categories.push(text);});
       const imageUrl = extractImageURL(ch, feedBaseUrl);
-      
-      const metadata = {
-        title: ch?.querySelector('title')?.textContent?.trim()||'Podcast',
-        image: imageUrl,
-        desc: ch?.querySelector('description, subtitle')?.textContent?.replace(/<[^>]*>/g,'').trim()||'-',
-        link: ch?.querySelector('link')?.textContent?.trim()||ch?.querySelector('link')?.getAttribute('href')||'',
-        author: ch?.querySelector('itunes\\:author, author')?.textContent?.trim()||'',
-        copyright: ch?.querySelector('copyright')?.textContent?.trim()||'',
-        language: ch?.querySelector('language')?.textContent?.trim()||'',
-        lastBuildDate: ch?.querySelector('lastBuildDate')?.textContent?.trim()||'',
-        explicit: ch?.querySelector('itunes\\:explicit')?.textContent?.trim()||'',
-        categories: categories,
-        xml
-      };
-      
+      const metadata = { title: ch?.querySelector('title')?.textContent?.trim()||'Podcast', image: imageUrl, desc: ch?.querySelector('description, subtitle')?.textContent?.replace(/<[^>]*>/g,'').trim()||'-', link: ch?.querySelector('link')?.textContent?.trim()||ch?.querySelector('link')?.getAttribute('href')||'', author: ch?.querySelector('itunes\\:author, author')?.textContent?.trim()||'', copyright: ch?.querySelector('copyright')?.textContent?.trim()||'', language: ch?.querySelector('language')?.textContent?.trim()||'', lastBuildDate: ch?.querySelector('lastBuildDate')?.textContent?.trim()||'', explicit: ch?.querySelector('itunes\\:explicit')?.textContent?.trim()||'', categories: categories, xml };
       if(isSuggestion) return metadata;
-      
-      const items=doc.querySelectorAll('item, entry');
-      if(items.length===0) throw new Error('Gak ada episode');
-      
-      const secId='sec_'+Date.now();
-      const siteLink = metadata.link;
-      
+      const items=doc.querySelectorAll('item, entry'); if(items.length===0) throw new Error('Gak ada episode');
+      const secId='sec_'+Date.now(); const siteLink = metadata.link;
       app.sections.push({id:secId,title:metadata.title,desc:metadata.desc,date:metadata.lastBuildDate||'-',count:0,siteLink,author:metadata.author,copyright:metadata.copyright,language:metadata.language,explicit:metadata.explicit,categories:metadata.categories,image:metadata.image});
-      
       items.forEach(item=>{
-        const t=item.querySelector('title')?.textContent?.trim()||'Tanpa Judul'; 
-        let url='';
-        const enc=item.querySelector('enclosure'); 
-        if(enc&&enc.getAttribute('type')?.startsWith('audio/')) url=enc.getAttribute('url');
-        if(!url){ const lnk=item.querySelector('link'); if(lnk?.getAttribute('href')) url=lnk.getAttribute('href'); else if(lnk?.textContent) url=lnk.textContent.trim(); }
-        if(!url||!/\.(mp3|m4a|aac|ogg|wav|opus)(\?|#|$)/i.test(url)) return;
-        
-        let dur=item.querySelector('itunes\\:duration')?.textContent?.trim()||''; 
-        if(dur&&!/^\d+:\d{2}(:\d{2})?$/.test(dur)) dur='';
-        
-        // ✅ Ambil image episode dengan helper + fallback ke channel image
+        const t=item.querySelector('title')?.textContent?.trim()||'Tanpa Judul'; let url=''; const enc=item.querySelector('enclosure'); if(enc&&enc.getAttribute('type')?.startsWith('audio/')) url=enc.getAttribute('url'); if(!url){ const lnk=item.querySelector('link'); if(lnk?.getAttribute('href')) url=lnk.getAttribute('href'); else if(lnk?.textContent) url=lnk.textContent.trim(); } if(!url||!/\.(mp3|m4a|aac|ogg|wav|opus)(\?|#|$)/i.test(url)) return;
+        let dur=item.querySelector('itunes\\:duration')?.textContent?.trim()||''; if(dur&&!/^\d+:\d{2}(:\d{2})?$/.test(dur)) dur='';
         const epImage = extractImageURL(item, feedBaseUrl) || imageUrl;
-        
-        app.tracks.push({
-          id:Math.random().toString(36).substr(2,9),
-          secId,
-          title:t,
-          link:url,
-          image:epImage,
-          feedBaseUrl: feedBaseUrl, // ✅ Simpan baseUrl buat setImage nanti
-          desc:item.querySelector('description, summary, itunes\\:summary')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',
-          duration:dur,
-          pubDate:item.querySelector('pubDate, published, updated')?.textContent||'',
-          liked:false
-        });
+        app.tracks.push({id:Math.random().toString(36).substr(2,9),secId,title:t,link:url,image:epImage,feedBaseUrl:feedBaseUrl,desc:item.querySelector('description, summary, itunes\\:summary')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',duration:dur,pubDate:item.querySelector('pubDate, published, updated')?.textContent||'',liked:false});
         app.sections.at(-1).count++;
       });
-      
       if(app.tracks.length===0) throw new Error('Gak ada audio valid');
       saveData(); render(); toast(` ${app.tracks.length} episode diimport`); syncPopup();
     }
     
     async function loadSuggestions(){
-      const container = $('suggestionsContainer');
-      if(!container) return;
+      const container = $('suggestionsContainer'); if(!container) return;
       container.innerHTML = '<div class="empty"><i class="fas fa-spinner fa-spin"></i><p>Memuat saran...</p></div>';
       try {
-        const res = await fetch('saran.json', { cache: 'no-store' });
-        if(!res.ok) throw new Error('Gagal load saran.json');
-        const urls = await res.json();
-        if(!Array.isArray(urls) || urls.length===0) throw new Error('saran.json kosong');
-        app.suggestions = [];
-        let html = '';
+        const res = await fetch('saran.json', { cache: 'no-store' }); if(!res.ok) throw new Error('Gagal load saran.json');
+        const urls = await res.json(); if(!Array.isArray(urls) || urls.length===0) throw new Error('saran.json kosong');
+        app.suggestions = []; let html = '';
         for(const feedUrl of urls){
           try {
-            let xml = '';
-            for(const proxyUrl of [feedUrl, `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`]){
-              try{ const r = await fetch(proxyUrl, { mode: 'cors' }); if(r.ok){ xml = await r.text(); break; } }catch(e){}
-            }
+            let xml = ''; for(const proxyUrl of [feedUrl, `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`]){ try{ const r = await fetch(proxyUrl, { mode: 'cors' }); if(r.ok){ xml = await r.text(); break; } }catch(e){} }
             if(!xml) continue;
-            const meta = parseXML(xml, true, feedUrl);
-            meta.url = feedUrl;
-            app.suggestions.push(meta);
-            // ✅ Pake getImageHTML dengan feedBaseUrl
+            const meta = parseXML(xml, true, feedUrl); meta.url = feedUrl; app.suggestions.push(meta);
             html += `<div class="sug-item" onclick="showPodcastDetail('${esc(feedUrl)}')">${getImageHTML(meta.image, 'sug-item-img', '', feedUrl)}<div class="sug-item-info"><div class="sug-item-title">${esc(meta.title)}</div><div class="sug-item-desc">${esc(meta.desc.substring(0,80))}${meta.desc.length>80?'...':''}</div></div><button class="sug-item-add" onclick="event.stopPropagation();openSuggestionImport('${esc(feedUrl)}')">+ Tambah</button></div>`;
           }catch(e){ console.warn('Skip suggestion:', feedUrl, e); }
         }
         if(app.suggestions.length===0) throw new Error('Gak ada podcast valid');
         container.innerHTML = `<div class="sug-list">${html}</div>`;
-      }catch(e){
-        console.error(e);
-        container.innerHTML = `<div class="empty"><i class="fas fa-exclamation-triangle"></i><p>${esc(e.message)}<br><small style="color:var(--text4)">Pastikan saran.json ada di server & berisi array URL RSS</small></p></div>`;
-      }
+      }catch(e){ console.error(e); container.innerHTML = `<div class="empty"><i class="fas fa-exclamation-triangle"></i><p>${esc(e.message)}<br><small style="color:var(--text4)">Pastikan saran.json ada di server & berisi array URL RSS</small></p></div>`; }
     }
     
     function showPodcastDetail(url){
-      const podcast = app.suggestions.find(s=>s.url===url);
-      if(!podcast) return;
-      state.currentDetailUrl = url;
-      // ✅ Pake getImageHTML dengan feedBaseUrl
+      const podcast = app.suggestions.find(s=>s.url===url); if(!podcast) return; state.currentDetailUrl = url;
       const imgHtml = getImageHTML(podcast.image, 'detail-img', '', url);
-      let html = `
-        <div class="detail-header">
-          ${imgHtml}
-          <div class="detail-title">${esc(podcast.title)}</div>
-        </div>
-        <div class="detail-meta">
-          ${podcast.author ? `<div class="detail-row"><i class="fas fa-user"></i><span>${esc(podcast.author)}</span></div>` : ''}
-          ${podcast.language ? `<div class="detail-row"><i class="fas fa-language"></i><span>${esc(podcast.language)}</span></div>` : ''}
-          ${podcast.link ? `<div class="detail-row"><i class="fas fa-link"></i><a href="${esc(podcast.link)}" target="_blank" rel="noopener">${esc(podcast.link.replace(/^https?:\/\//,''))}</a></div>` : ''}
-        </div>
-        <div class="detail-section">
-          <h4><i class="fas fa-info-circle"></i> Deskripsi</h4>
-          <div style="font-size:11px;color:var(--text2);line-height:1.5">${esc(podcast.desc)}</div>
-        </div>
-      `;
-      $('detailContent').innerHTML = html;
-      $('btnImportFromDetail').onclick = () => {
-        closeModal('detailModal');
-        openSuggestionImport(url);
-      };
-      $('detailModal').classList.add('active');
+      let html = `<div class="detail-header">${imgHtml}<div class="detail-title">${esc(podcast.title)}</div></div><div class="detail-meta">${podcast.author ? `<div class="detail-row"><i class="fas fa-user"></i><span>${esc(podcast.author)}</span></div>` : ''}${podcast.language ? `<div class="detail-row"><i class="fas fa-language"></i><span>${esc(podcast.language)}</span></div>` : ''}${podcast.link ? `<div class="detail-row"><i class="fas fa-link"></i><a href="${esc(podcast.link)}" target="_blank" rel="noopener">${esc(podcast.link.replace(/^https?:\/\//,''))}</a></div>` : ''}</div><div class="detail-section"><h4><i class="fas fa-info-circle"></i> Deskripsi</h4><div style="font-size:11px;color:var(--text2);line-height:1.5">${esc(podcast.desc)}</div></div>`;
+      $('detailContent').innerHTML = html; $('btnImportFromDetail').onclick = () => { closeModal('detailModal'); openSuggestionImport(url); }; $('detailModal').classList.add('active');
     }
-    
-    function openSuggestionImport(url){
-      state.importType = 'url';
-      switchImport('url');
-      $('urlInput').value = url;
-      $('importModal').classList.add('active');
-      $('btnImport').focus();
-      toast(' URL terisi, klik Import untuk lanjut', 'info');
-    }
-    
-    function deleteSection(secId,e){
-      e?.stopPropagation(); if(!confirm('Hapus section ini?\n\nTrack favorit TETAP DISIMPAN.'))return;
-      app.tracks = app.tracks.filter(t => t.secId !== secId || t.liked);
-      app.sections = app.sections.filter(s => s.id !== secId);
-      if(app.tracks.length > 0){
-        state.idx = Math.min(state.idx, app.tracks.length-1);
-        loadTrack(state.idx, false);
-      } else {
-        audio.pause(); audio.src=''; state.idx=0;
-        $('playerTitle').textContent='Pilih podcast/Import dulu'; $('playerDesc').textContent='-';
-        updatePlayUI();
-        setImage($('playerImg'), null);
-      }
-      saveData(); render(); toast(' Section dihapus (favorit aman)'); syncPopup();
-    }
-    
-    function clearAll(e){e?.stopPropagation();if(!confirm('Hapus SEMUA data termasuk favorit?'))return;
-      app={sections:[],tracks:[],settings:{autoRestore:true,autoResume:true,directLinkSupport:false},suggestions:[]};saveData();audio.pause();audio.src='';state.idx=0;state.playing=false;
-      $('playerTitle').textContent='Pilih podcast/Import dulu';$('playerDesc').textContent='-';updatePlayUI();setImage($('playerImg'),null);render();toast(' Semua direset');syncPopup();
-      updateDirectLinkUI();
-      Object.keys(localStorage).forEach(k=>{if(k.startsWith('pod_pos_'))localStorage.removeItem(k);});
-    }
-    
-    function openTOC(e){e?.stopPropagation();let html='';
-      if(app.sections.length===0) html='<div class="empty"><i class="fas fa-podcast"></i><p>Belum ada podcast bre<br>Import dulu yuk.</p></div>';
-      else{ app.sections.slice().reverse().forEach((s,i)=>{
-        const eps=app.tracks.filter(t=>t.secId===s.id), tid=`tocEp${i}`;
-        const siteHtml = s.siteLink ? `<div class="toc-site"><i class="fas fa-globe"></i><a href="${esc(s.siteLink)}" target="_blank" rel="noopener">${esc(s.siteLink.replace(/^https?:\/\//,''))}</a></div>` : '';
-        html+=`<div class="toc-sec"><div class="toc-header" onclick="toggleTOC(${i})" role="button" tabindex="0"><span>${esc(s.title)} (${s.count})</span><i class="fas fa-chevron-down"></i></div><div class="toc-episodes open" id="${tid}">${eps.map(e=>`<div><span title="${esc(e.title)}">${esc(e.title)}</span><span>${e.pubDate?new Date(e.pubDate).toLocaleDateString('id-ID'):'-'}</span></div>`).join('')}</div>${siteHtml}</div>`;
-      });}
-      $('tocList').innerHTML=html; $('tocModal').classList.add('active');
-    }
-    function toggleTOC(idx){const el=$(`tocEp${idx}`),hdr=el?.previousElementSibling;if(!el||!hdr)return;const open=el.classList.toggle('open');hdr.classList.toggle('collapsed',!open);}
+    function openSuggestionImport(url){ state.importType = 'url'; switchImport('url'); $('urlInput').value = url; $('importModal').classList.add('active'); $('btnImport').focus(); toast(' URL terisi, klik Import untuk lanjut', 'info'); }
+    function deleteSection(secId,e){ e?.stopPropagation(); if(!confirm('Hapus section ini?\n\nTrack favorit TETAP DISIMPAN.'))return; app.tracks = app.tracks.filter(t => t.secId !== secId || t.liked); app.sections = app.sections.filter(s => s.id !== secId); if(app.tracks.length > 0){ state.idx = Math.min(state.idx, app.tracks.length-1); loadTrack(state.idx, false); } else { audio.pause(); audio.src=''; state.idx=0; $('playerTitle').textContent='Pilih podcast/Import dulu'; $('playerDesc').textContent='-'; updatePlayUI(); setImage($('playerImg'), null); } saveData(); render(); toast(' Section dihapus (favorit aman)'); syncPopup(); }
+    function clearAll(e){ e?.stopPropagation(); if(!confirm('Hapus SEMUA data termasuk favorit?'))return; app={sections:[],tracks:[],settings:{autoRestore:true,autoResume:true,directLinkSupport:false},suggestions:[]}; saveData(); audio.pause(); audio.src=''; state.idx=0; state.playing=false; $('playerTitle').textContent='Pilih podcast/Import dulu'; $('playerDesc').textContent='-'; updatePlayUI(); setImage($('playerImg'), null); render(); toast(' Semua direset'); syncPopup(); updateDirectLinkUI(); Object.keys(localStorage).forEach(k=>{if(k.startsWith('pod_pos_'))localStorage.removeItem(k);}); }
+    function openTOC(e){ e?.stopPropagation(); let html=''; if(app.sections.length===0) html='<div class="empty"><i class="fas fa-podcast"></i><p>Belum ada podcast bre<br>Import dulu yuk.</p></div>'; else{ app.sections.slice().reverse().forEach((s,i)=>{ const eps=app.tracks.filter(t=>t.secId===s.id), tid=`tocEp${i}`; const siteHtml = s.siteLink ? `<div class="toc-site"><i class="fas fa-globe"></i><a href="${esc(s.siteLink)}" target="_blank" rel="noopener">${esc(s.siteLink.replace(/^https?:\/\//,''))}</a></div>` : ''; html+=`<div class="toc-sec"><div class="toc-header" onclick="toggleTOC(${i})" role="button" tabindex="0"><span>${esc(s.title)} (${s.count})</span><i class="fas fa-chevron-down"></i></div><div class="toc-episodes open" id="${tid}">${eps.map(e=>`<div><span title="${esc(e.title)}">${esc(e.title)}</span><span>${e.pubDate?new Date(e.pubDate).toLocaleDateString('id-ID'):'-'}</span></div>`).join('')}</div>${siteHtml}</div>`; }); } $('tocList').innerHTML=html; $('tocModal').classList.add('active'); }
+    function toggleTOC(idx){ const el=$(`tocEp${idx}`),hdr=el?.previousElementSibling; if(!el||!hdr)return; const open=el.classList.toggle('open'); hdr.classList.toggle('collapsed',!open); }
     
     function render(filter='') {
-      const c=$('playlistContainer');
-      if(app.tracks.length===0){c.innerHTML='<div class="empty"><i class="fas fa-podcast"></i><p>Belum ada podcast bre.<br>Import dari file/URL.</p></div>';return;}
+      const c=$('playlistContainer'); if(app.tracks.length===0){ c.innerHTML='<div class="empty"><i class="fas fa-podcast"></i><p>Belum ada podcast bre.<br>Import dari file/URL.</p></div>'; return; }
       let list = state.tab==='liked'?app.tracks.filter(t=>t.liked):app.tracks;
-      if(filter){const f=filter.toLowerCase();list=list.filter(t=>t.title.toLowerCase().includes(f)||(t.desc&&t.desc.toLowerCase().includes(f)));}
-      if(list.length===0){
-        if(state.tab==='liked') c.innerHTML='<div class="empty"><i class="far fa-heart"></i><p>Belum ada favorit bre<br>Klik ❤️ buat nambahin.</p></div>';
-        else c.innerHTML='<div class="empty"><i class="fas fa-search"></i><p>Gak ditemukan bre<br>Coba kata kunci lain.</p></div>';
-        return;
-      }
-      let html='',lastSec=null,secMap={};app.sections.forEach(s=>secMap[s.id]=s);
+      if(filter){ const f=filter.toLowerCase(); list=list.filter(t=>t.title.toLowerCase().includes(f)||(t.desc&&t.desc.toLowerCase().includes(f))); }
+      if(list.length===0){ if(state.tab==='liked') c.innerHTML='<div class="empty"><i class="far fa-heart"></i><p>Belum ada favorit bre<br>Klik ❤️ buat nambahin.</p></div>'; else c.innerHTML='<div class="empty"><i class="fas fa-search"></i><p>Gak ditemukan bre<br>Coba kata kunci lain.</p></div>'; return; }
+      let html='',lastSec=null,secMap={}; app.sections.forEach(s=>secMap[s.id]=s);
       list.forEach(t=>{
         const ri=app.tracks.indexOf(t);
-        if(t.secId!==lastSec){lastSec=t.secId;const s=secMap[t.secId];if(s){const ds=s.date?new Date(s.date).toLocaleDateString('id-ID',{year:'numeric',month:'short'}):'-';
-        html+=`<div class="section"><div class="sec-header"><div><h3>${esc(s.title)}</h3><p>${esc(s.desc).substring(0,100)}${s.desc.length>100?'...':''}</p><div class="meta"><span><i class="far fa-calendar"></i> ${ds}</span><span><i class="fas fa-list"></i> ${s.count} ep</span></div></div><button class="sec-del" onclick="deleteSection('${s.id}',event)"><i class="fas fa-trash"></i></button></div><div class="playlist">`;}}
+        if(t.secId!==lastSec){ lastSec=t.secId; const s=secMap[t.secId]; if(s){ const ds=s.date?new Date(s.date).toLocaleDateString('id-ID',{year:'numeric',month:'short'}):'-'; html+=`<div class="section"><div class="sec-header"><div><h3>${esc(s.title)}</h3><p>${esc(s.desc).substring(0,100)}${s.desc.length>100?'...':''}</p><div class="meta"><span><i class="far fa-calendar"></i> ${ds}</span><span><i class="fas fa-list"></i> ${s.count} ep</span></div></div><button class="sec-del" onclick="deleteSection('${s.id}',event)"><i class="fas fa-trash"></i></button></div><div class="playlist">`; } }
         const act=ri===state.idx?' active':'';
-        // ✅ Pake getImageHTML dengan feedBaseUrl
         const imgHtml = getImageHTML(t.image, 'item-img', '', t.feedBaseUrl);
         const dur=t.duration?`<p><i class="fas fa-clock"></i> ${esc(t.duration)}</p>`:'';
         html+=`<div class="item${act}" onclick="playAt(${ri})" role="listitem">${imgHtml}<div class="item-info"><div class="marquee-wrap"><h4 class="marquee-text">${esc(t.title)}</h4></div>${dur}</div><div class="item-actions"><button onclick="event.stopPropagation();toggleLike(${ri})" class="${t.liked?'liked':''}"><i class="${t.liked?'fas':'far'} fa-heart"></i></button><button onclick="event.stopPropagation();dlTrack(${ri})"><i class="fas fa-download"></i></button></div></div>`;
       });
       c.innerHTML=html; setTimeout(()=>{ checkMarquees(); syncPopup(); }, 60);
     }
-    function filterPlaylist(){render($('searchInput').value.toLowerCase());}
+    function filterPlaylist(){ render($('searchInput').value.toLowerCase()); }
+    function checkMarquees() { marqueeTimers.forEach(clearTimeout); marqueeTimers=[]; const targets = document.querySelectorAll('.marquee-text'); targets.forEach(el=>{ const par=el.parentElement; if(!par)return; const hasOverflow = el.scrollWidth > (par.clientWidth + 10); el.classList.toggle('active', hasOverflow); marqueeTimers.push(setTimeout(()=>{ el.classList.toggle('active', el.scrollWidth > (par.clientWidth + 10)); }, 250)); }); }
     
-    function checkMarquees() {
-      marqueeTimers.forEach(clearTimeout); marqueeTimers=[];
-      const targets = document.querySelectorAll('.marquee-text');
-      targets.forEach(el=>{
-        const par=el.parentElement; if(!par)return;
-        const hasOverflow = el.scrollWidth > (par.clientWidth + 10);
-        el.classList.toggle('active', hasOverflow);
-        marqueeTimers.push(setTimeout(()=>{
-          el.classList.toggle('active', el.scrollWidth > (par.clientWidth + 10));
-        }, 250));
-      });
-    }
+    function playAt(i){ loadTrack(i, true); closeSidebarMobile(); }
+    function closeSidebarMobile(){ if(window.innerWidth<=768 && $('sidebar').classList.contains('active')){ $('sidebar').classList.remove('active'); $('overlay').classList.remove('active'); } }
+    function togglePlay(){ if(!audio.src&&app.tracks.length>0)loadTrack(0); if(audio.paused){ audio.play().catch(()=>{}); state.playing=true; }else{ audio.pause(); state.playing=false; } updatePlayUI(); syncPopup(); }
+    function updatePlayUI(){ $('btnPlay').innerHTML=`<i class="fas fa-${state.playing?'pause':'play'}"></i>`; const t=app.tracks[state.idx]; if(t){ $('btnLike').innerHTML=`<i class="${t.liked?'fas':'far'} fa-heart"></i>`; } }
+    function prevTrack(){ if(app.tracks.length===0)return; state.idx=state.shuffle?getRandomIdx():(state.idx-1+app.tracks.length)%app.tracks.length; loadTrack(state.idx); if(state.playing)audio.play().catch(()=>{}); syncPopup(); }
+    function nextTrack(){ if(app.tracks.length===0)return; if(state.repeat===1){ audio.currentTime=0; audio.play().catch(()=>{}); return; } state.idx=state.shuffle?getRandomIdx():(state.idx+1)%app.tracks.length; if(state.repeat===0&&state.idx===0&&!state.shuffle&&state.playing){ state.playing=false; updatePlayUI(); audio.pause(); toast(' Playlist selesai'); return; } loadTrack(state.idx); if(state.playing)audio.play().catch(()=>{}); syncPopup(); }
+    function getRandomIdx(){ if(app.tracks.length<=1)return 0; let idx; do{ idx=Math.floor(Math.random()*app.tracks.length); }while(idx===state.idx); return idx; }
+    function toggleShuffle(){ state.shuffle=!state.shuffle; updateBadges(); syncPopup(); toast(state.shuffle?' Acak ON':' Acak OFF'); }
+    function toggleRepeat(){ state.repeat=(state.repeat+1)%3; updateBadges(); syncPopup(); const txt=['Mat','1x','All']; toast(` Repeat: ${txt[state.repeat]}`); }
+    function updateBadges(){ $('badgeShuffle').classList.toggle('show',state.shuffle); $('badgeRepeat').classList.toggle('show',state.repeat>0); $('repeatText').textContent=state.repeat===1?'1x':state.repeat===2?'All':'Ulang'; syncPopup(); }
+    function seek(e){ const bar=$('progress'),rect=bar.getBoundingClientRect(); const pct=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width)); audio.currentTime=pct*(audio.duration||0); bar.setAttribute('aria-valuenow',Math.round(pct*100)); }
+    audio.addEventListener('timeupdate',()=>{ if(audio.duration&&isFinite(audio.duration)){ const pct=(audio.currentTime/audio.duration)*100; $('progressBar').style.width=pct+'%'; $('timeDisplay').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration); $('progress').setAttribute('aria-valuenow',Math.round(pct)); syncPopup(); } });
+    audio.addEventListener('loadedmetadata',()=>{ if(audio.duration&&isFinite(audio.duration))$('timeDisplay').textContent='0:00 / '+fmt(audio.duration); });
+    audio.addEventListener('error',()=>{ toast('✗ Error audio','✗'); if(state.playing)nextTrack(); });
+    audio.addEventListener('ended',()=>{ state.repeat===1?(audio.currentTime=0,audio.play().catch(()=>{})):nextTrack(); });
+    audio.addEventListener('play',()=>{ state.playing=true; updatePlayUI(); syncPopup(); });
+    audio.addEventListener('pause',()=>{ state.playing=false; updatePlayUI(); syncPopup(); });
     
-    function playAt(i){loadTrack(i);togglePlay();closeSidebarMobile();}
-    function closeSidebarMobile(){if(window.innerWidth<=768 && $('sidebar').classList.contains('active')){$('sidebar').classList.remove('active');$('overlay').classList.remove('active');}}
-    function togglePlay(){if(!audio.src&&app.tracks.length>0)loadTrack(0);if(audio.paused){audio.play().catch(()=>{});state.playing=true;}else{audio.pause();state.playing=false;}updatePlayUI();syncPopup();}
-    function updatePlayUI(){$('btnPlay').innerHTML=`<i class="fas fa-${state.playing?'pause':'play'}"></i>`;const t=app.tracks[state.idx];if(t){$('btnLike').innerHTML=`<i class="${t.liked?'fas':'far'} fa-heart"></i>`;}}
-    function prevTrack(){if(app.tracks.length===0)return;state.idx=state.shuffle?getRandomIdx():(state.idx-1+app.tracks.length)%app.tracks.length;loadTrack(state.idx);if(state.playing)audio.play().catch(()=>{});syncPopup();}
-    function nextTrack(){if(app.tracks.length===0)return;if(state.repeat===1){audio.currentTime=0;audio.play().catch(()=>{});return;}state.idx=state.shuffle?getRandomIdx():(state.idx+1)%app.tracks.length;if(state.repeat===0&&state.idx===0&&!state.shuffle&&state.playing){state.playing=false;updatePlayUI();audio.pause();toast(' Playlist selesai');return;}loadTrack(state.idx);if(state.playing)audio.play().catch(()=>{});syncPopup();}
-    function getRandomIdx(){if(app.tracks.length<=1)return 0;let idx;do{idx=Math.floor(Math.random()*app.tracks.length);}while(idx===state.idx);return idx;}
-    function toggleShuffle(){state.shuffle=!state.shuffle;updateBadges();syncPopup();toast(state.shuffle?' Acak ON':' Acak OFF');}
-    function toggleRepeat(){state.repeat=(state.repeat+1)%3;updateBadges();syncPopup();const txt=['Mat','1x','All'];toast(` Repeat: ${txt[state.repeat]}`);}
-    function updateBadges(){$('badgeShuffle').classList.toggle('show',state.shuffle);$('badgeRepeat').classList.toggle('show',state.repeat>0);$('repeatText').textContent=state.repeat===1?'1x':state.repeat===2?'All':'Ulang';syncPopup();}
-    function seek(e){const bar=$('progress'),rect=bar.getBoundingClientRect();const pct=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width));audio.currentTime=pct*(audio.duration||0);bar.setAttribute('aria-valuenow',Math.round(pct*100));}
-    audio.addEventListener('timeupdate',()=>{if(audio.duration&&isFinite(audio.duration)){const pct=(audio.currentTime/audio.duration)*100;$('progressBar').style.width=pct+'%';$('timeDisplay').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration);$('progress').setAttribute('aria-valuenow',Math.round(pct));syncPopup();}});
-    audio.addEventListener('loadedmetadata',()=>{if(audio.duration&&isFinite(audio.duration))$('timeDisplay').textContent='0:00 / '+fmt(audio.duration);});
-    audio.addEventListener('error',()=>{toast('✗ Error audio','✗');if(state.playing)nextTrack();});
-    audio.addEventListener('ended',()=>{state.repeat===1?(audio.currentTime=0,audio.play().catch(()=>{})):nextTrack();});
-    audio.addEventListener('play',()=>{state.playing=true;updatePlayUI();syncPopup();});
-    audio.addEventListener('pause',()=>{state.playing=false;updatePlayUI();syncPopup();});
+    function toggleLike(i){ if(i<0||i>=app.tracks.length)return; app.tracks[i].liked = !app.tracks[i].liked; saveData(); render($('searchInput').value.toLowerCase()); updatePlayUI(); syncPopup(); toast(app.tracks[i].liked?' Favorit':' Dihapus dari favorit'); }
+    function toggleLikeCurrent(){ toggleLike(state.idx); }
+    async function dlTrack(i){ if(i<0||i>=app.tracks.length)return; const t=app.tracks[i]; if(!t.link)return; const filename = (t.title||'podcast').replace(/[^a-z0-9]/gi,'_').slice(0,50)+'.mp3'; try { const response = await fetch(t.link, { mode: 'cors' }); if(response.ok) { const blob = await response.blob(); const blobUrl = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = blobUrl; a.download = filename; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(blobUrl); toast(' Download dimulai'); return; } } catch(e) { console.log('Fetch failed, falling back'); } try { const a = document.createElement('a'); a.href = t.link; a.download = filename; a.rel = 'noopener noreferrer'; document.body.appendChild(a); a.click(); document.body.removeChild(a); toast(' Download dimulai'); } catch(e) { toast(' Buka di tab baru, tahan > Download', 'info'); setTimeout(()=>{ const w = window.open(t.link, '_blank'); if(!w) toast(' Izinkan popup dulu bre', '✗'); }, 500); } }
+    function downloadCurrent(){ dlTrack(state.idx); }
     
-    function toggleLike(i){
-      if(i<0||i>=app.tracks.length)return;
-      app.tracks[i].liked = !app.tracks[i].liked;
-      saveData();
-      render($('searchInput').value.toLowerCase());
-      updatePlayUI(); syncPopup();
-      toast(app.tracks[i].liked?' Favorit':' Dihapus dari favorit');
-    }
-    function toggleLikeCurrent(){toggleLike(state.idx);}
-    
-    async function dlTrack(i){
-      if(i<0||i>=app.tracks.length)return;
-      const t=app.tracks[i];
-      if(!t.link)return;
-      const filename = (t.title||'podcast').replace(/[^a-z0-9]/gi,'_').slice(0,50)+'.mp3';
-      try {
-        const response = await fetch(t.link, { mode: 'cors' });
-        if(response.ok) {
-          const blob = await response.blob();
-          const blobUrl = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = blobUrl;
-          a.download = filename;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(blobUrl);
-          toast(' Download dimulai');
-          return;
-        }
-      } catch(e) { console.log('Fetch failed, falling back'); }
-      try {
-        const a = document.createElement('a');
-        a.href = t.link;
-        a.download = filename;
-        a.rel = 'noopener noreferrer';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        toast(' Download dimulai');
-      } catch(e) {
-        toast(' Buka di tab baru, tahan > Download', 'info');
-        setTimeout(()=>{ const w = window.open(t.link, '_blank'); if(!w) toast(' Izinkan popup dulu bre', '✗'); }, 500);
-      }
-    }
-    function downloadCurrent(){dlTrack(state.idx);}
-    
-    function openPopup(e){e?.stopPropagation();if(innerWidth<768){toast('Mini player buat desktop bre','info');return;}if(popupWin&&!popupWin.closed){popupWin.focus();return;}popupWin=window.open('','podMini','width=340,height=500,resizable=no,scrollbars=no');if(!popupWin){toast('✗ Izinkan popup bre','✗');return;}
+    function openPopup(e){
+      e?.stopPropagation(); if(innerWidth<768){toast('Mini player buat desktop bre','info');return;} if(popupWin&&!popupWin.closed){popupWin.focus();return;}
+      popupWin=window.open('','podMini','width=340,height=500,resizable=no,scrollbars=no'); if(!popupWin){toast('✗ Izinkan popup bre','✗');return;}
       popupWin.document.write(`<!DOCTYPE html><html><head><title>Mini - Jirang</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"><style>
         :root{--bg:#0b0b0f;--bg2:#101016;--bg3:#12121a;--bg4:#14141c;--bg5:#16161f;--bg6:#181822;--border:#16161f;--text:#e0e0e0;--text2:#aaa;--text3:#777;--text4:#666;--primary:#007bff}
-        *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;display:flex;flex-direction:column;height:100vh;overflow:hidden}.wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:15px;text-align:center}.cover{width:150px;height:150px;border-radius:12px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;box-shadow:0 6px 20px rgba(0,0,0,.4)}.cover img{width:100%;height:100%;object-fit:cover;display:block}.cover .img-placeholder{width:45px;height:45px;fill:#444;display:block;position:absolute}.cover .img-placeholder svg{width:100%;height:100%}.info h3{font-size:14px;margin-bottom:4px;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.info p{font-size:11px;color:var(--text4);margin:2px 0;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.badges{display:flex;gap:6px;justify-content:center;margin:6px 0}.badge{background:var(--bg4);color:var(--primary);padding:2px 8px;border-radius:6px;font-size:9px;display:none;align-items:center;gap:3px}.badge.show{display:flex}.ctrl{display:flex;gap:14px;margin:12px 0}.btn{background:var(--bg6);color:var(--text2);border:none;width:36px;height:36px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s}.btn:active{transform:scale(.95);background:var(--bg7);color:#fff}.bar{width:92%;height:5px;background:var(--bg5);border-radius:3px;margin:10px auto;cursor:pointer;position:relative}.fill{height:100%;background:var(--primary);border-radius:3px;width:0%;transition:width .1s linear}.time{font-size:10px;color:var(--text4);font-variant-numeric:tabular-nums}.footer{padding:8px;text-align:center;font-size:10px;color:var(--text4);border-top:1px solid var(--border)}.marquee{white-space:nowrap;display:inline-block;will-change:transform;backface-visibility:hidden}.marquee.active{animation:scroll 22s linear infinite;padding-left:100%}@media(hover:hover){.marquee:hover{animation-play-state:paused}}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;display:flex;flex-direction:column;height:100vh;overflow:hidden}.wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:15px;text-align:center}.cover{width:150px;height:150px;border-radius:12px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;box-shadow:0 6px 20px rgba(0,0,0,.4)}.cover img{width:100%;height:100%;object-fit:cover;display:block}.info h3{font-size:14px;margin-bottom:4px;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.info p{font-size:11px;color:var(--text4);margin:2px 0;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.badges{display:flex;gap:6px;justify-content:center;margin:6px 0}.badge{background:var(--bg4);color:var(--primary);padding:2px 8px;border-radius:6px;font-size:9px;display:none;align-items:center;gap:3px}.badge.show{display:flex}.ctrl{display:flex;gap:14px;margin:12px 0}.btn{background:var(--bg6);color:var(--text2);border:none;width:36px;height:36px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s}.btn:active{transform:scale(.95);background:var(--bg7);color:#fff}.bar{width:92%;height:5px;background:var(--bg5);border-radius:3px;margin:10px auto;cursor:pointer;position:relative}.fill{height:100%;background:var(--primary);border-radius:3px;width:0%;transition:width .1s linear}.time{font-size:10px;color:var(--text4);font-variant-numeric:tabular-nums}.footer{padding:8px;text-align:center;font-size:10px;color:var(--text4);border-top:1px solid var(--border)}.marquee{white-space:nowrap;display:inline-block;will-change:transform;backface-visibility:hidden}.marquee.active{animation:scroll 22s linear infinite;padding-left:100%}@media(hover:hover){.marquee:hover{animation-play-state:paused}}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
       </style></head><body><div class="wrap">
         <div class="cover" id="cv"></div>
         <div class="info"><h3 id="tt" class="marquee">Memuat...</h3><p id="td" class="marquee">-</p><div class="badges"><span class="badge" id="pbShuffle"><i class="fas fa-random"></i>Acak</span><span class="badge" id="pbRepeat"><i class="fas fa-redo"></i><span id="pbRepTxt">Ulang</span></span></div></div>
@@ -1009,29 +647,14 @@
         function checkMarquee(id){const el=document.getElementById(id),par=el?.parentElement;if(!el||!par)return;el.classList.toggle('active',el.scrollWidth>(par.clientWidth+10));}
         window.addEventListener('message',e=>{if(e.data?.type==='sync'){
           const tt=document.getElementById('tt'),td=document.getElementById('td'),cv=document.getElementById('cv');
-          const musicIcon = '${musicIconSVG.replace(/'/g,"\\'")}';
-          if(e.data.empty){
-            tt.textContent='Pilih podcast/Import dulu';td.textContent='';
-            cv.innerHTML = musicIcon;
-            document.getElementById('pb').innerHTML='<i class="fas fa-pause" style="opacity:.3"></i>';
-            document.getElementById('fl').style.width='0%';document.getElementById('tm').textContent='0:00 / 0:00';
-            document.getElementById('pbShuffle').classList.remove('show');document.getElementById('pbRepeat').classList.remove('show');return;
-          }
+          if(e.data.empty){ tt.textContent='Pilih podcast/Import dulu';td.textContent=''; cv.innerHTML=''; document.getElementById('pb').innerHTML='<i class="fas fa-pause" style="opacity:.3"></i>'; document.getElementById('fl').style.width='0%';document.getElementById('tm').textContent='0:00 / 0:00'; document.getElementById('pbShuffle').classList.remove('show');document.getElementById('pbRepeat').classList.remove('show');return; }
           tt.textContent=e.data.title||'Pilih podcast/Import dulu';td.textContent=e.data.desc||'';
           if(e.data.image){
             let finalUrl = e.data.image.trim();
-            if(e.data.feedBaseUrl && !/^https?:\\/\\//i.test(finalUrl)){
-              try{ finalUrl = new URL(finalUrl, e.data.feedBaseUrl).href; }catch(err){}
-            }
-            const sep = finalUrl.includes('?') ? '&' : '?';
-            finalUrl = finalUrl + sep + 't=' + Date.now();
-            const img=new Image();
-            img.crossOrigin='anonymous';
-            img.onload=()=>{cv.innerHTML='';cv.appendChild(img);checkMarquee('tt');checkMarquee('td');};
-            img.onerror=()=>{cv.innerHTML=musicIcon;};
-            img.src = finalUrl;
-            cv.innerHTML = '<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg6);border-radius:12px">'+musicIcon+'</div>';
-          }else{cv.innerHTML=musicIcon;}
+            if(e.data.feedBaseUrl && !/^https?:\\/\\//i.test(finalUrl)){ try{ finalUrl = new URL(finalUrl, e.data.feedBaseUrl).href; }catch(err){} }
+            const sep = finalUrl.includes('?') ? '&' : '?'; finalUrl = finalUrl + sep + 't=' + Date.now();
+            const img=new Image(); img.crossOrigin='anonymous'; img.onload=()=>{cv.innerHTML='';cv.appendChild(img);checkMarquee('tt');checkMarquee('td');}; img.onerror=()=>{cv.innerHTML='';}; img.src = finalUrl; cv.innerHTML = '';
+          }else{cv.innerHTML='';}
           document.getElementById('pb').innerHTML='<i class="fas fa-'+(e.data.playing?'pause':'play')+'"></i>';document.getElementById('fl').style.width=(e.data.time||0)+'%';document.getElementById('seekBar').setAttribute('aria-valuenow',Math.round(e.data.time||0));document.getElementById('tm').textContent=e.data.timeTxt||'0:00 / 0:00';
           document.getElementById('pbShuffle').classList.toggle('show',e.data.shuffle);document.getElementById('pbRepeat').classList.toggle('show',e.data.repeat>0);document.getElementById('pbRepTxt').textContent=e.data.repeat===1?'1x':e.data.repeat===2?'All':'Ulang';
           setTimeout(()=>{checkMarquee('tt');checkMarquee('td');},80);
@@ -1044,19 +667,7 @@
       if(!popupWin||popupWin.closed)return;
       const isEmpty = app.tracks.length === 0;
       const t = isEmpty ? null : app.tracks[state.idx];
-      popupWin.postMessage({
-        type:'sync',
-        title: t ? (t.title||'Pilih podcast/Import dulu') : 'Pilih podcast/Import dulu',
-        desc: t ? (t.desc||'-') : '-',
-        image: t ? (t.image||null) : null,
-        feedBaseUrl: t ? (t.feedBaseUrl||'') : '',
-        playing: state.playing && !isEmpty,
-        shuffle: state.shuffle,
-        repeat: state.repeat,
-        time: (!isEmpty && audio.duration && isFinite(audio.duration)) ? (audio.currentTime/audio.duration*100) : 0,
-        timeTxt: (!isEmpty) ? fmt(audio.currentTime)+' / '+fmt(audio.duration) : '0:00 / 0:00',
-        empty: isEmpty
-      },'*');
+      popupWin.postMessage({ type:'sync', title: t ? (t.title||'Pilih podcast/Import dulu') : 'Pilih podcast/Import dulu', desc: t ? (t.desc||'-') : '-', image: t ? (t.image||null) : null, feedBaseUrl: t ? (t.feedBaseUrl||'') : '', playing: state.playing && !isEmpty, shuffle: state.shuffle, repeat: state.repeat, time: (!isEmpty && audio.duration && isFinite(audio.duration)) ? (audio.currentTime/audio.duration*100) : 0, timeTxt: (!isEmpty) ? fmt(audio.currentTime)+' / '+fmt(audio.duration) : '0:00 / 0:00', empty: isEmpty },'*');
     }
     window.addEventListener('message', e=>{if(popupWin&&e.source!==popupWin)return;if(e.data?.type==='ctrl'){if(e.data.action==='play')togglePlay();if(e.data.action==='prev')prevTrack();if(e.data.action==='next')nextTrack();}else if(e.data?.type==='seek'){if(e.data.percent!==undefined&&audio.duration&&isFinite(audio.duration)){audio.currentTime=e.data.percent*audio.duration;}else if(e.data.delta){audio.currentTime=Math.max(0,Math.min(audio.duration,audio.currentTime+e.data.delta));}}}, false);
     
