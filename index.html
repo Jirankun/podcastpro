@@ -28,7 +28,6 @@
     
     .main-wrapper{display:flex;flex:1;overflow:hidden;position:relative;max-width:100vw}
     
-    /* ✅ SIDEBAR DIPERKETAT */
     .sidebar{width:200px;background:var(--bg);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:6px 8px 8px;gap:3px;overflow-y:auto;flex-shrink:0;z-index:50;height:calc(100vh - 56px);position:relative}
     .sidebar button{background:var(--bg4);color:var(--text2);border:none;padding:7px 10px;border-radius:8px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px;font-size:12px;transition:background .15s;min-height:34px}
     .sidebar button:active{transform:scale(.98);background:var(--bg7);color:#fff}
@@ -78,8 +77,6 @@
     .player{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);padding:8px 10px;z-index:200;pointer-events:auto;box-shadow:0 -3px 15px rgba(0,0,0,.4);width:100%}
     .player-controls{display:flex;align-items:center;gap:8px}
     .player-img{width:42px;height:42px;border-radius:10px;background:var(--bg6);flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-    .player-img img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block}
-    
     .player-info{flex:1 1 0%;min-width:0;overflow:hidden}
     .player-info h4{font-size:12px;color:#ddd;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .player-info p{font-size:10px;color:var(--text4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -105,7 +102,6 @@
     .sug-item{background:var(--bg3);border-radius:10px;padding:10px;display:flex;gap:10px;align-items:center;cursor:pointer;transition:all .15s;border:1px solid transparent}
     .sug-item:active{transform:scale(.98);background:var(--bg6);border-color:var(--primary)}
     .sug-item-img{width:60px;height:60px;border-radius:8px;background:var(--bg6);flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-    .sug-item-img img{width:100%;height:100%;object-fit:cover;display:block}
     .sug-item-info{flex:1;min-width:0}
     .sug-item-title{font-size:12px;font-weight:600;color:#ddd;margin-bottom:3px;line-height:1.2;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
     .sug-item-desc{font-size:9px;color:var(--text4);line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -114,7 +110,6 @@
     
     .detail-header{position:relative;margin-bottom:12px}
     .detail-img{width:100%;aspect-ratio:1;border-radius:12px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:10px;box-shadow:0 8px 24px rgba(0,0,0,.4);position:relative}
-    .detail-img img{width:100%;height:100%;object-fit:cover;display:block}
     .detail-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.3}
     .detail-meta{display:flex;flex-direction:column;gap:8px}
     .detail-row{display:flex;gap:8px;align-items:flex-start;font-size:11px}
@@ -163,6 +158,10 @@
     .toc-site{font-size:8px;color:var(--primary);margin-top:4px;padding-top:4px;border-top:1px dashed var(--border);display:flex;align-items:center;gap:4px}
     .toc-site a{color:var(--primary);text-decoration:none;word-break:break-all}
     .toc-site a:hover{text-decoration:underline}
+    
+    /* ✅ FIX UTAMA: Tambah ukuran base .item-img buat desktop + konsisten semua container gambar */
+    .item-img{width:48px;height:48px;flex-shrink:0;border-radius:8px;overflow:hidden;position:relative;background:var(--bg6)}
+    .player-img img,.item-img img,.sug-item-img img,.detail-img img{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
     
     ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg7);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--bg8)}
     
@@ -221,7 +220,6 @@
         <button onclick="toggleRepeat()"><i class="fas fa-redo"></i>Mode Ulang</button>
         <button onclick="openPopup()"><i class="fas fa-external-link-alt"></i>Mini Player</button>
         <button onclick="clearAll()"><i class="fas fa-trash-can"></i>Hapus Semua</button>
-        <!-- ✅ HAPUS margin-top:auto, udah dirapetin via CSS -->
         <button onclick="window.open('https://sumaterapodcastpro.chatango.com/','_blank')"><i class="fas fa-comments"></i>Komunitas</button>
         
         <div class="dev-credit">
@@ -325,11 +323,10 @@
     const audio = $('audio');
     let popupWin = null, marqueeTimers = [], toastTimer = null;
     
-    // ✅ NO SVG FALLBACK - Debug mode. Kalau error, container kosong.
+    // ✅ FIX: setImage() bersih, tanpa inline style conflict, langsung append
     function setImage(container, imgUrl, feedBaseUrl = ''){
       if(!container) return;
       container.innerHTML = '';
-      container.style.position = 'relative';
       if(!imgUrl) return;
 
       let finalUrl = imgUrl.trim();
@@ -342,17 +339,12 @@
       const img = new Image();
       img.crossOrigin = 'anonymous';
       img.loading = 'lazy';
-      img.style.width = '100%';
-      img.style.height = '100%';
-      img.style.objectFit = 'cover';
-      img.style.borderRadius = container.style.borderRadius || '10px';
-      img.style.display = 'block';
-      img.onerror = () => { container.innerHTML = ''; console.warn('Img fail:', imgUrl); };
+      img.onerror = () => { container.innerHTML = ''; console.warn('Img load fail:', imgUrl); };
       img.onload = () => { container.innerHTML = ''; container.appendChild(img); };
       img.src = finalUrl;
     }
     
-    // ✅ NO SVG FALLBACK - Helper HTML
+    // ✅ FIX: getImageHTML konsisten, tanpa inline style berantakan
     function getImageHTML(imgUrl, className = '', sizeClass = '', feedBaseUrl = ''){
       if(!imgUrl) return `<div class="${className} ${sizeClass}"></div>`;
       let finalUrl = imgUrl.trim();
@@ -362,7 +354,7 @@
       const safeUrl = esc(finalUrl);
       const sep = safeUrl.includes('?') ? '&amp;' : '?';
       const cacheBust = sep + 't=' + Date.now();
-      return `<div class="${className} ${sizeClass}" style="position:relative"><img src="${safeUrl}${cacheBust}" alt="" loading="lazy" crossorigin="anonymous" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit" onerror="this.style.display='none';console.warn('Img fail in list:', '${safeUrl}');"></div>`;
+      return `<div class="${className} ${sizeClass}"><img src="${safeUrl}${cacheBust}" alt="" loading="lazy" crossorigin="anonymous" onerror="this.style.display='none';console.warn('Img fail in list:', '${safeUrl}');"></div>`;
     }
     
     function extractImageURL(element, baseUrl = ''){
@@ -422,7 +414,7 @@
       });
     }
     
-    // ✅ FIX: LANGSUNG GANTI & PLAY TANPA JEDA
+    // ✅ FIX: Langsung ganti & play mulus tanpa jeda manual
     function loadTrack(i, autoPlay=true) {
       if(i<0||i>=app.tracks.length)return; 
       state.idx=i; 
@@ -446,16 +438,12 @@
       if(autoPlay) {
         state.playing = true;
         updatePlayUI();
-        audio.play().catch(e => { 
-          console.warn('Auto play blocked:', e);
-          state.playing=false; 
-          updatePlayUI(); 
-        });
+        audio.play().catch(e => { console.warn('Auto play blocked:', e); state.playing=false; updatePlayUI(); });
       }
     }
     
-    // ✅ Langsung panggil loadTrack dengan autoPlay=true, hapus togglePlay() ganda
     function playAt(i){ loadTrack(i, true); closeSidebarMobile(); }
+    function closeSidebarMobile(){ if(window.innerWidth<=768 && $('sidebar').classList.contains('active')){ $('sidebar').classList.remove('active'); $('overlay').classList.remove('active'); } }
     
     function setupEvents() {
       document.addEventListener('keydown', e=>{
@@ -604,8 +592,6 @@
     function filterPlaylist(){ render($('searchInput').value.toLowerCase()); }
     function checkMarquees() { marqueeTimers.forEach(clearTimeout); marqueeTimers=[]; const targets = document.querySelectorAll('.marquee-text'); targets.forEach(el=>{ const par=el.parentElement; if(!par)return; const hasOverflow = el.scrollWidth > (par.clientWidth + 10); el.classList.toggle('active', hasOverflow); marqueeTimers.push(setTimeout(()=>{ el.classList.toggle('active', el.scrollWidth > (par.clientWidth + 10)); }, 250)); }); }
     
-    function playAt(i){ loadTrack(i, true); closeSidebarMobile(); }
-    function closeSidebarMobile(){ if(window.innerWidth<=768 && $('sidebar').classList.contains('active')){ $('sidebar').classList.remove('active'); $('overlay').classList.remove('active'); } }
     function togglePlay(){ if(!audio.src&&app.tracks.length>0)loadTrack(0); if(audio.paused){ audio.play().catch(()=>{}); state.playing=true; }else{ audio.pause(); state.playing=false; } updatePlayUI(); syncPopup(); }
     function updatePlayUI(){ $('btnPlay').innerHTML=`<i class="fas fa-${state.playing?'pause':'play'}"></i>`; const t=app.tracks[state.idx]; if(t){ $('btnLike').innerHTML=`<i class="${t.liked?'fas':'far'} fa-heart"></i>`; } }
     function prevTrack(){ if(app.tracks.length===0)return; state.idx=state.shuffle?getRandomIdx():(state.idx-1+app.tracks.length)%app.tracks.length; loadTrack(state.idx); if(state.playing)audio.play().catch(()=>{}); syncPopup(); }
