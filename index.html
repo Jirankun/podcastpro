@@ -33,7 +33,7 @@
     .sidebar button:active{transform:scale(.98);background:var(--bg7);color:#fff}
     .sidebar button i{width:16px;text-align:center;font-size:13px}
     
-    .dev-credit{margin-top:8px;padding:8px 10px;background:linear-gradient(135deg,var(--bg7),var(--bg8));border:1px solid var(--border3);border-radius:10px;box-shadow:0 4px 12px rgba(0,123,255,0.15);display:flex;align-items:center;justify-content:space-between;animation:glowPulse 3s ease-in-out infinite}
+    .dev-credit{margin-top:auto;padding:8px 10px;background:linear-gradient(135deg,var(--bg7),var(--bg8));border:1px solid var(--border3);border-radius:10px;box-shadow:0 4px 12px rgba(0,123,255,0.15);display:flex;align-items:center;justify-content:space-between;animation:glowPulse 3s ease-in-out infinite}
     @keyframes glowPulse{0%,100%{box-shadow:0 4px 12px rgba(0,123,255,0.15)}50%{box-shadow:0 4px 20px rgba(0,123,255,0.35)}}
     .dev-name{font-size:10px;font-weight:700;letter-spacing:0.5px;background:linear-gradient(90deg,#00d4ff,#7b2fff,#ff2f92);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 0 10px rgba(123,47,255,0.3);cursor:pointer;transition:transform .2s,filter .2s;text-decoration:none;display:block}
     .dev-name:hover{transform:scale(1.05);filter:brightness(1.2)}
@@ -100,16 +100,18 @@
     .modal-box input:focus{border-color:var(--primary);outline:none}
     .modal-box input::placeholder{color:var(--text4)}
     
-    .sug-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin:10px 0;max-height:60vh;overflow-y:auto;padding-right:4px}
-    .sug-card{background:var(--bg3);border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:all .15s;border:1px solid transparent;position:relative}
-    .sug-card:active{transform:scale(.97);background:var(--bg6);border-color:var(--primary)}
-    .sug-img{width:100%;aspect-ratio:1;border-radius:6px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .sug-img img{width:100%;height:100%;object-fit:cover;display:block}
-    .sug-img svg{width:24px;height:24px;fill:#444;display:block}
-    .sug-title{font-size:10px;font-weight:600;color:#ddd;line-height:1.1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .sug-desc{font-size:8px;color:var(--text4);line-height:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .sug-add{background:var(--primary);color:#fff;border:none;padding:5px;border-radius:5px;font-size:9px;font-weight:600;cursor:pointer;margin-top:auto;transition:background .15s;z-index:10}
-    .sug-add:active{background:#0056b3}
+    /* SUGGESTIONS - VERTICAL LIST */
+    .sug-list{display:flex;flex-direction:column;gap:8px;margin:10px 0;max-height:65vh;overflow-y:auto;padding-right:4px}
+    .sug-item{background:var(--bg3);border-radius:10px;padding:10px;display:flex;gap:10px;align-items:center;cursor:pointer;transition:all .15s;border:1px solid transparent}
+    .sug-item:active{transform:scale(.98);background:var(--bg6);border-color:var(--primary)}
+    .sug-item-img{width:60px;height:60px;border-radius:8px;background:var(--bg6);flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .sug-item-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .sug-item-img svg{width:28px;height:28px;fill:#444;display:block}
+    .sug-item-info{flex:1;min-width:0}
+    .sug-item-title{font-size:12px;font-weight:600;color:#ddd;margin-bottom:3px;line-height:1.2;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+    .sug-item-desc{font-size:9px;color:var(--text4);line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .sug-item-add{background:var(--primary);color:#fff;border:none;padding:6px 12px;border-radius:6px;font-size:10px;font-weight:600;cursor:pointer;transition:background .15s;flex-shrink:0}
+    .sug-item-add:active{background:#0056b3}
     
     .detail-header{position:relative;margin-bottom:12px}
     .detail-img{width:100%;aspect-ratio:1;border-radius:12px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:10px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
@@ -122,8 +124,6 @@
     .detail-row span{color:var(--text2);line-height:1.4;word-break:break-word}
     .detail-row a{color:var(--primary);text-decoration:none;word-break:break-all}
     .detail-row a:hover{text-decoration:underline}
-    .detail-cats{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
-    .detail-cat{background:var(--bg5);color:var(--primary);padding:3px 8px;border-radius:4px;font-size:9px;font-weight:600}
     .detail-section{margin-top:12px;padding-top:12px;border-top:1px solid var(--border3)}
     .detail-section h4{font-size:12px;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:6px}
     .detail-section h4 i{color:var(--primary)}
@@ -191,11 +191,9 @@
       .dev-credit{margin-top:6px;padding:7px 9px}
       .dev-name{font-size:9px}
       .dev-gh{width:22px;height:22px}
-      .sug-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:6px}
-      .sug-card{padding:6px}
-      .sug-title{font-size:9px}
-      .toc-header{font-size:10px}
-      .toc-episodes div{font-size:8px}
+      .sug-item{padding:8px}
+      .sug-item-img{width:50px;height:50px}
+      .sug-item-title{font-size:11px}
     }
     @media(min-width:769px){.menu-toggle{display:none !important;}}
     @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.marquee-text{white-space:normal!important}.dev-credit{animation:none!important}}
@@ -225,6 +223,7 @@
         <button onclick="toggleRepeat()"><i class="fas fa-redo"></i>Mode Ulang</button>
         <button onclick="openPopup()"><i class="fas fa-external-link-alt"></i>Mini Player</button>
         <button onclick="clearAll()"><i class="fas fa-trash-can"></i>Hapus Semua</button>
+        <button onclick="window.open('https://sumaterapodcastpro.chatango.com/','_blank')" style="margin-top:auto"><i class="fas fa-comments"></i>Komunitas</button>
         
         <div class="dev-credit">
           <a href="https://jirankun.github.io/portofoliozhyllan" target="_blank" rel="noopener noreferrer" class="dev-name" title="Portofolio Zhyllan">ZHYLLAN-FYLLAH</a>
@@ -317,14 +316,11 @@
   
   <audio id="audio" crossorigin="anonymous" preload="metadata"></audio>
 
-  <script id="cid0020000437675478422" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 200px;height: 300px;">{"handle":"sumaterapodcastpro","arch":"js","styles":{"a":"3366ff","b":97,"c":"000000","d":"000000","f":97,"i":97,"k":"3366ff","l":"3366ff","m":"3366ff","o":97,"p":"10","q":"3366ff","r":97,"cv":1,"cvfnt":"Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif, sans-serif","cvfntw":"bold","cvbg":"3366ff","cvbga":97,"cvw":69,"cvh":33}}</script>
-
   <script>
     const $ = id => document.getElementById(id);
     const esc = s => { if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML; };
     const fmt = s => { if(!s||isNaN(s)||!isFinite(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+String(sec).padStart(2,'0'); };
     
-    // Music icon SVG - single source
     const musicIconSVG = '<svg viewBox="0 0 24 24" style="display:block"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
     
     let app = { sections:[], tracks:[], settings:{ autoRestore:true, autoResume:true, directLinkSupport:false }, suggestions:[] };
@@ -332,23 +328,19 @@
     const audio = $('audio');
     let popupWin = null, marqueeTimers = [], toastTimer = null;
     
-    // Helper: Set image with fallback - ENSURES ONLY ONE SHOWS
     function setImage(container, imgUrl){
       if(!container) return;
-      // Clear container first
       container.innerHTML = '';
-      
       if(imgUrl){
         const img = new Image();
         img.onload = () => {
-          container.innerHTML = ''; // Clear any existing
+          container.innerHTML = '';
           container.appendChild(img);
         };
         img.onerror = () => {
-          container.innerHTML = musicIconSVG; // Show icon on error
+          container.innerHTML = musicIconSVG;
         };
         img.src = imgUrl;
-        // Set icon as fallback initially
         container.innerHTML = musicIconSVG;
       } else {
         container.innerHTML = musicIconSVG;
@@ -358,7 +350,6 @@
     function init() {
       loadData(); render(); updateBadges(); setupEvents(); updateDirectLinkUI();
       setupAutoResume();
-      // Set initial icon
       setImage($('playerImg'), null);
       if(app.settings.autoRestore && app.tracks.length>0){
         const idx = parseInt(localStorage.getItem('pod_lastIdx')||'0');
@@ -405,17 +396,13 @@
       const t=app.tracks[i];
       $('playerTitle').textContent=t.title||'Tanpa judul'; 
       $('playerDesc').textContent=t.desc?(t.desc.length>40?t.desc.substring(0,40)+'...':t.desc):'-';
-      
-      // Use helper to set image
       setImage($('playerImg'), t.image);
-      
       audio.src=t.link; 
       audio.load(); 
       updatePlayUI(); 
       render($('searchInput').value.toLowerCase()); 
       setTimeout(checkMarquees,100); 
       $('progress').setAttribute('aria-valuenow','0');
-      
       if(app.settings.autoResume){
         const savedPos = localStorage.getItem(`pod_pos_${t.id}`);
         if(savedPos && parseFloat(savedPos) > 5 && parseFloat(savedPos) < (audio.duration||999999)){
@@ -423,7 +410,6 @@
           toast(` ▶ Lanjut dari ${fmt(savedPos)}`, 'info');
         }
       }
-      
       if(autoPlay&&state.playing) audio.play().catch(()=>{});
     }
     
@@ -546,19 +532,16 @@
     function switchImport(type) {
       state.importType = type;
       const isFile=type==='file', isDirect=type==='direct', isUrl=type==='url';
-      
       $('typeFile').style.background=isFile?'var(--primary)':'var(--bg5)';
       $('typeFile').style.color=isFile?'#fff':'var(--text2)'; $('typeFile').setAttribute('aria-selected',isFile);
       $('typeUrl').style.background=isUrl?'var(--primary)':'var(--bg5)';
       $('typeUrl').style.color=isUrl?'#fff':'var(--text2)'; $('typeUrl').setAttribute('aria-selected',isUrl);
       $('typeDirect').style.background=isDirect?'var(--primary)':'var(--bg5)';
       $('typeDirect').style.color=isDirect?'#fff':'var(--text2)'; $('typeDirect').setAttribute('aria-selected',isDirect);
-      
       $('fileInput').style.display=isFile?'block':'none';
       $('urlInput').style.display=isUrl?'block':'none';
       $('directInput').style.display=isDirect?'block':'none';
       $('directTitle').style.display=isDirect?'block':'none';
-      
       if(isFile) setTimeout(()=>$('fileInput')?.click(),50);
       if(isDirect){
         $('directInput').placeholder='https://cdn.example.com/audio.mp3';
@@ -574,28 +557,9 @@
     
     function addDirectTrack(url, title){
       const cleanTitle = (title||url.split('/').pop()||'Audio').replace(/\.[^/.]+$/,'').replace(/[^a-z0-9\s\-_]/gi,' ').trim();
-      const newTrack = {
-        id: Math.random().toString(36).substr(2,9),
-        secId: 'direct_section',
-        title: cleanTitle,
-        link: url.trim(),
-        image: null,
-        desc: 'Direct audio link',
-        duration: '',
-        pubDate: new Date().toISOString(),
-        liked: false
-      };
+      const newTrack = {id: Math.random().toString(36).substr(2,9),secId: 'direct_section',title: cleanTitle,link: url.trim(),image: null,desc: 'Direct audio link',duration: '',pubDate: new Date().toISOString(),liked: false};
       let sec = app.sections.find(s=>s.id==='direct_section');
-      if(!sec){
-        app.sections.unshift({
-          id: 'direct_section',
-          title: '🎵 Direct Links',
-          desc: 'Audio yang ditambahkan via link langsung',
-          date: new Date().toISOString(),
-          count: 0,
-          image: null
-        });
-      }
+      if(!sec){app.sections.unshift({id: 'direct_section',title: '🎵 Direct Links',desc: 'Audio yang ditambahkan via link langsung',date: new Date().toISOString(),count: 0,image: null});}
       app.tracks.unshift(newTrack);
       app.sections.find(s=>s.id==='direct_section').count++;
       saveData();
@@ -606,7 +570,6 @@
       e?.stopPropagation(); const btn=$('btnImport');
       try {
         btn.classList.add('loading'); btn.disabled=true;
-        
         if(state.importType==='direct'){
           if(!app.settings.directLinkSupport) throw new Error('Fitur Direct Link belum diaktifkan di Pengaturan');
           const url = $('directInput').value.trim();
@@ -621,7 +584,6 @@
           btn.classList.remove('loading'); btn.disabled=false;
           return;
         }
-        
         let xml='';
         if(state.importType==='file'){
           const f=$('fileInput').files[0]; if(!f) throw new Error('Pilih file RSS/XML dulu'); xml=await f.text();
@@ -640,22 +602,12 @@
     function parseXML(xml, isSuggestion=false) {
       const p=new DOMParser(), doc=p.parseFromString(xml,'text/xml');
       if(doc.querySelector('parsererror')) throw new Error('XML invalid');
-      
       const ch=doc.querySelector('channel, feed');
-      
-      // Extract ALL metadata with proper namespace handling
       const categories = [];
       const catElements = doc.querySelectorAll('itunes\\:category, category');
-      catElements.forEach(cat=>{
-        const text = cat.getAttribute('text');
-        if(text) categories.push(text);
-      });
-      
-      // Get image from itunes:image href
-      const itunesImage = ch.querySelector('itunes\\:image');
-      const channelImage = ch.querySelector('image');
-      const imageUrl = itunesImage ? itunesImage.getAttribute('href') : (channelImage ? channelImage.querySelector('url')?.textContent : null);
-      
+      catElements.forEach(cat=>{const text = cat.getAttribute('text');if(text) categories.push(text);});
+      const itunesImage = ch?.querySelector('itunes\\:image');
+      const imageUrl = itunesImage ? itunesImage.getAttribute('href') : null;
       const metadata = {
         title: ch?.querySelector('title')?.textContent?.trim()||'Podcast',
         image: imageUrl,
@@ -666,47 +618,26 @@
         language: ch?.querySelector('language')?.textContent?.trim()||'',
         lastBuildDate: ch?.querySelector('lastBuildDate')?.textContent?.trim()||'',
         explicit: ch?.querySelector('itunes\\:explicit')?.textContent?.trim()||'',
-        subtitle: ch?.querySelector('itunes\\:subtitle')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',
         categories: categories,
         xml
       };
-      
       if(isSuggestion) return metadata;
-      
       const items=doc.querySelectorAll('item, entry');
       if(items.length===0) throw new Error('Gak ada episode');
       const secId='sec_'+Date.now();
       const siteLink = metadata.link;
       app.sections.push({id:secId,title:metadata.title,desc:metadata.desc,date:metadata.lastBuildDate||'-',count:0,siteLink,author:metadata.author,copyright:metadata.copyright,language:metadata.language,explicit:metadata.explicit,categories:metadata.categories,image:metadata.image});
-      
       items.forEach(item=>{
         const t=item.querySelector('title')?.textContent?.trim()||'Tanpa Judul'; 
         let url='';
         const enc=item.querySelector('enclosure'); 
         if(enc&&enc.getAttribute('type')?.startsWith('audio/')) url=enc.getAttribute('url');
-        if(!url){ 
-          const lnk=item.querySelector('link'); 
-          if(lnk?.getAttribute('href')) url=lnk.getAttribute('href'); 
-          else if(lnk?.textContent) url=lnk.textContent.trim(); 
-        }
+        if(!url){ const lnk=item.querySelector('link'); if(lnk?.getAttribute('href')) url=lnk.getAttribute('href'); else if(lnk?.textContent) url=lnk.textContent.trim(); }
         if(!url||!/\.(mp3|m4a|aac|ogg|wav|opus)(\?|#|$)/i.test(url)) return;
         let dur=item.querySelector('itunes\\:duration')?.textContent?.trim()||''; 
         if(dur&&!/^\d+:\d{2}(:\d{2})?$/.test(dur)) dur='';
-        
-        // Get episode image (fallback to channel image)
         const epImage = item.querySelector('itunes\\:image')?.getAttribute('href') || imageUrl;
-        
-        app.tracks.push({
-          id:Math.random().toString(36).substr(2,9),
-          secId,
-          title:t,
-          link:url,
-          image:epImage,
-          desc:item.querySelector('description, summary, itunes\\:summary')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',
-          duration:dur,
-          pubDate:item.querySelector('pubDate, published, updated')?.textContent||'',
-          liked:false
-        });
+        app.tracks.push({id:Math.random().toString(36).substr(2,9),secId,title:t,link:url,image:epImage,desc:item.querySelector('description, summary, itunes\\:summary')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',duration:dur,pubDate:item.querySelector('pubDate, published, updated')?.textContent||'',liked:false});
         app.sections.at(-1).count++;
       });
       if(app.tracks.length===0) throw new Error('Gak ada audio valid');
@@ -717,16 +648,13 @@
       const container = $('suggestionsContainer');
       if(!container) return;
       container.innerHTML = '<div class="empty"><i class="fas fa-spinner fa-spin"></i><p>Memuat saran...</p></div>';
-      
       try {
         const res = await fetch('saran.json', { cache: 'no-store' });
         if(!res.ok) throw new Error('Gagal load saran.json');
         const urls = await res.json();
         if(!Array.isArray(urls) || urls.length===0) throw new Error('saran.json kosong');
-        
         app.suggestions = [];
         let html = '';
-        
         for(const feedUrl of urls){
           try {
             let xml = '';
@@ -734,23 +662,17 @@
               try{ const r = await fetch(proxyUrl, { mode: 'cors' }); if(r.ok){ xml = await r.text(); break; } }catch(e){}
             }
             if(!xml) continue;
-            
             const meta = parseXML(xml, true);
             meta.url = feedUrl;
             app.suggestions.push(meta);
-            
-            // Create image element with proper error handling
             const imgHtml = meta.image 
               ? `<img src="${esc(meta.image)}" alt="" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='${musicIconSVG.replace(/"/g,"\\'")}'">`
               : musicIconSVG;
-            
-            html += `<div class="sug-card" onclick="showPodcastDetail('${esc(feedUrl)}')"><div class="sug-img">${imgHtml}</div><div class="sug-title">${esc(meta.title)}</div><div class="sug-desc">${esc(meta.desc.substring(0,40))}${meta.desc.length>40?'...':''}</div><button class="sug-add" onclick="event.stopPropagation();openSuggestionImport('${esc(feedUrl)}')">+ Tambah</button></div>`;
+            html += `<div class="sug-item" onclick="showPodcastDetail('${esc(feedUrl)}')"><div class="sug-item-img">${imgHtml}</div><div class="sug-item-info"><div class="sug-item-title">${esc(meta.title)}</div><div class="sug-item-desc">${esc(meta.desc.substring(0,80))}${meta.desc.length>80?'...':''}</div></div><button class="sug-item-add" onclick="event.stopPropagation();openSuggestionImport('${esc(feedUrl)}')">+ Tambah</button></div>`;
           }catch(e){ console.warn('Skip suggestion:', feedUrl, e); }
         }
-        
         if(app.suggestions.length===0) throw new Error('Gak ada podcast valid');
-        container.innerHTML = `<div class="sug-grid">${html}</div>`;
-        
+        container.innerHTML = `<div class="sug-list">${html}</div>`;
       }catch(e){
         console.error(e);
         container.innerHTML = `<div class="empty"><i class="fas fa-exclamation-triangle"></i><p>${esc(e.message)}<br><small style="color:var(--text4)">Pastikan saran.json ada di server & berisi array URL RSS</small></p></div>`;
@@ -760,37 +682,25 @@
     function showPodcastDetail(url){
       const podcast = app.suggestions.find(s=>s.url===url);
       if(!podcast) return;
-      
       state.currentDetailUrl = url;
-      
       const imgHtml = podcast.image 
         ? `<img src="${esc(podcast.image)}" alt="" onerror="this.style.display='none';this.parentElement.innerHTML='${musicIconSVG.replace(/"/g,"\\'")}'">`
         : musicIconSVG;
-      
-      const catsHtml = podcast.categories.length>0 ? `<div class="detail-cats">${podcast.categories.map(c=>`<span class="detail-cat">${esc(c)}</span>`).join('')}</div>` : '';
-      
-      const explicitBadge = podcast.explicit==='clean' ? '<span style="color:var(--success);font-size:9px">✓ Clean</span>' : podcast.explicit==='yes' ? '<span style="color:var(--danger);font-size:9px">⚠ Explicit</span>' : '';
-      
       let html = `
         <div class="detail-header">
           <div class="detail-img">${imgHtml}</div>
           <div class="detail-title">${esc(podcast.title)}</div>
-          ${catsHtml}
         </div>
         <div class="detail-meta">
           ${podcast.author ? `<div class="detail-row"><i class="fas fa-user"></i><span>${esc(podcast.author)}</span></div>` : ''}
-          ${podcast.copyright ? `<div class="detail-row"><i class="fas fa-copyright"></i><span>${esc(podcast.copyright)}</span></div>` : ''}
           ${podcast.language ? `<div class="detail-row"><i class="fas fa-language"></i><span>${esc(podcast.language)}</span></div>` : ''}
-          ${podcast.lastBuildDate ? `<div class="detail-row"><i class="fas fa-calendar"></i><span>${new Date(podcast.lastBuildDate).toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'})}</span></div>` : ''}
-          ${explicitBadge ? `<div class="detail-row"><i class="fas fa-shield-alt"></i><span>${explicitBadge}</span></div>` : ''}
-          ${podcast.link ? `<div class="detail-row"><i class="fas fa-link"></i><a href="${esc(podcast.link)}" target="_blank" rel="noopener">${esc(podcast.link)}</a></div>` : ''}
+          ${podcast.link ? `<div class="detail-row"><i class="fas fa-link"></i><a href="${esc(podcast.link)}" target="_blank" rel="noopener">${esc(podcast.link.replace(/^https?:\/\//,''))}</a></div>` : ''}
         </div>
         <div class="detail-section">
           <h4><i class="fas fa-info-circle"></i> Deskripsi</h4>
           <div style="font-size:11px;color:var(--text2);line-height:1.5">${esc(podcast.desc)}</div>
         </div>
       `;
-      
       $('detailContent').innerHTML = html;
       $('btnImportFromDetail').onclick = () => {
         closeModal('detailModal');
@@ -858,7 +768,6 @@
         if(t.secId!==lastSec){lastSec=t.secId;const s=secMap[t.secId];if(s){const ds=s.date?new Date(s.date).toLocaleDateString('id-ID',{year:'numeric',month:'short'}):'-';
         html+=`<div class="section"><div class="sec-header"><div><h3>${esc(s.title)}</h3><p>${esc(s.desc).substring(0,100)}${s.desc.length>100?'...':''}</p><div class="meta"><span><i class="far fa-calendar"></i> ${ds}</span><span><i class="fas fa-list"></i> ${s.count} ep</span></div></div><button class="sec-del" onclick="deleteSection('${s.id}',event)"><i class="fas fa-trash"></i></button></div><div class="playlist">`;}}
         const act=ri===state.idx?' active':'';
-        // Use inline image with error handler
         const imgHtml = t.image 
           ? `<img src="${esc(t.image)}" alt="" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='${musicIconSVG.replace(/"/g,"\\'")}'">`
           : musicIconSVG;
