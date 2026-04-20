@@ -85,7 +85,7 @@
     .progress-bar{height:100%;background:var(--primary);border-radius:3px;width:0%;transition:width .1s linear}
     .time{font-size:10px;color:var(--text5);min-width:55px;text-align:right;pointer-events:none;font-variant-numeric:tabular-nums}
     
-    /* VISIBLE YOUTUBE PLAYER AREA */
+    /* VISIBLE YOUTUBE PLAYER AREA - FIXED FOR FILE:// */
     #ytPlayerArea{
       position:fixed;
       bottom:80px;
@@ -102,7 +102,7 @@
     }
     #ytPlayerArea.show{display:block;animation:slideIn .3s ease}
     @keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
-    #ytPlayerArea iframe{width:100%;height:157px;border:none;display:block}
+    #ytPlayerArea iframe{width:100%;height:157px;border:none;display:block;background:#000}
     .ytPlayerHeader{
       padding:8px 12px;
       background:var(--bg3);
@@ -124,6 +124,17 @@
       font-size:14px;
     }
     .ytClose:hover{background:var(--bg5);color:var(--text)}
+    .ytError{
+      padding:20px;
+      text-align:center;
+      color:var(--text3);
+      font-size:12px;
+    }
+    .ytError a{
+      color:var(--primary);
+      text-decoration:underline;
+      cursor:pointer;
+    }
     
     .empty{text-align:center;padding:30px 15px;color:var(--text5);width:100%}
     .empty i{font-size:40px;color:#333;margin-bottom:12px;display:block}
@@ -246,7 +257,7 @@
       </div>
     </div>
     
-    <!-- VISIBLE YOUTUBE PLAYER AREA -->
+    <!-- VISIBLE YOUTUBE PLAYER AREA - FIXED -->
     <div id="ytPlayerArea">
       <div class="ytPlayerHeader">
         <span><i class="fab fa-youtube" style="color:#ff0000;margin-right:6px"></i>YouTube Player</span>
@@ -302,7 +313,6 @@
   </div>
   
   <audio id="audio" crossorigin="anonymous" preload="metadata"></audio>
-  <script src="https://www.youtube.com/iframe_api"></script>
 
   <script>
     const $ = id => document.getElementById(id);
@@ -312,8 +322,26 @@
     let app = { sections:[], tracks:[], settings:{ autoRestore:true, ytApiKey:'', ytEnabled:false } };
     let state = { idx:0, playing:false, shuffle:false, repeat:0, tab:'all', importType:'url', isYouTube:false };
     const audio = $('audio');
-    let ytPlayer = null, ytReady = false, ytProgressTimer = null;
+    let ytPlayer = null, ytReady = false, ytProgressTimer = null, ytVideoId = null;
     let popupWin = null, marqueeTimers = [], toastTimer = null;
+    
+    // FIXED: Load YouTube IFrame API properly
+    function loadYouTubeAPI() {
+      if(window.YT && window.YT.Player) {
+        ytReady = true;
+        return;
+      }
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+    
+    // FIXED: Global callback for YouTube API
+    window.onYouTubeIframeAPIReady = function() {
+      ytReady = true;
+      console.log('✅ YouTube iframe API ready');
+    };
     
     function init() {
       loadData(); 
@@ -321,6 +349,7 @@
       updateBadges(); 
       setupEvents(); 
       syncSettingsUI();
+      loadYouTubeAPI();
       
       // Load API key from localStorage
       const savedKey = localStorage.getItem('ytApiKey');
@@ -333,11 +362,6 @@
         const idx = parseInt(localStorage.getItem('pod_lastIdx')||'0');
         if(idx>=0 && idx<app.tracks.length){ state.idx=idx; loadTrack(idx,false); }
       }
-    }
-    
-    function onYouTubeIframeAPIReady() {
-      ytReady = true;
-      console.log('✅ YouTube iframe API ready');
     }
     
     function loadData() {
@@ -368,7 +392,6 @@
       $('ytApiKeyInput').addEventListener('input', e=>{ 
         app.settings.ytApiKey = e.target.value.trim(); 
         saveData();
-        console.log('API Key saved:', app.settings.ytApiKey ? 'Yes' : 'No');
       });
       window.addEventListener('resize', ()=>{ 
         if(window.innerWidth>768){ $('sidebar').classList.remove('active');$('overlay').classList.remove('active'); }
@@ -493,7 +516,6 @@
       if(!app.settings.ytApiKey) throw new Error('Masukkan YT API Key di Pengaturan');
 
       btn.textContent = '⏳ Mengambil data...';
-      console.log('🔑 Using API Key:', app.settings.ytApiKey ? 'Present (' + app.settings.ytApiKey.substring(0,10) + '...)' : 'Missing!');
       
       const metaRes = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=${id}&key=${app.settings.ytApiKey}`);
       if(!metaRes.ok) throw new Error('YT API Error: '+metaRes.status);
@@ -610,6 +632,7 @@
         clearInterval(ytProgressTimer);
         ytProgressTimer = null;
       }
+      ytVideoId = null;
     }
     
     function hideYtPlayer() {
@@ -624,6 +647,93 @@
       setTimeout(() => {
         $('ytPlayerArea').classList.add('show');
       }, 10);
+    }
+    
+    // FIXED: Better YouTube player initialization
+    function initYtPlayer(videoId) {
+      if(!ytReady) {
+        console.log('⏳ Waiting for YouTube API...');
+        setTimeout(() => initYtPlayer(videoId), 500);
+        return;
+      }
+      
+      const container = $('ytVisiblePlayer');
+      container.innerHTML = ''; // Clear previous
+      
+      try {
+        ytPlayer = new YT.Player('ytVisiblePlayer', {
+          height: '157',
+          width: '280',
+          videoId: videoId,
+          playerVars: {
+            autoplay: 0, // FIXED: Start paused to avoid file:// restriction
+            controls: 1,
+            modestbranding: 1,
+            rel: 0,
+            playsinline: 1
+          },
+          events: {
+            'onReady': onYtReady,
+            'onStateChange': onYtStateChange,
+            'onError': onYtError
+          }
+        });
+        ytVideoId = videoId;
+      } catch(e) {
+        console.error('YouTube player init error:', e);
+        showYtError();
+      }
+    }
+    
+    function showYtError() {
+      const container = $('ytVisiblePlayer');
+      container.innerHTML = `
+        <div class="ytError">
+          <p style="margin-bottom:10px">⚠️ Gagal memuat player YouTube</p>
+          <p style="font-size:11px;margin-bottom:10px">Karena file dibuka dari local, YouTube API terbatas</p>
+          <a onclick="window.open('https://youtube.com/watch?v=${ytVideoId}','_blank')">Buka di YouTube ↗</a>
+        </div>
+      `;
+    }
+    
+    function onYtReady(event) {
+      console.log('✅ YT Player Ready');
+      if(ytProgressTimer) clearInterval(ytProgressTimer);
+    }
+    
+    function onYtStateChange(event) {
+      if(event.data === 1) {
+        state.playing = true;
+        startYtProgressLoop();
+      } else if(event.data === 2 || event.data === 0) {
+        state.playing = false;
+        if(ytProgressTimer) clearInterval(ytProgressTimer);
+        if(event.data === 0) nextTrack();
+      }
+      updatePlayUI();
+      syncPopup();
+    }
+    
+    function onYtError(event) {
+      console.error('YouTube Error:', event.data);
+      showYtError();
+    }
+    
+    function startYtProgressLoop() {
+      if(ytProgressTimer) clearInterval(ytProgressTimer);
+      ytProgressTimer = setInterval(() => {
+        if(ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getDuration) {
+          const cur = ytPlayer.getCurrentTime();
+          const dur = ytPlayer.getDuration();
+          if(dur && isFinite(dur) && dur > 0) {
+            const pct = (cur/dur)*100;
+            $('progressBar').style.width = pct + '%';
+            $('timeDisplay').textContent = fmt(cur) + ' / ' + fmt(dur);
+            $('progress').setAttribute('aria-valuenow', Math.round(pct));
+            syncPopup();
+          }
+        }
+      }, 1000);
     }
     
     function loadTrack(i,autoPlay=true) {
@@ -653,29 +763,9 @@
       
       if(state.isYouTube && t.videoId) {
         showYtPlayer();
-        // Create visible YouTube player
-        if(!ytPlayer || ytPlayer.getIframe().id !== 'ytVisiblePlayer') {
-          ytPlayer = new YT.Player('ytVisiblePlayer', {
-            height: '157',
-            width: '280',
-            videoId: t.videoId,
-            playerVars: {
-              autoplay: autoPlay && state.playing ? 1 : 0,
-              controls: 1,
-              modestbranding: 1,
-              rel: 0
-            },
-            events: {
-              'onReady': onYtReady,
-              'onStateChange': onYtStateChange
-            }
-          });
-        } else {
-          ytPlayer.loadVideoById(t.videoId);
-          if(!autoPlay || !state.playing) {
-            ytPlayer.pauseVideo();
-          }
-        }
+        ytVideoId = t.videoId;
+        // FIXED: Initialize YouTube player properly
+        setTimeout(() => initYtPlayer(t.videoId), 100);
       } else {
         hideYtPlayer();
         audio.src=t.link; 
@@ -689,41 +779,6 @@
       $('progress').setAttribute('aria-valuenow','0');
     }
     
-    function onYtReady(event) {
-      console.log('✅ YT Player Ready');
-      if(ytProgressTimer) clearInterval(ytProgressTimer);
-    }
-    
-    function onYtStateChange(event) {
-      if(event.data === 1) {
-        state.playing = true;
-        startYtProgressLoop();
-      } else if(event.data === 2 || event.data === 0) {
-        state.playing = false;
-        if(ytProgressTimer) clearInterval(ytProgressTimer);
-        if(event.data === 0) nextTrack();
-      }
-      updatePlayUI();
-      syncPopup();
-    }
-    
-    function startYtProgressLoop() {
-      if(ytProgressTimer) clearInterval(ytProgressTimer);
-      ytProgressTimer = setInterval(() => {
-        if(ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getDuration) {
-          const cur = ytPlayer.getCurrentTime();
-          const dur = ytPlayer.getDuration();
-          if(dur && isFinite(dur) && dur > 0) {
-            const pct = (cur/dur)*100;
-            $('progressBar').style.width = pct + '%';
-            $('timeDisplay').textContent = fmt(cur) + ' / ' + fmt(dur);
-            $('progress').setAttribute('aria-valuenow', Math.round(pct));
-            syncPopup();
-          }
-        }
-      }, 1000);
-    }
-    
     function playAt(i){loadTrack(i);togglePlay();closeSidebarMobile();}
     function closeSidebarMobile(){if(window.innerWidth<=768 && $('sidebar').classList.contains('active')){$('sidebar').classList.remove('active');$('overlay').classList.remove('active');}}
     
@@ -731,7 +786,7 @@
       if(!app.tracks.length) return;
       
       if(state.isYouTube) {
-        if(!ytPlayer) {
+        if(!ytPlayer || !ytReady) {
            loadTrack(state.idx); 
         } else if(state.playing) {
           ytPlayer.pauseVideo();
