@@ -11,6 +11,7 @@
     body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;overflow-y:hidden;height:100vh;touch-action:manipulation;line-height:1.3}
     .app{display:flex;flex-direction:column;height:100vh;position:relative;max-width:100vw;overflow:hidden}
     
+    /* HEADER */
     .header{position:sticky;top:0;z-index:130;background:var(--bg2);border-bottom:1px solid var(--border2);padding:8px 10px;display:flex;gap:8px;align-items:center;flex-shrink:0}
     .menu-toggle,.icon-btn{background:var(--bg7);border:none;color:var(--text2);padding:10px;border-radius:8px;cursor:pointer;font-size:14px;flex-shrink:0;transition:all .15s;display:flex;align-items:center;justify-content:center;min-width:40px;min-height:40px}
     .menu-toggle:active,.icon-btn:active{transform:scale(.95);background:var(--bg8)}
@@ -21,21 +22,26 @@
     .badge.show{display:flex}
     .badge i{font-size:9px}
     
+    /* TABS */
     .tabs{position:sticky;top:56px;z-index:125;background:var(--bg);border-bottom:1px solid var(--border);padding:6px 10px;display:flex;gap:6px;flex-shrink:0;align-items:center}
     .tab{padding:6px 14px;background:var(--bg5);border:none;border-radius:8px;color:var(--text3);cursor:pointer;font-size:12px;font-weight:600;transition:all .15s;min-height:36px}
     .tab:active{transform:scale(.98)}
     .tab.active{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(0,123,255,.4)}
     
+    /* MAIN WRAPPER */
     .main-wrapper{display:flex;flex:1;overflow:hidden;position:relative;max-width:100vw}
     
+    /* SIDEBAR */
     .sidebar{width:200px;background:var(--bg);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:10px;gap:6px;overflow-y:auto;flex-shrink:0;z-index:50;height:calc(100vh - 56px);padding-bottom:70px}
     .sidebar button{background:var(--bg4);color:var(--text2);border:none;padding:10px 12px;border-radius:8px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:10px;font-size:12px;transition:background .15s;min-height:42px}
     .sidebar button:active{transform:scale(.98);background:var(--bg7);color:#fff}
     .sidebar button i{width:16px;text-align:center;font-size:13px}
     
+    /* OVERLAY */
     .overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:140;pointer-events:none;opacity:0;transition:opacity .2s}
     .overlay.active{opacity:1;pointer-events:auto}
     
+    /* CONTENT */
     .content{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 12px 125px;position:relative;z-index:10;-webkit-overflow-scrolling:touch;width:100%}
     .section{margin-bottom:16px;width:100%}
     .sec-header{background:var(--bg3);padding:12px;border-radius:10px;margin-bottom:10px;border-left:3px solid var(--primary);display:flex;justify-content:space-between;align-items:flex-start;gap:10px;width:100%}
@@ -45,6 +51,7 @@
     .sec-del{background:none;border:none;color:var(--text5);cursor:pointer;font-size:11px;padding:6px;transition:color .15s;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center;border-radius:6px;flex-shrink:0}
     .sec-del:active{color:var(--danger);background:rgba(255,77,77,.15)}
     
+    /* PLAYLIST */
     .playlist{display:flex;flex-direction:column;gap:6px;width:100%}
     .item{display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--bg3);border-radius:10px;cursor:pointer;border:1px solid transparent;transition:border-color .15s,background .15s;touch-action:manipulation;min-height:62px;width:100%;flex-wrap:nowrap}
     .item:active{transform:scale(.99)}
@@ -55,21 +62,20 @@
     .item-info{flex:1 1 0%;min-width:0;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
     .item-actions{flex:0 0 auto;flex-shrink:0;display:flex;gap:6px;align-items:center;margin-left:auto}
     
+    /* MARQUEE */
     .marquee-wrap{overflow:hidden;width:100%;position:relative}
     .marquee-text{white-space:nowrap;display:inline-block;will-change:transform;backface-visibility:hidden;transition:transform .1s}
     .marquee-text.active{animation:scroll 20s linear infinite;padding-left:100%}
     .marquee-text:hover{animation-play-state:paused}
     @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
     
-    .item-info h4{font-size:13px;color:#ddd;margin-bottom:2px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px}
+    .item-info h4{font-size:13px;color:#ddd;margin-bottom:2px;line-height:1.3;overflow:hidden;text-overflow:ellipsis}
     .item-info p{font-size:10px;color:var(--text4);margin:1px 0;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .item-actions button{background:var(--bg6);color:var(--text2);border:none;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:10px;min-width:32px;min-height:32px;display:flex;align-items:center;justify-content:center;transition:all .15s}
     .item-actions button:active{transform:scale(.95);background:var(--bg7);color:#fff}
     .item-actions button.liked{color:var(--danger)}
-    .item-actions button:disabled{opacity:0.3;cursor:not-allowed}
     
-    .yt-badge{background:#ff0000;color:#fff;font-size:9px;padding:1px 5px;border-radius:4px;flex-shrink:0;font-weight:700;letter-spacing:.5px}
-    
+    /* PLAYER */
     .player{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);padding:8px 10px;z-index:200;pointer-events:auto;box-shadow:0 -3px 15px rgba(0,0,0,.4);width:100%}
     .player-controls{display:flex;align-items:center;gap:8px}
     .player-img{width:42px;height:42px;border-radius:10px;background:var(--bg6);flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -80,66 +86,16 @@
     .player-info p{font-size:10px;color:var(--text4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .player-btn{background:var(--bg6);color:var(--text2);border:none;width:30px;height:30px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all .15s;min-width:30px;min-height:30px;flex-shrink:0}
     .player-btn:active{transform:scale(.95);background:var(--bg7);color:#fff}
-    .player-btn:disabled{opacity:0.3;cursor:not-allowed}
     .progress{flex:1;min-width:60px;height:4px;background:var(--bg5);border-radius:3px;cursor:pointer;position:relative}
     .progress-bar{height:100%;background:var(--primary);border-radius:3px;width:0%;transition:width .1s linear}
     .time{font-size:10px;color:var(--text5);min-width:55px;text-align:right;pointer-events:none;font-variant-numeric:tabular-nums}
     
-    /* VISIBLE YOUTUBE PLAYER AREA - FIXED FOR FILE:// */
-    #ytPlayerArea{
-      position:fixed;
-      bottom:80px;
-      right:20px;
-      width:280px;
-      background:var(--bg2);
-      border:1px solid var(--border);
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow:0 8px 30px rgba(0,0,0,.6);
-      z-index:150;
-      display:none;
-      transition:all .3s ease;
-    }
-    #ytPlayerArea.show{display:block;animation:slideIn .3s ease}
-    @keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
-    #ytPlayerArea iframe{width:100%;height:157px;border:none;display:block;background:#000}
-    .ytPlayerHeader{
-      padding:8px 12px;
-      background:var(--bg3);
-      border-bottom:1px solid var(--border);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      font-size:11px;
-      color:var(--text3);
-    }
-    .ytPlayerHeader span{font-weight:600;color:var(--primary)}
-    .ytClose{
-      background:none;
-      border:none;
-      color:var(--text3);
-      cursor:pointer;
-      padding:4px;
-      border-radius:4px;
-      font-size:14px;
-    }
-    .ytClose:hover{background:var(--bg5);color:var(--text)}
-    .ytError{
-      padding:20px;
-      text-align:center;
-      color:var(--text3);
-      font-size:12px;
-    }
-    .ytError a{
-      color:var(--primary);
-      text-decoration:underline;
-      cursor:pointer;
-    }
-    
+    /* EMPTY STATE */
     .empty{text-align:center;padding:30px 15px;color:var(--text5);width:100%}
     .empty i{font-size:40px;color:#333;margin-bottom:12px;display:block}
     .empty p{font-size:13px;line-height:1.4}
     
+    /* MODAL */
     .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:200;align-items:center;justify-content:center;padding:15px;backdrop-filter:blur(5px)}
     .modal.active{display:flex}
     .modal-box{background:var(--bg2);border-radius:14px;padding:16px;width:100%;max-width:420px;border:1px solid var(--border2);max-height:88vh;overflow-y:auto;box-shadow:0 12px 40px rgba(0,0,0,.5)}
@@ -147,6 +103,7 @@
     .modal-box input{width:100%;padding:10px 12px;margin:6px 0;border-radius:10px;border:1px solid var(--border3);background:var(--bg5);color:var(--text);font-size:13px;transition:border-color .15s}
     .modal-box input:focus{border-color:var(--primary);outline:none}
     
+    /* TOC */
     .toc-list{max-height:60vh;overflow-y:auto;margin:10px 0;padding-right:4px}
     .toc-sec{margin-bottom:10px;border-bottom:1px solid var(--bg7);padding-bottom:8px}
     .toc-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:6px 0;color:#ddd;font-size:13px;gap:10px}
@@ -184,6 +141,7 @@
     
     ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg7);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--bg8)}
     
+    /* RESPONSIVE & DESKTOP FIX */
     @media(max-width:768px){
       .menu-toggle{display:flex}
       .sidebar{position:fixed;left:0;top:0;bottom:0;width:220px;transform:translateX(-102%);height:100vh;padding-bottom:70px;z-index:150;transition:transform .25s ease-out;background:var(--bg);border-right:1px solid var(--border)}
@@ -196,7 +154,6 @@
       .player{padding:6px 8px}
       .player-img{width:38px;height:38px}
       .player-btn{width:28px;height:28px;font-size:11px}
-      #ytPlayerArea{width:90%;right:5%;bottom:80px}
       .sec-header{flex-wrap:wrap}
       .sec-header .meta{order:2;width:100%;margin-top:6px}
       .sec-header p{max-width:100%}
@@ -253,17 +210,8 @@
         <button class="player-btn" onclick="nextTrack()" aria-label="Selanjutnya"><i class="fas fa-step-forward"></i></button>
         <div class="progress" id="progress" onclick="seek(event)" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" id="progressBar"></div></div>
         <span class="time" id="timeDisplay">0:00 / 0:00</span>
-        <button class="player-btn" id="btnDownload" onclick="downloadCurrent()" aria-label="Download" title="Download tidak tersedia untuk YouTube"><i class="fas fa-download"></i></button>
+        <button class="player-btn" onclick="downloadCurrent()" aria-label="Download"><i class="fas fa-download"></i></button>
       </div>
-    </div>
-    
-    <!-- VISIBLE YOUTUBE PLAYER AREA - FIXED -->
-    <div id="ytPlayerArea">
-      <div class="ytPlayerHeader">
-        <span><i class="fab fa-youtube" style="color:#ff0000;margin-right:6px"></i>YouTube Player</span>
-        <button class="ytClose" onclick="hideYtPlayer()" title="Tutup"><i class="fas fa-times"></i></button>
-      </div>
-      <div id="ytVisiblePlayer"></div>
     </div>
   </div>
 
@@ -276,7 +224,7 @@
         <button class="player-btn" id="typeUrl" onclick="switchImport('url')" style="flex:1;border-radius:8px;background:var(--primary);color:#fff" role="tab" aria-selected="true">URL</button>
       </div>
       <input type="file" id="fileInput" accept=".xml,.rss,application/rss+xml,application/xml" style="display:none">
-      <input type="url" id="urlInput" placeholder="https://example.com/feed.xml atau YouTube Link" autocomplete="off">
+      <input type="url" id="urlInput" placeholder="https://example.com/feed.xml" autocomplete="off">
       <div class="actions"><button class="secondary" onclick="closeModal('importModal')">Batal</button><button class="primary" id="btnImport">Import</button></div>
     </div>
   </div>
@@ -287,14 +235,6 @@
       <div style="padding:10px 0;border-bottom:1px solid var(--bg7);display:flex;justify-content:space-between;align-items:center;font-size:13px;gap:12px">
         <label>Auto-restore playlist</label>
         <div class="toggle" id="toggleRestore" onclick="toggleSetting('autoRestore')" role="switch" aria-checked="true" tabindex="0"></div>
-      </div>
-      <div style="padding:10px 0;border-bottom:1px solid var(--bg7);display:flex;flex-direction:column;gap:8px;font-size:13px;">
-        <label style="color:var(--text2)">YouTube Data API Key</label>
-        <input type="text" id="ytApiKeyInput" placeholder="Masukkan API Key..." style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--border3);background:var(--bg5);color:var(--text);font-size:12px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="color:var(--text3)">Enable YouTube Support</span>
-          <div class="toggle" id="toggleYt" onclick="toggleSetting('ytEnabled')" role="switch" aria-checked="false" tabindex="0"></div>
-        </div>
       </div>
       <div class="actions">
         <button class="danger" onclick="wipeAllData(event)">Hapus Data</button>
@@ -319,45 +259,13 @@
     const esc = s => { if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML; };
     const fmt = s => { if(!s||isNaN(s)||!isFinite(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+String(sec).padStart(2,'0'); };
     
-    let app = { sections:[], tracks:[], settings:{ autoRestore:true, ytApiKey:'', ytEnabled:false } };
-    let state = { idx:0, playing:false, shuffle:false, repeat:0, tab:'all', importType:'url', isYouTube:false };
+    let app = { sections:[], tracks:[], settings:{ autoRestore:true } };
+    let state = { idx:0, playing:false, shuffle:false, repeat:0, tab:'all', importType:'url' };
     const audio = $('audio');
-    let ytPlayer = null, ytReady = false, ytProgressTimer = null, ytVideoId = null;
     let popupWin = null, marqueeTimers = [], toastTimer = null;
     
-    // FIXED: Load YouTube IFrame API properly
-    function loadYouTubeAPI() {
-      if(window.YT && window.YT.Player) {
-        ytReady = true;
-        return;
-      }
-      const tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
-      const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    }
-    
-    // FIXED: Global callback for YouTube API
-    window.onYouTubeIframeAPIReady = function() {
-      ytReady = true;
-      console.log('✅ YouTube iframe API ready');
-    };
-    
     function init() {
-      loadData(); 
-      render(); 
-      updateBadges(); 
-      setupEvents(); 
-      syncSettingsUI();
-      loadYouTubeAPI();
-      
-      // Load API key from localStorage
-      const savedKey = localStorage.getItem('ytApiKey');
-      if(savedKey) {
-        app.settings.ytApiKey = savedKey;
-        $('ytApiKeyInput').value = savedKey;
-      }
-      
+      loadData(); render(); updateBadges(); setupEvents();
       if(app.settings.autoRestore && app.tracks.length>0){
         const idx = parseInt(localStorage.getItem('pod_lastIdx')||'0');
         if(idx>=0 && idx<app.tracks.length){ state.idx=idx; loadTrack(idx,false); }
@@ -374,35 +282,22 @@
     function saveData() { 
       localStorage.setItem('podApp', JSON.stringify(app));
       localStorage.setItem('pod_lastIdx', state.idx);
-      // Save API key separately for persistence
-      if(app.settings.ytApiKey) {
-        localStorage.setItem('ytApiKey', app.settings.ytApiKey);
-      }
     }
     function setupEvents() {
       document.addEventListener('keydown', e=>{
         if(e.target.tagName==='INPUT'||e.target.isContentEditable)return;
         if(e.code==='Space'){e.preventDefault();togglePlay();}
-        if(e.code==='ArrowRight'){e.preventDefault();seekBy(5);}
-        if(e.code==='ArrowLeft'){e.preventDefault();seekBy(-5);}
+        if(e.code==='ArrowRight'){e.preventDefault();audio.currentTime=Math.min(audio.duration||0,audio.currentTime+5);}
+        if(e.code==='ArrowLeft'){e.preventDefault();audio.currentTime=Math.max(0,audio.currentTime-5);}
       });
       ['importModal','settingsModal','tocModal'].forEach(id=>{
         $(id)?.addEventListener('click',e=>{ if(e.target===$(id))closeModal(id); });
-      });
-      $('ytApiKeyInput').addEventListener('input', e=>{ 
-        app.settings.ytApiKey = e.target.value.trim(); 
-        saveData();
       });
       window.addEventListener('resize', ()=>{ 
         if(window.innerWidth>768){ $('sidebar').classList.remove('active');$('overlay').classList.remove('active'); }
         clearTimeout(marqueeTimers[0]);
         marqueeTimers[0] = setTimeout(checkMarquees, 150);
       });
-    }
-    function syncSettingsUI(){
-      $('toggleYt').classList.toggle('active', app.settings.ytEnabled);
-      $('toggleYt').setAttribute('aria-checked', app.settings.ytEnabled);
-      $('ytApiKeyInput').value = app.settings.ytApiKey || '';
     }
     
     function toggleSidebar(e) {
@@ -423,24 +318,26 @@
       app.settings[k] = !app.settings[k]; saveData();
       $('toggleRestore').classList.toggle('active', app.settings.autoRestore);
       $('toggleRestore').setAttribute('aria-checked', app.settings.autoRestore);
-      $('toggleYt').classList.toggle('active', app.settings.ytEnabled);
-      $('toggleYt').setAttribute('aria-checked', app.settings.ytEnabled);
-      toast(app.settings[k]?` ${k} ON`:` ${k} OFF`);
+      toast(app.settings.autoRestore?' Auto-restore ON':' Auto-restore OFF');
     }
+    
+    // ===== RESET vs WIPE =====
     function resetSettings() {
       if(confirm('Reset pengaturan ke default? Data podcast & favorit TETAP ADA.')){
-        app.settings = {autoRestore:true, ytApiKey:app.settings.ytApiKey, ytEnabled:app.settings.ytEnabled}; saveData(); syncSettingsUI();
+        app.settings = {autoRestore:true}; saveData();
+        $('toggleRestore').classList.add('active'); $('toggleRestore').setAttribute('aria-checked','true');
         toast(' Pengaturan direset');
       }
     }
     function wipeAllData(e){
       e?.stopPropagation();
       if(!confirm('HAPUS SEMUA DATA termasuk favorit?\n\nIni tidak bisa dibatalkan!'))return;
-      app = { sections:[], tracks:[], settings:{autoRestore:true, ytApiKey:'', ytEnabled:false} };
-      saveData(); syncSettingsUI(); cleanupPlayers(); state.idx=0; state.playing=false;
+      app = { sections:[], tracks:[], settings:{autoRestore:true} };
+      saveData(); audio.pause(); audio.src=''; state.idx=0; state.playing=false;
       $('playerTitle').textContent='Pilih podcast/Import dulu'; $('playerDesc').textContent='-';
       updatePlayUI(); render(); toast(' Semua data dihapus'); syncPopup();
     }
+    
     function openSettings(e) { e?.stopPropagation(); $('settingsModal').classList.add('active'); }
     
     function toast(msg, icon='') {
@@ -467,40 +364,14 @@
       $('fileInput').style.display=isFile?'block':'none'; $('urlInput').style.display=!isFile?'block':'none';
       if(isFile) setTimeout(()=>$('fileInput')?.click(),50);
     }
-
-    // YOUTUBE HELPERS
-    function extractYtId(url) {
-      const p = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-      const m = url.match(p);
-      return m ? m[1] : null;
-    }
-    function parseISO8601Duration(iso) {
-      const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-      if(!match) return '0:00';
-      const h=parseInt(match[1]||0), m=parseInt(match[2]||0), s=parseInt(match[3]||0);
-      return fmt(h*3600 + m*60 + s);
-    }
-
     $('btnImport').onclick = async (e) => {
-      e?.stopPropagation(); 
-      const btn=$('btnImport');
-      const originalText = btn.textContent;
+      e?.stopPropagation(); const btn=$('btnImport');
       try {
-        btn.classList.add('loading'); btn.disabled=true;
-        if(state.importType === 'url') {
-          const u = $('urlInput').value.trim();
-          if(!u) throw new Error('Masukkan URL');
-          const ytId = extractYtId(u);
-          if(ytId) {
-            await importYouTube(ytId, btn, originalText); return;
-          }
-        }
-        btn.textContent = '⏳ Parsing RSS...';
-        let xml='';
+        btn.classList.add('loading'); btn.disabled=true; let xml='';
         if(state.importType==='file'){
           const f=$('fileInput').files[0]; if(!f) throw new Error('Pilih file RSS/XML dulu'); xml=await f.text();
         }else{
-          const u=$('urlInput').value.trim();
+          const u=$('urlInput').value.trim(); if(!u) throw new Error('Masukkan URL feed'); if(!/^https?:\/\//i.test(u)) throw new Error('URL harus http/https');
           for(const url of [u, `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`]){
             try{ const r=await fetch(url,{mode:'cors'}); if(!r.ok)throw new Error('HTTP '+r.status); xml=await r.text(); break; }catch(err){}
           }
@@ -508,38 +379,8 @@
         }
         parseXML(xml); closeModal('importModal'); toast(' Podcast diimport!'); syncPopup();
       }catch(e){ console.error(e); toast(e.message,'✗'); }
-      finally{ btn.classList.remove('loading'); btn.disabled=false; btn.textContent = originalText; }
+      finally{ btn.classList.remove('loading'); btn.disabled=false; }
     };
-
-    async function importYouTube(id, btn, originalText) {
-      if(!app.settings.ytEnabled) throw new Error('Aktifkan YouTube Support di Pengaturan dulu bre');
-      if(!app.settings.ytApiKey) throw new Error('Masukkan YT API Key di Pengaturan');
-
-      btn.textContent = '⏳ Mengambil data...';
-      
-      const metaRes = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=${id}&key=${app.settings.ytApiKey}`);
-      if(!metaRes.ok) throw new Error('YT API Error: '+metaRes.status);
-      const metaJson = await metaRes.json();
-      if(!metaJson.items?.length) throw new Error('Video tidak ditemukan/dibatasi');
-
-      const item = metaJson.items[0];
-      const title = item.snippet.title;
-      const channel = item.snippet.channelTitle;
-      const thumb = item.snippet.thumbnails.medium?.url || item.snippet.thumbnails.default?.url;
-      const duration = parseISO8601Duration(item.contentDetails.duration);
-      const pubDate = item.snippet.publishedAt;
-
-      app.tracks.push({
-        id: 'yt_'+Date.now(), secId: 'yt_section', title, channel, videoId: id,
-        image: thumb, desc: channel, duration, pubDate, liked: false, source: 'youtube'
-      });
-      if(!app.sections.find(s=>s.id==='yt_section')){
-        app.sections.push({id:'yt_section', title:'YouTube Playlist', desc:'Track dari YouTube', date:new Date().toISOString(), count:0});
-      }
-      app.sections.find(s=>s.id==='yt_section').count = app.tracks.filter(t=>t.secId==='yt_section').length;
-
-      saveData(); render(); closeModal('importModal'); toast('✅ YouTube track ditambahkan!'); syncPopup();
-    }
     
     function parseXML(xml) {
       const p=new DOMParser(), doc=p.parseFromString(xml,'text/xml');
@@ -554,23 +395,33 @@
         if(!url){ const lnk=item.querySelector('link'); if(lnk?.getAttribute('href')) url=lnk.getAttribute('href'); else if(lnk?.textContent) url=lnk.textContent.trim(); }
         if(!url||!/\.(mp3|m4a|aac|ogg|wav|opus)(\?|#|$)/i.test(url)) return;
         let dur=item.querySelector('itunes\\:duration')?.textContent?.trim()||''; if(dur&&!/^\d+:\d{2}(:\d{2})?$/.test(dur)) dur='';
-        app.tracks.push({id:Math.random().toString(36).substr(2,9),secId,title:t,link:url,image:item.querySelector('itunes\\:image')?.getAttribute('href')||item.querySelector('media\\:content')?.getAttribute('url'),desc:item.querySelector('description, summary')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',duration:dur,pubDate:item.querySelector('pubDate, published, updated')?.textContent||'',liked:false, source:'rss'});
+        app.tracks.push({id:Math.random().toString(36).substr(2,9),secId,title:t,link:url,image:item.querySelector('itunes\\:image')?.getAttribute('href')||item.querySelector('media\\:content')?.getAttribute('url'),desc:item.querySelector('description, summary')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',duration:dur,pubDate:item.querySelector('pubDate, published, updated')?.textContent||'',liked:false});
         app.sections.at(-1).count++;
       });
       if(app.tracks.length===0) throw new Error('Gak ada audio valid');
       saveData(); render(); toast(` ${app.tracks.length} episode diimport`); syncPopup();
     }
     
+    // ===== DELETE SECTION - FAVORIT TETAP AMAN =====
     function deleteSection(secId,e){
       e?.stopPropagation(); if(!confirm('Hapus section ini?\n\nTrack favorit TETAP DISIMPAN.'))return;
+      // HANYA hapus track yang TIDAK favorit dari section ini
       app.tracks = app.tracks.filter(t => t.secId !== secId || t.liked);
       app.sections = app.sections.filter(s => s.id !== secId);
-      if(app.tracks.length > 0){ state.idx = Math.min(state.idx, app.tracks.length-1); loadTrack(state.idx, false); }
-      else{ cleanupPlayers(); state.idx=0; $('playerTitle').textContent='Pilih podcast/Import dulu'; $('playerDesc').textContent='-'; updatePlayUI(); }
+      
+      if(app.tracks.length > 0){
+        state.idx = Math.min(state.idx, app.tracks.length-1);
+        loadTrack(state.idx, false);
+      } else {
+        audio.pause(); audio.src=''; state.idx=0;
+        $('playerTitle').textContent='Pilih podcast/Import dulu'; $('playerDesc').textContent='-';
+        updatePlayUI();
+      }
       saveData(); render(); toast(' Section dihapus (favorit aman)'); syncPopup();
     }
+    
     function clearAll(e){e?.stopPropagation();if(!confirm('Hapus SEMUA data termasuk favorit?'))return;
-      app={sections:[],tracks:[],settings:{autoRestore:true, ytApiKey:app.settings.ytApiKey, ytEnabled:app.settings.ytEnabled}};saveData();syncSettingsUI();cleanupPlayers();state.idx=0;state.playing=false;
+      app={sections:[],tracks:[],settings:{autoRestore:true}};saveData();audio.pause();audio.src='';state.idx=0;state.playing=false;
       $('playerTitle').textContent='Pilih podcast/Import dulu';$('playerDesc').textContent='-';updatePlayUI();render();toast(' Semua direset');syncPopup();
     }
     
@@ -586,7 +437,7 @@
     
     function render(filter='') {
       const c=$('playlistContainer');
-      if(app.tracks.length===0){c.innerHTML='<div class="empty"><i class="fas fa-podcast"></i><p>Belum ada podcast bre.<br>Import dari file/URL/YouTube.</p></div>';return;}
+      if(app.tracks.length===0){c.innerHTML='<div class="empty"><i class="fas fa-podcast"></i><p>Belum ada podcast bre.<br>Import dari file/URL.</p></div>';return;}
       let list = state.tab==='liked'?app.tracks.filter(t=>t.liked):app.tracks;
       if(filter){const f=filter.toLowerCase();list=list.filter(t=>t.title.toLowerCase().includes(f)||(t.desc&&t.desc.toLowerCase().includes(f)));}
       if(list.length===0){
@@ -600,10 +451,9 @@
         if(t.secId!==lastSec){lastSec=t.secId;const s=secMap[t.secId];if(s){const ds=s.date?new Date(s.date).toLocaleDateString('id-ID',{year:'numeric',month:'short'}):'-';
         html+=`<div class="section"><div class="sec-header"><div><h3>${esc(s.title)}</h3><p>${esc(s.desc).substring(0,100)}${s.desc.length>100?'...':''}</p><div class="meta"><span><i class="far fa-calendar"></i> ${ds}</span><span><i class="fas fa-list"></i> ${s.count} ep</span></div></div><button class="sec-del" onclick="deleteSection('${s.id}',event)"><i class="fas fa-trash"></i></button></div><div class="playlist">`;}}
         const act=ri===state.idx?' active':'';
-        const ytBadge = t.source==='youtube'?'<span class="yt-badge">YT</span>':'';
         const img=t.image?`<img src="${esc(t.image)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<svg viewBox=\\'0 0 24 24\\'><path d=\\'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z\\'/></svg>'">`:'<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
         const dur=t.duration?`<p><i class="fas fa-clock"></i> ${esc(t.duration)}</p>`:'';
-        html+=`<div class="item${act}" onclick="playAt(${ri})" role="listitem"><div class="item-img">${img}</div><div class="item-info"><div class="marquee-wrap"><h4 class="marquee-text">${ytBadge}${esc(t.title)}</h4></div>${dur}</div><div class="item-actions"><button onclick="event.stopPropagation();toggleLike(${ri})" class="${t.liked?'liked':''}"><i class="${t.liked?'fas':'far'} fa-heart"></i></button><button onclick="event.stopPropagation();dlTrack(${ri})" ${t.source==='youtube'?'disabled title="Download tidak tersedia"':''}><i class="fas fa-download"></i></button></div></div>`;
+        html+=`<div class="item${act}" onclick="playAt(${ri})" role="listitem"><div class="item-img">${img}</div><div class="item-info"><div class="marquee-wrap"><h4 class="marquee-text">${esc(t.title)}</h4></div>${dur}</div><div class="item-actions"><button onclick="event.stopPropagation();toggleLike(${ri})" class="${t.liked?'liked':''}"><i class="${t.liked?'fas':'far'} fa-heart"></i></button><button onclick="event.stopPropagation();dlTrack(${ri})"><i class="fas fa-download"></i></button></div></div>`;
       });
       c.innerHTML=html; setTimeout(()=>{ checkMarquees(); syncPopup(); }, 60);
     }
@@ -622,330 +472,49 @@
       });
     }
     
-    function cleanupPlayers() {
-      audio.pause(); 
-      audio.src = ''; 
-      audio.removeAttribute('src');
-      audio.load();
-      hideYtPlayer();
-      if(ytProgressTimer) {
-        clearInterval(ytProgressTimer);
-        ytProgressTimer = null;
-      }
-      ytVideoId = null;
-    }
-    
-    function hideYtPlayer() {
-      $('ytPlayerArea').classList.remove('show');
-      setTimeout(() => {
-        $('ytPlayerArea').style.display = 'none';
-      }, 300);
-    }
-    
-    function showYtPlayer() {
-      $('ytPlayerArea').style.display = 'block';
-      setTimeout(() => {
-        $('ytPlayerArea').classList.add('show');
-      }, 10);
-    }
-    
-    // FIXED: Better YouTube player initialization
-    function initYtPlayer(videoId) {
-      if(!ytReady) {
-        console.log('⏳ Waiting for YouTube API...');
-        setTimeout(() => initYtPlayer(videoId), 500);
-        return;
-      }
-      
-      const container = $('ytVisiblePlayer');
-      container.innerHTML = ''; // Clear previous
-      
-      try {
-        ytPlayer = new YT.Player('ytVisiblePlayer', {
-          height: '157',
-          width: '280',
-          videoId: videoId,
-          playerVars: {
-            autoplay: 0, // FIXED: Start paused to avoid file:// restriction
-            controls: 1,
-            modestbranding: 1,
-            rel: 0,
-            playsinline: 1
-          },
-          events: {
-            'onReady': onYtReady,
-            'onStateChange': onYtStateChange,
-            'onError': onYtError
-          }
-        });
-        ytVideoId = videoId;
-      } catch(e) {
-        console.error('YouTube player init error:', e);
-        showYtError();
-      }
-    }
-    
-    function showYtError() {
-      const container = $('ytVisiblePlayer');
-      container.innerHTML = `
-        <div class="ytError">
-          <p style="margin-bottom:10px">⚠️ Gagal memuat player YouTube</p>
-          <p style="font-size:11px;margin-bottom:10px">Karena file dibuka dari local, YouTube API terbatas</p>
-          <a onclick="window.open('https://youtube.com/watch?v=${ytVideoId}','_blank')">Buka di YouTube ↗</a>
-        </div>
-      `;
-    }
-    
-    function onYtReady(event) {
-      console.log('✅ YT Player Ready');
-      if(ytProgressTimer) clearInterval(ytProgressTimer);
-    }
-    
-    function onYtStateChange(event) {
-      if(event.data === 1) {
-        state.playing = true;
-        startYtProgressLoop();
-      } else if(event.data === 2 || event.data === 0) {
-        state.playing = false;
-        if(ytProgressTimer) clearInterval(ytProgressTimer);
-        if(event.data === 0) nextTrack();
-      }
-      updatePlayUI();
-      syncPopup();
-    }
-    
-    function onYtError(event) {
-      console.error('YouTube Error:', event.data);
-      showYtError();
-    }
-    
-    function startYtProgressLoop() {
-      if(ytProgressTimer) clearInterval(ytProgressTimer);
-      ytProgressTimer = setInterval(() => {
-        if(ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getDuration) {
-          const cur = ytPlayer.getCurrentTime();
-          const dur = ytPlayer.getDuration();
-          if(dur && isFinite(dur) && dur > 0) {
-            const pct = (cur/dur)*100;
-            $('progressBar').style.width = pct + '%';
-            $('timeDisplay').textContent = fmt(cur) + ' / ' + fmt(dur);
-            $('progress').setAttribute('aria-valuenow', Math.round(pct));
-            syncPopup();
-          }
-        }
-      }, 1000);
-    }
-    
     function loadTrack(i,autoPlay=true) {
-      if(i<0||i>=app.tracks.length)return; 
-      state.idx=i; 
-      const t=app.tracks[i];
-      state.isYouTube = (t.source === 'youtube');
-      
-      $('playerTitle').textContent=t.title||'Tanpa judul'; 
-      $('playerDesc').textContent=t.desc?(t.desc.length>40?t.desc.substring(0,40)+'...':t.desc):'-';
-      
-      $('btnDownload').disabled = state.isYouTube;
-      $('btnDownload').style.opacity = state.isYouTube ? '0.3' : '1';
-      $('btnDownload').title = state.isYouTube ? 'Download tidak tersedia untuk YouTube' : 'Download';
-      
+      if(i<0||i>=app.tracks.length)return; state.idx=i; const t=app.tracks[i];
+      $('playerTitle').textContent=t.title||'Tanpa judul'; $('playerDesc').textContent=t.desc?(t.desc.length>40?t.desc.substring(0,40)+'...':t.desc):'-';
       const imgEl=$('playerImg');
-      if(t.image){
-        const img=new Image();
-        img.onload=()=>{imgEl.innerHTML=`<img src="${esc(t.image)}" alt="">`;checkMarquees();};
-        img.onerror=()=>{imgEl.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';};
-        img.src=t.image;
-      } else {
-        imgEl.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
-      }
-      
-      cleanupPlayers();
-      
-      if(state.isYouTube && t.videoId) {
-        showYtPlayer();
-        ytVideoId = t.videoId;
-        // FIXED: Initialize YouTube player properly
-        setTimeout(() => initYtPlayer(t.videoId), 100);
-      } else {
-        hideYtPlayer();
-        audio.src=t.link; 
-        audio.load(); 
-        if(autoPlay&&state.playing) audio.play().catch(()=>{});
-      }
-      
-      updatePlayUI(); 
-      render($('searchInput').value.toLowerCase()); 
-      setTimeout(checkMarquees,100); 
-      $('progress').setAttribute('aria-valuenow','0');
+      if(t.image){const img=new Image();img.onload=()=>{imgEl.innerHTML=`<img src="${esc(t.image)}" alt="">`;checkMarquees();};img.onerror=()=>{imgEl.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';};img.src=t.image;}
+      else imgEl.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
+      audio.src=t.link; audio.load(); updatePlayUI(); render($('searchInput').value.toLowerCase()); setTimeout(checkMarquees,100); $('progress').setAttribute('aria-valuenow','0');
+      if(autoPlay&&state.playing) audio.play().catch(()=>{});
     }
-    
     function playAt(i){loadTrack(i);togglePlay();closeSidebarMobile();}
     function closeSidebarMobile(){if(window.innerWidth<=768 && $('sidebar').classList.contains('active')){$('sidebar').classList.remove('active');$('overlay').classList.remove('active');}}
+    function togglePlay(){if(!audio.src&&app.tracks.length>0)loadTrack(0);if(audio.paused){audio.play().catch(()=>{});state.playing=true;}else{audio.pause();state.playing=false;}updatePlayUI();syncPopup();}
+    function updatePlayUI(){$('btnPlay').innerHTML=`<i class="fas fa-${state.playing?'pause':'play'}"></i>`;const t=app.tracks[state.idx];if(t){$('btnLike').innerHTML=`<i class="${t.liked?'fas':'far'} fa-heart"></i>`;}}
+    function prevTrack(){if(app.tracks.length===0)return;state.idx=state.shuffle?getRandomIdx():(state.idx-1+app.tracks.length)%app.tracks.length;loadTrack(state.idx);if(state.playing)audio.play().catch(()=>{});syncPopup();}
+    function nextTrack(){if(app.tracks.length===0)return;if(state.repeat===1){audio.currentTime=0;audio.play().catch(()=>{});return;}state.idx=state.shuffle?getRandomIdx():(state.idx+1)%app.tracks.length;if(state.repeat===0&&state.idx===0&&!state.shuffle&&state.playing){state.playing=false;updatePlayUI();audio.pause();toast(' Playlist selesai');return;}loadTrack(state.idx);if(state.playing)audio.play().catch(()=>{});syncPopup();}
+    function getRandomIdx(){if(app.tracks.length<=1)return 0;let idx;do{idx=Math.floor(Math.random()*app.tracks.length);}while(idx===state.idx);return idx;}
+    function toggleShuffle(){state.shuffle=!state.shuffle;updateBadges();syncPopup();toast(state.shuffle?' Acak ON':' Acak OFF');}
+    function toggleRepeat(){state.repeat=(state.repeat+1)%3;updateBadges();syncPopup();const txt=['Mat','1x','All'];toast(` Repeat: ${txt[state.repeat]}`);}
+    function updateBadges(){$('badgeShuffle').classList.toggle('show',state.shuffle);$('badgeRepeat').classList.toggle('show',state.repeat>0);$('repeatText').textContent=state.repeat===1?'1x':state.repeat===2?'All':'Ulang';syncPopup();}
+    function seek(e){const bar=$('progress'),rect=bar.getBoundingClientRect();const pct=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width));audio.currentTime=pct*(audio.duration||0);bar.setAttribute('aria-valuenow',Math.round(pct*100));}
+    audio.addEventListener('timeupdate',()=>{if(audio.duration&&isFinite(audio.duration)){const pct=(audio.currentTime/audio.duration)*100;$('progressBar').style.width=pct+'%';$('timeDisplay').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration);$('progress').setAttribute('aria-valuenow',Math.round(pct));syncPopup();}});
+    audio.addEventListener('loadedmetadata',()=>{if(audio.duration&&isFinite(audio.duration))$('timeDisplay').textContent='0:00 / '+fmt(audio.duration);});
+    audio.addEventListener('error',()=>{toast('✗ Error audio','✗');if(state.playing)nextTrack();});
+    audio.addEventListener('ended',()=>{state.repeat===1?(audio.currentTime=0,audio.play().catch(()=>{})):nextTrack();});
+    audio.addEventListener('play',()=>{state.playing=true;updatePlayUI();syncPopup();});
+    audio.addEventListener('pause',()=>{state.playing=false;updatePlayUI();syncPopup();});
     
-    function togglePlay(){
-      if(!app.tracks.length) return;
-      
-      if(state.isYouTube) {
-        if(!ytPlayer || !ytReady) {
-           loadTrack(state.idx); 
-        } else if(state.playing) {
-          ytPlayer.pauseVideo();
-        } else {
-          ytPlayer.playVideo();
-        }
-      } else {
-        if(!audio.src) loadTrack(state.idx);
-        if(audio.paused) {
-          audio.play().catch(()=>{});
-          state.playing=true;
-        } else {
-          audio.pause();
-          state.playing=false;
-        }
-      }
-      updatePlayUI();
-      syncPopup();
-    }
-    
-    function updatePlayUI(){
-      $('btnPlay').innerHTML=`<i class="fas fa-${state.playing?'pause':'play'}"></i>`;
-      const t=app.tracks[state.idx];
-      if(t){
-        $('btnLike').innerHTML=`<i class="${t.liked?'fas':'far'} fa-heart"></i>`;
-      }
-    }
-    
-    function prevTrack(){
-      if(app.tracks.length===0)return;
-      state.idx=state.shuffle?getRandomIdx():(state.idx-1+app.tracks.length)%app.tracks.length;
-      loadTrack(state.idx);
-      if(state.playing) {
-        if(state.isYouTube && ytPlayer) ytPlayer.playVideo();
-        else if(!state.isYouTube) audio.play().catch(()=>{});
-      }
-      syncPopup();
-    }
-    
-    function nextTrack(){
-      if(app.tracks.length===0)return;
-      if(state.repeat===1){
-        if(state.isYouTube && ytPlayer) ytPlayer.seekTo(0);
-        else audio.currentTime=0;
-        if(state.playing) {
-          if(state.isYouTube && ytPlayer) ytPlayer.playVideo();
-          else audio.play().catch(()=>{});
-        }
-        return;
-      }
-      state.idx=state.shuffle?getRandomIdx():(state.idx+1)%app.tracks.length;
-      if(state.repeat===0&&state.idx===0&&!state.shuffle&&state.playing){
-        state.playing=false;
-        updatePlayUI();
-        if(state.isYouTube && ytPlayer) ytPlayer.pauseVideo();
-        else audio.pause();
-        toast(' Playlist selesai');
-        return;
-      }
-      loadTrack(state.idx);
-      if(state.playing) {
-        if(state.isYouTube && ytPlayer) ytPlayer.playVideo();
-        else audio.play().catch(()=>{});
-      }
-      syncPopup();
-    }
-    
-    function getRandomIdx(){
-      if(app.tracks.length<=1)return 0;
-      let idx;
-      do{idx=Math.floor(Math.random()*app.tracks.length);}while(idx===state.idx);
-      return idx;
-    }
-    
-    function seekBy(seconds) {
-      if(state.isYouTube && ytPlayer && ytPlayer.getCurrentTime) {
-        const cur = ytPlayer.getCurrentTime();
-        ytPlayer.seekTo(cur + seconds, true);
-      } else {
-        audio.currentTime = Math.max(0, Math.min(audio.duration, audio.currentTime + seconds));
-      }
-    }
-    
-    function seek(e){
-      const bar = $('progress'), rect = bar.getBoundingClientRect();
-      const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-      
-      if(state.isYouTube && ytPlayer && ytPlayer.getDuration) {
-        ytPlayer.seekTo(pct * ytPlayer.getDuration(), true);
-      } else if(audio.duration) {
-        audio.currentTime = pct * audio.duration;
-      }
-      bar.setAttribute('aria-valuenow', Math.round(pct * 100));
-    }
-    
-    audio.addEventListener('timeupdate',()=>{
-      if(state.isYouTube) return;
-      if(audio.duration&&isFinite(audio.duration)){
-        const pct=(audio.currentTime/audio.duration)*100;
-        $('progressBar').style.width=pct+'%';
-        $('timeDisplay').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration);
-        $('progress').setAttribute('aria-valuenow',Math.round(pct));
-        syncPopup();
-      }
-    });
-    audio.addEventListener('loadedmetadata',()=>{
-      if(state.isYouTube) return;
-      if(audio.duration&&isFinite(audio.duration))$('timeDisplay').textContent='0:00 / '+fmt(audio.duration);
-    });
-    audio.addEventListener('error',()=>{
-      if(state.isYouTube) return;
-      toast('✗ Error audio','✗');
-      if(state.playing) nextTrack();
-    });
-    audio.addEventListener('ended',()=>{
-      if(state.isYouTube) return;
-      state.repeat===1?(audio.currentTime=0,audio.play().catch(()=>{})):nextTrack();
-    });
-    audio.addEventListener('play',()=>{
-      if(state.isYouTube) return;
-      state.playing=true;updatePlayUI();syncPopup();
-    });
-    audio.addEventListener('pause',()=>{
-      if(state.isYouTube) return;
-      state.playing=false;updatePlayUI();syncPopup();
-    });
-    
-    function toggleLike(i){if(i<0||i>=app.tracks.length)return;app.tracks[i].liked=!app.tracks[i].liked;saveData();render($('searchInput').value.toLowerCase());updatePlayUI();syncPopup();toast(app.tracks[i].liked?' Favorit':' Dihapus dari favorit');}
-    function toggleLikeCurrent(){toggleLike(state.idx);}
-    async function dlTrack(i){
+    // ===== TOGGLE LIKE - LANGSUNG UPDATE UI =====
+    function toggleLike(i){
       if(i<0||i>=app.tracks.length)return;
-      const t=app.tracks[i];
-      if(!t.link)return;
-      if(t.source==='youtube'){
-        toast('Download tidak tersedia untuk YouTube','info');
-        return;
-      }
-      try{
-        const a=document.createElement('a');
-        a.href=t.link;
-        a.download=(t.title||'pod').replace(/[^a-z0-9]/gi,'_').slice(0,50)+'.mp3';
-        a.target='_blank';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        toast(' Download mulai');
-      }catch(e){
-        window.open(t.link,'_blank');
-        toast(' Dibuka di tab baru');
-      }
+      app.tracks[i].liked = !app.tracks[i].liked;
+      saveData();
+      // Re-render dengan filter tab saat ini (favorit langsung ilang kalau di-unlike)
+      render($('searchInput').value.toLowerCase());
+      updatePlayUI(); syncPopup();
+      toast(app.tracks[i].liked?' Favorit':' Dihapus dari favorit');
     }
+    function toggleLikeCurrent(){toggleLike(state.idx);}
+    
+    async function dlTrack(i){if(i<0||i>=app.tracks.length)return;const t=app.tracks[i];if(!t.link)return;try{const a=document.createElement('a');a.href=t.link;a.download=(t.title||'pod').replace(/[^a-z0-9]/gi,'_').slice(0,50)+'.mp3';a.target='_blank';document.body.appendChild(a);a.click();document.body.removeChild(a);toast(' Download mulai');}catch(e){window.open(t.link,'_blank');toast(' Dibuka di tab baru');}}
     function downloadCurrent(){dlTrack(state.idx);}
     
-    function openPopup(e){
-      e?.stopPropagation();
-      if(innerWidth<768){toast('Mini player buat desktop bre','info');return;}
-      if(popupWin&&!popupWin.closed){popupWin.focus();return;}
-      popupWin=window.open('','podMini','width=340,height=500,resizable=no,scrollbars=no');
-      if(!popupWin){toast('✗ Izinkan popup bre','✗');return;}
+    function openPopup(e){e?.stopPropagation();if(innerWidth<768){toast('Mini player buat desktop bre','info');return;}if(popupWin&&!popupWin.closed){popupWin.focus();return;}popupWin=window.open('','podMini','width=340,height=500,resizable=no,scrollbars=no');if(!popupWin){toast('✗ Izinkan popup bre','✗');return;}
       popupWin.document.write(`<!DOCTYPE html><html><head><title>Mini - Jirang</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"><style>
         :root{--bg:#0b0b0f;--bg2:#101016;--bg3:#12121a;--bg4:#14141c;--bg5:#16161f;--bg6:#181822;--border:#16161f;--text:#e0e0e0;--text2:#aaa;--text3:#777;--text4:#666;--primary:#007bff}
         *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;display:flex;flex-direction:column;height:100vh;overflow:hidden}.wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:15px;text-align:center}.cover{width:150px;height:150px;border-radius:12px;background:var(--bg6);margin-bottom:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;box-shadow:0 6px 20px rgba(0,0,0,.4)}.cover img{width:100%;height:100%;object-fit:cover}.cover svg{width:45px;height:45px;fill:#444;position:absolute}.info h3{font-size:14px;margin-bottom:4px;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.info p{font-size:11px;color:var(--text4);margin:2px 0;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.badges{display:flex;gap:6px;justify-content:center;margin:6px 0}.badge{background:var(--bg4);color:var(--primary);padding:2px 8px;border-radius:6px;font-size:9px;display:none;align-items:center;gap:3px}.badge.show{display:flex}.ctrl{display:flex;gap:14px;margin:12px 0}.btn{background:var(--bg6);color:var(--text2);border:none;width:36px;height:36px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s}.btn:active{transform:scale(.95);background:var(--bg7);color:#fff}.bar{width:92%;height:5px;background:var(--bg5);border-radius:3px;margin:10px auto;cursor:pointer;position:relative}.fill{height:100%;background:var(--primary);border-radius:3px;width:0%;transition:width .1s linear}.time{font-size:10px;color:var(--text4);font-variant-numeric:tabular-nums}.footer{padding:8px;text-align:center;font-size:10px;color:var(--text4);border-top:1px solid var(--border)}.marquee{white-space:nowrap;display:inline-block;will-change:transform;backface-visibility:hidden}.marquee.active{animation:scroll 22s linear infinite;padding-left:100%}.marquee:hover{animation-play-state:paused}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
@@ -984,20 +553,6 @@
       if(!popupWin||popupWin.closed)return;
       const isEmpty = app.tracks.length === 0;
       const t = isEmpty ? null : app.tracks[state.idx];
-      
-      let currentTime = 0, duration = 0;
-      if(!isEmpty) {
-        if(state.isYouTube && ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getDuration) {
-          currentTime = ytPlayer.getCurrentTime();
-          duration = ytPlayer.getDuration();
-        } else if(!state.isYouTube && audio.duration && isFinite(audio.duration)) {
-          currentTime = audio.currentTime;
-          duration = audio.duration;
-        }
-      }
-      
-      const pct = duration ? (currentTime/duration)*100 : 0;
-      
       popupWin.postMessage({
         type:'sync',
         title: t ? (t.title||'Pilih podcast/Import dulu') : 'Pilih podcast/Import dulu',
@@ -1006,18 +561,12 @@
         playing: state.playing && !isEmpty,
         shuffle: state.shuffle,
         repeat: state.repeat,
-        time: pct,
-        timeTxt: (!isEmpty) ? fmt(currentTime) + ' / ' + fmt(duration) : '0:00 / 0:00',
+        time: (!isEmpty && audio.duration && isFinite(audio.duration)) ? (audio.currentTime/audio.duration*100) : 0,
+        timeTxt: (!isEmpty) ? fmt(audio.currentTime)+' / '+fmt(audio.duration) : '0:00 / 0:00',
         empty: isEmpty
       },'*');
     }
-    window.addEventListener('message', e=>{if(popupWin&&e.source!==popupWin)return;if(e.data?.type==='ctrl'){if(e.data.action==='play')togglePlay();if(e.data.action==='prev')prevTrack();if(e.data.action==='next')nextTrack();}else if(e.data?.type==='seek'){
-      if(state.isYouTube && ytPlayer && ytPlayer.getDuration) {
-        ytPlayer.seekTo(e.data.percent * ytPlayer.getDuration(), true);
-      } else if(!state.isYouTube && e.data.percent!==undefined && audio.duration){
-        audio.currentTime=e.data.percent*audio.duration;
-      }
-    }}, false);
+    window.addEventListener('message', e=>{if(popupWin&&e.source!==popupWin)return;if(e.data?.type==='ctrl'){if(e.data.action==='play')togglePlay();if(e.data.action==='prev')prevTrack();if(e.data.action==='next')nextTrack();}else if(e.data?.type==='seek'){if(e.data.percent!==undefined&&audio.duration&&isFinite(audio.duration)){audio.currentTime=e.data.percent*audio.duration;}else if(e.data.delta){audio.currentTime=Math.max(0,Math.min(audio.duration,audio.currentTime+e.data.delta));}}}, false);
     
     if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
   </script>
