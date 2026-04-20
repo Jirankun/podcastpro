@@ -11,7 +11,6 @@
     body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;overflow-y:hidden;height:100vh;touch-action:manipulation;line-height:1.3}
     .app{display:flex;flex-direction:column;height:100vh;position:relative;max-width:100vw;overflow:hidden}
     
-    /* HEADER */
     .header{position:sticky;top:0;z-index:130;background:var(--bg2);border-bottom:1px solid var(--border2);padding:8px 10px;display:flex;gap:8px;align-items:center;flex-shrink:0}
     .menu-toggle,.icon-btn{background:var(--bg7);border:none;color:var(--text2);padding:10px;border-radius:8px;cursor:pointer;font-size:14px;flex-shrink:0;transition:all .15s;display:flex;align-items:center;justify-content:center;min-width:40px;min-height:40px}
     .menu-toggle:active,.icon-btn:active{transform:scale(.95);background:var(--bg8)}
@@ -22,54 +21,30 @@
     .badge.show{display:flex}
     .badge i{font-size:9px}
     
-    /* TABS */
     .tabs{position:sticky;top:56px;z-index:125;background:var(--bg);border-bottom:1px solid var(--border);padding:6px 10px;display:flex;gap:6px;flex-shrink:0;align-items:center;flex-wrap:wrap}
     .tab{padding:6px 12px;background:var(--bg5);border:none;border-radius:8px;color:var(--text3);cursor:pointer;font-size:11px;font-weight:600;transition:all .15s;min-height:34px;white-space:nowrap}
     .tab:active{transform:scale(.98)}
     .tab.active{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(0,123,255,.4)}
     
-    /* MAIN WRAPPER */
     .main-wrapper{display:flex;flex:1;overflow:hidden;position:relative;max-width:100vw}
     
-    /* SIDEBAR */
     .sidebar{width:200px;background:var(--bg);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:10px;gap:6px;overflow-y:auto;flex-shrink:0;z-index:50;height:calc(100vh - 56px);padding-bottom:100px;position:relative}
     .sidebar button{background:var(--bg4);color:var(--text2);border:none;padding:10px 12px;border-radius:8px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:10px;font-size:12px;transition:background .15s;min-height:42px}
     .sidebar button:active{transform:scale(.98);background:var(--bg7);color:#fff}
     .sidebar button i{width:16px;text-align:center;font-size:13px}
     
-    /* DEV CREDIT */
-    .dev-credit{
-      margin-top:8px;padding:8px 10px;background:linear-gradient(135deg,var(--bg7),var(--bg8));
-      border:1px solid var(--border3);border-radius:10px;
-      box-shadow:0 4px 12px rgba(0,123,255,0.15);
-      display:flex;align-items:center;justify-content:space-between;
-      animation:glowPulse 3s ease-in-out infinite
-    }
-    @keyframes glowPulse{
-      0%,100%{box-shadow:0 4px 12px rgba(0,123,255,0.15)}
-      50%{box-shadow:0 4px 20px rgba(0,123,255,0.35)}
-    }
-    .dev-name{
-      font-size:10px;font-weight:700;letter-spacing:0.5px;
-      background:linear-gradient(90deg,#00d4ff,#7b2fff,#ff2f92);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-      text-shadow:0 0 10px rgba(123,47,255,0.3);cursor:pointer;
-      transition:transform .2s,filter .2s;text-decoration:none;display:block
-    }
+    .dev-credit{margin-top:8px;padding:8px 10px;background:linear-gradient(135deg,var(--bg7),var(--bg8));border:1px solid var(--border3);border-radius:10px;box-shadow:0 4px 12px rgba(0,123,255,0.15);display:flex;align-items:center;justify-content:space-between;animation:glowPulse 3s ease-in-out infinite}
+    @keyframes glowPulse{0%,100%{box-shadow:0 4px 12px rgba(0,123,255,0.15)}50%{box-shadow:0 4px 20px rgba(0,123,255,0.35)}}
+    .dev-name{font-size:10px;font-weight:700;letter-spacing:0.5px;background:linear-gradient(90deg,#00d4ff,#7b2fff,#ff2f92);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 0 10px rgba(123,47,255,0.3);cursor:pointer;transition:transform .2s,filter .2s;text-decoration:none;display:block}
     .dev-name:hover{transform:scale(1.05);filter:brightness(1.2)}
     .dev-name:active{transform:scale(0.98)}
-    .dev-gh{
-      width:24px;height:24px;display:flex;align-items:center;justify-content:center;
-      color:var(--text2);transition:all .2s;border-radius:6px;text-decoration:none
-    }
+    .dev-gh{width:24px;height:24px;display:flex;align-items:center;justify-content:center;color:var(--text2);transition:all .2s;border-radius:6px;text-decoration:none}
     .dev-gh:hover{color:#fff;background:var(--bg6);transform:translateY(-1px)}
     .dev-gh:active{transform:scale(0.95)}
     
-    /* OVERLAY */
     .overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:140;pointer-events:none;opacity:0;transition:opacity .2s}
     .overlay.active{opacity:1;pointer-events:auto}
     
-    /* CONTENT */
     .content{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 12px 125px;position:relative;z-index:10;-webkit-overflow-scrolling:touch;width:100%}
     .section{margin-bottom:16px;width:100%}
     .sec-header{background:var(--bg3);padding:12px;border-radius:10px;margin-bottom:10px;border-left:3px solid var(--primary);display:flex;justify-content:space-between;align-items:flex-start;gap:10px;width:100%}
@@ -79,33 +54,18 @@
     .sec-del{background:none;border:none;color:var(--text5);cursor:pointer;font-size:11px;padding:6px;transition:color .15s;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center;border-radius:6px;flex-shrink:0}
     .sec-del:active{color:var(--danger);background:rgba(255,77,77,.15)}
     
-    /* PLAYLIST */
     .playlist{display:flex;flex-direction:column;gap:6px;width:100%}
     .item{display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--bg3);border-radius:10px;cursor:pointer;border:1px solid transparent;transition:border-color .15s,background .15s;touch-action:manipulation;min-height:62px;width:100%;flex-wrap:nowrap}
     .item:active{transform:scale(.99);background:var(--bg6);border-color:var(--primary)}
     .item-info{flex:1 1 0%;min-width:0;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
     .item-actions{flex:0 0 auto;flex-shrink:0;display:flex;gap:6px;align-items:center;margin-left:auto}
     
-    /* HOVER FIX */
-    @media (hover: hover) and (pointer: fine) {
-      .item:hover{border-color:var(--primary);background:var(--bg6)}
-      .item:hover .item-actions button{background:var(--bg7)}
-      .menu-toggle:hover,.icon-btn:hover{background:var(--bg8)}
-      .sidebar button:hover{background:var(--bg6);color:#fff}
-      .tab:hover:not(.active){background:var(--bg6)}
-      .player-btn:hover{background:var(--bg7);color:#fff}
-      .item-actions button:hover{background:var(--bg7);color:#fff}
-      .sec-del:hover{color:var(--danger);background:rgba(255,77,77,.15)}
-      .search-box:hover{border-color:var(--border3)}
-    }
+    @media (hover: hover) and (pointer: fine){.item:hover{border-color:var(--primary);background:var(--bg6)}.item:hover .item-actions button{background:var(--bg7)}.menu-toggle:hover,.icon-btn:hover{background:var(--bg8)}.sidebar button:hover{background:var(--bg6);color:#fff}.tab:hover:not(.active){background:var(--bg6)}.player-btn:hover{background:var(--bg7);color:#fff}.item-actions button:hover{background:var(--bg7);color:#fff}.sec-del:hover{color:var(--danger);background:rgba(255,77,77,.15)}.search-box:hover{border-color:var(--border3)}}
     
-    /* MARQUEE */
     .marquee-wrap{overflow:hidden;width:100%;position:relative}
     .marquee-text{white-space:nowrap;display:inline-block;will-change:transform;backface-visibility:hidden;transition:transform .1s}
     .marquee-text.active{animation:scroll 20s linear infinite;padding-left:100%}
-    @media (hover: hover) {
-      .marquee-text:hover{animation-play-state:paused}
-    }
+    @media (hover: hover){.marquee-text:hover{animation-play-state:paused}}
     @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
     
     .item-info h4{font-size:13px;color:#ddd;margin-bottom:2px;line-height:1.3;overflow:hidden;text-overflow:ellipsis}
@@ -114,12 +74,11 @@
     .item-actions button:active{transform:scale(.95);background:var(--bg7);color:#fff}
     .item-actions button.liked{color:var(--danger)}
     
-    /* PLAYER */
     .player{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);padding:8px 10px;z-index:200;pointer-events:auto;box-shadow:0 -3px 15px rgba(0,0,0,.4);width:100%}
     .player-controls{display:flex;align-items:center;gap:8px}
     .player-img{width:42px;height:42px;border-radius:10px;background:var(--bg6);flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .player-img img{width:100%;height:100%;object-fit:cover;border-radius:10px}
-    .player-img svg{width:18px;height:18px;fill:#444}
+    .player-img img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block}
+    .player-img svg{width:18px;height:18px;fill:#444;display:block}
     .player-info{flex:1 1 0%;min-width:0;overflow:hidden}
     .player-info h4{font-size:12px;color:#ddd;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .player-info p{font-size:10px;color:var(--text4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -129,12 +88,10 @@
     .progress-bar{height:100%;background:var(--primary);border-radius:3px;width:0%;transition:width .1s linear}
     .time{font-size:10px;color:var(--text5);min-width:55px;text-align:right;pointer-events:none;font-variant-numeric:tabular-nums}
     
-    /* EMPTY STATE */
     .empty{text-align:center;padding:30px 15px;color:var(--text5);width:100%}
     .empty i{font-size:40px;color:#333;margin-bottom:12px;display:block}
     .empty p{font-size:13px;line-height:1.4}
     
-    /* MODAL */
     .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:200;align-items:center;justify-content:center;padding:15px;backdrop-filter:blur(5px)}
     .modal.active{display:flex}
     .modal-box{background:var(--bg2);border-radius:14px;padding:16px;width:100%;max-width:420px;border:1px solid var(--border2);max-height:88vh;overflow-y:auto;box-shadow:0 12px 40px rgba(0,0,0,.5)}
@@ -143,23 +100,21 @@
     .modal-box input:focus{border-color:var(--primary);outline:none}
     .modal-box input::placeholder{color:var(--text4)}
     
-    /* SUGGESTIONS GRID - COMPACT */
     .sug-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin:10px 0;max-height:60vh;overflow-y:auto;padding-right:4px}
     .sug-card{background:var(--bg3);border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:all .15s;border:1px solid transparent;position:relative}
     .sug-card:active{transform:scale(.97);background:var(--bg6);border-color:var(--primary)}
     .sug-img{width:100%;aspect-ratio:1;border-radius:6px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .sug-img img{width:100%;height:100%;object-fit:cover}
-    .sug-img svg{width:24px;height:24px;fill:#444}
+    .sug-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .sug-img svg{width:24px;height:24px;fill:#444;display:block}
     .sug-title{font-size:10px;font-weight:600;color:#ddd;line-height:1.1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .sug-desc{font-size:8px;color:var(--text4);line-height:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .sug-add{background:var(--primary);color:#fff;border:none;padding:5px;border-radius:5px;font-size:9px;font-weight:600;cursor:pointer;margin-top:auto;transition:background .15s;z-index:10}
     .sug-add:active{background:#0056b3}
     
-    /* PODCAST DETAIL MODAL */
     .detail-header{position:relative;margin-bottom:12px}
     .detail-img{width:100%;aspect-ratio:1;border-radius:12px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:10px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
-    .detail-img img{width:100%;height:100%;object-fit:cover}
-    .detail-img svg{width:64px;height:64px;fill:#444}
+    .detail-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .detail-img svg{width:64px;height:64px;fill:#444;display:block}
     .detail-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.3}
     .detail-meta{display:flex;flex-direction:column;gap:8px}
     .detail-row{display:flex;gap:8px;align-items:flex-start;font-size:11px}
@@ -197,7 +152,6 @@
     .toast i{font-size:13px}
     @keyframes toastAnim{0%{opacity:0;transform:translate(-50%,20px)}10%,90%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-10px)}}
     
-    /* TOC - MINIMALIST FIX */
     .toc-list{max-height:70vh;overflow-y:auto;margin:10px 0;padding-right:4px;-webkit-overflow-scrolling:touch}
     .toc-sec{margin-bottom:8px;border-bottom:1px solid var(--border);padding-bottom:6px}
     .toc-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:4px 0;color:var(--text2);font-size:11px;gap:8px;font-weight:500}
@@ -214,7 +168,6 @@
     
     ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg7);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--bg8)}
     
-    /* RESPONSIVE */
     @media(max-width:768px){
       .menu-toggle{display:flex}
       .sidebar{position:fixed;left:0;top:0;bottom:0;width:220px;transform:translateX(-102%);height:100vh;padding-bottom:110px;z-index:150;transition:transform .25s ease-out;background:var(--bg);border-right:1px solid var(--border)}
@@ -273,7 +226,6 @@
         <button onclick="openPopup()"><i class="fas fa-external-link-alt"></i>Mini Player</button>
         <button onclick="clearAll()"><i class="fas fa-trash-can"></i>Hapus Semua</button>
         
-        <!-- DEV CREDIT -->
         <div class="dev-credit">
           <a href="https://jirankun.github.io/portofoliozhyllan" target="_blank" rel="noopener noreferrer" class="dev-name" title="Portofolio Zhyllan">ZHYLLAN-FYLLAH</a>
           <a href="https://github.com/jirankun" target="_blank" rel="noopener noreferrer" class="dev-gh" title="GitHub Jirankun" aria-label="GitHub Jirankun">
@@ -290,7 +242,7 @@
     
     <div class="player" role="region" aria-label="Pemuter">
       <div class="player-controls">
-        <div class="player-img" id="playerImg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
+        <div class="player-img" id="playerImg" aria-hidden="true"></div>
         <div class="player-info">
           <div class="marquee-wrap"><h4 id="playerTitle" class="marquee-text">Pilih podcast/Import dulu</h4></div>
           <div class="marquee-wrap"><p id="playerDesc" class="marquee-text">-</p></div>
@@ -306,7 +258,6 @@
     </div>
   </div>
 
-  <!-- MODALS -->
   <div class="modal" id="importModal" role="dialog" aria-modal="true" aria-labelledby="importTitle">
     <div class="modal-box">
       <h3 id="importTitle"><i class="fas fa-cloud-upload-alt"></i> Import Podcast</h3>
@@ -323,7 +274,6 @@
     </div>
   </div>
   
-  <!-- PODCAST DETAIL MODAL -->
   <div class="modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
     <div class="modal-box">
       <div id="detailContent"></div>
@@ -372,17 +322,42 @@
     const esc = s => { if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML; };
     const fmt = s => { if(!s||isNaN(s)||!isFinite(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+String(sec).padStart(2,'0'); };
     
-    // Music icon SVG
-    const musicIcon = '<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
+    // Music icon SVG - single source
+    const musicIconSVG = '<svg viewBox="0 0 24 24" style="display:block"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
     
     let app = { sections:[], tracks:[], settings:{ autoRestore:true, autoResume:true, directLinkSupport:false }, suggestions:[] };
     let state = { idx:0, playing:false, shuffle:false, repeat:0, tab:'all', importType:'url', currentDetailUrl:'' };
     const audio = $('audio');
-    let popupWin = null, marqueeTimers = [], toastTimer = null, resumeTimer = null;
+    let popupWin = null, marqueeTimers = [], toastTimer = null;
+    
+    // Helper: Set image with fallback - ENSURES ONLY ONE SHOWS
+    function setImage(container, imgUrl){
+      if(!container) return;
+      // Clear container first
+      container.innerHTML = '';
+      
+      if(imgUrl){
+        const img = new Image();
+        img.onload = () => {
+          container.innerHTML = ''; // Clear any existing
+          container.appendChild(img);
+        };
+        img.onerror = () => {
+          container.innerHTML = musicIconSVG; // Show icon on error
+        };
+        img.src = imgUrl;
+        // Set icon as fallback initially
+        container.innerHTML = musicIconSVG;
+      } else {
+        container.innerHTML = musicIconSVG;
+      }
+    }
     
     function init() {
       loadData(); render(); updateBadges(); setupEvents(); updateDirectLinkUI();
       setupAutoResume();
+      // Set initial icon
+      setImage($('playerImg'), null);
       if(app.settings.autoRestore && app.tracks.length>0){
         const idx = parseInt(localStorage.getItem('pod_lastIdx')||'0');
         if(idx>=0 && idx<app.tracks.length){ state.idx=idx; loadTrack(idx,false); }
@@ -423,18 +398,21 @@
     }
     
     function loadTrack(i,autoPlay=true) {
-      if(i<0||i>=app.tracks.length)return; state.idx=i; const t=app.tracks[i];
-      $('playerTitle').textContent=t.title||'Tanpa judul'; $('playerDesc').textContent=t.desc?(t.desc.length>40?t.desc.substring(0,40)+'...':t.desc):'-';
-      const imgEl=$('playerImg');
-      if(t.image){
-        const img=new Image();
-        img.onload=()=>{imgEl.innerHTML=`<img src="${esc(t.image)}" alt="">`;checkMarquees();};
-        img.onerror=()=>{imgEl.innerHTML=musicIcon;};
-        img.src=t.image;
-      } else {
-        imgEl.innerHTML=musicIcon;
-      }
-      audio.src=t.link; audio.load(); updatePlayUI(); render($('searchInput').value.toLowerCase()); setTimeout(checkMarquees,100); $('progress').setAttribute('aria-valuenow','0');
+      if(i<0||i>=app.tracks.length)return; 
+      state.idx=i; 
+      const t=app.tracks[i];
+      $('playerTitle').textContent=t.title||'Tanpa judul'; 
+      $('playerDesc').textContent=t.desc?(t.desc.length>40?t.desc.substring(0,40)+'...':t.desc):'-';
+      
+      // Use helper to set image
+      setImage($('playerImg'), t.image);
+      
+      audio.src=t.link; 
+      audio.load(); 
+      updatePlayUI(); 
+      render($('searchInput').value.toLowerCase()); 
+      setTimeout(checkMarquees,100); 
+      $('progress').setAttribute('aria-valuenow','0');
       
       if(app.settings.autoResume){
         const savedPos = localStorage.getItem(`pod_pos_${t.id}`);
@@ -535,7 +513,11 @@
       app = { sections:[], tracks:[], settings:{autoRestore:true, autoResume:true, directLinkSupport:false}, suggestions:[] };
       saveData(); audio.pause(); audio.src=''; state.idx=0; state.playing=false;
       $('playerTitle').textContent='Pilih podcast/Import dulu'; $('playerDesc').textContent='-';
-      updatePlayUI(); render(); toast(' Semua data dihapus'); syncPopup();
+      updatePlayUI(); 
+      setImage($('playerImg'), null);
+      render(); 
+      toast(' Semua data dihapus'); 
+      syncPopup();
       updateDirectLinkUI();
       Object.keys(localStorage).forEach(k=>{if(k.startsWith('pod_pos_'))localStorage.removeItem(k);});
     }
@@ -659,19 +641,25 @@
       
       const ch=doc.querySelector('channel, feed');
       
+      // Extract ALL metadata with proper namespace handling
       const categories = [];
-      const catElements = ch?.querySelectorAll('itunes\\:category')||[];
+      const catElements = doc.querySelectorAll('itunes\\:category, category');
       catElements.forEach(cat=>{
         const text = cat.getAttribute('text');
         if(text) categories.push(text);
       });
       
+      // Get image from itunes:image href
+      const itunesImage = ch.querySelector('itunes\\:image');
+      const channelImage = ch.querySelector('image');
+      const imageUrl = itunesImage ? itunesImage.getAttribute('href') : (channelImage ? channelImage.querySelector('url')?.textContent : null);
+      
       const metadata = {
         title: ch?.querySelector('title')?.textContent?.trim()||'Podcast',
-        image: ch?.querySelector('itunes\\:image')?.getAttribute('href')||ch?.querySelector('image\\:href')?.textContent||null,
+        image: imageUrl,
         desc: ch?.querySelector('description, subtitle')?.textContent?.replace(/<[^>]*>/g,'').trim()||'-',
         link: ch?.querySelector('link')?.textContent?.trim()||ch?.querySelector('link')?.getAttribute('href')||'',
-        author: ch?.querySelector('itunes\\:author')?.textContent?.trim()||'',
+        author: ch?.querySelector('itunes\\:author, author')?.textContent?.trim()||'',
         copyright: ch?.querySelector('copyright')?.textContent?.trim()||'',
         language: ch?.querySelector('language')?.textContent?.trim()||'',
         lastBuildDate: ch?.querySelector('lastBuildDate')?.textContent?.trim()||'',
@@ -688,13 +676,35 @@
       const secId='sec_'+Date.now();
       const siteLink = metadata.link;
       app.sections.push({id:secId,title:metadata.title,desc:metadata.desc,date:metadata.lastBuildDate||'-',count:0,siteLink,author:metadata.author,copyright:metadata.copyright,language:metadata.language,explicit:metadata.explicit,categories:metadata.categories,image:metadata.image});
+      
       items.forEach(item=>{
-        const t=item.querySelector('title')?.textContent?.trim()||'Tanpa Judul'; let url='';
-        const enc=item.querySelector('enclosure'); if(enc&&enc.getAttribute('type')?.startsWith('audio/')) url=enc.getAttribute('url');
-        if(!url){ const lnk=item.querySelector('link'); if(lnk?.getAttribute('href')) url=lnk.getAttribute('href'); else if(lnk?.textContent) url=lnk.textContent.trim(); }
+        const t=item.querySelector('title')?.textContent?.trim()||'Tanpa Judul'; 
+        let url='';
+        const enc=item.querySelector('enclosure'); 
+        if(enc&&enc.getAttribute('type')?.startsWith('audio/')) url=enc.getAttribute('url');
+        if(!url){ 
+          const lnk=item.querySelector('link'); 
+          if(lnk?.getAttribute('href')) url=lnk.getAttribute('href'); 
+          else if(lnk?.textContent) url=lnk.textContent.trim(); 
+        }
         if(!url||!/\.(mp3|m4a|aac|ogg|wav|opus)(\?|#|$)/i.test(url)) return;
-        let dur=item.querySelector('itunes\\:duration')?.textContent?.trim()||''; if(dur&&!/^\d+:\d{2}(:\d{2})?$/.test(dur)) dur='';
-        app.tracks.push({id:Math.random().toString(36).substr(2,9),secId,title:t,link:url,image:item.querySelector('itunes\\:image')?.getAttribute('href')||item.querySelector('media\\:content')?.getAttribute('url'),desc:item.querySelector('description, summary')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',duration:dur,pubDate:item.querySelector('pubDate, published, updated')?.textContent||'',liked:false});
+        let dur=item.querySelector('itunes\\:duration')?.textContent?.trim()||''; 
+        if(dur&&!/^\d+:\d{2}(:\d{2})?$/.test(dur)) dur='';
+        
+        // Get episode image (fallback to channel image)
+        const epImage = item.querySelector('itunes\\:image')?.getAttribute('href') || imageUrl;
+        
+        app.tracks.push({
+          id:Math.random().toString(36).substr(2,9),
+          secId,
+          title:t,
+          link:url,
+          image:epImage,
+          desc:item.querySelector('description, summary, itunes\\:summary')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',
+          duration:dur,
+          pubDate:item.querySelector('pubDate, published, updated')?.textContent||'',
+          liked:false
+        });
         app.sections.at(-1).count++;
       });
       if(app.tracks.length===0) throw new Error('Gak ada audio valid');
@@ -727,14 +737,17 @@
             meta.url = feedUrl;
             app.suggestions.push(meta);
             
-            const img = meta.image ? `<img src="${esc(meta.image)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='${musicIcon.replace(/"/g,"\\'")}'">` : musicIcon;
+            // Create image element with proper error handling
+            const imgHtml = meta.image 
+              ? `<img src="${esc(meta.image)}" alt="" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='${musicIconSVG.replace(/"/g,"\\'")}'">`
+              : musicIconSVG;
             
-            html += `<div class="sug-card" onclick="showPodcastDetail('${esc(feedUrl)}')"><div class="sug-img">${img}</div><div class="sug-title">${esc(meta.title)}</div><div class="sug-desc">${esc(meta.desc.substring(0,40))}${meta.desc.length>40?'...':''}</div><button class="sug-add" onclick="event.stopPropagation();openSuggestionImport('${esc(feedUrl)}')">+ Tambah</button></div>`;
+            html += `<div class="sug-card" onclick="showPodcastDetail('${esc(feedUrl)}')"><div class="sug-img">${imgHtml}</div><div class="sug-title">${esc(meta.title)}</div><div class="sug-desc">${esc(meta.desc.substring(0,40))}${meta.desc.length>40?'...':''}</div><button class="sug-add" onclick="event.stopPropagation();openSuggestionImport('${esc(feedUrl)}')">+ Tambah</button></div>`;
           }catch(e){ console.warn('Skip suggestion:', feedUrl, e); }
         }
         
         if(app.suggestions.length===0) throw new Error('Gak ada podcast valid');
-        container.innerHTML = html;
+        container.innerHTML = `<div class="sug-grid">${html}</div>`;
         
       }catch(e){
         console.error(e);
@@ -748,7 +761,9 @@
       
       state.currentDetailUrl = url;
       
-      const img = podcast.image ? `<img src="${esc(podcast.image)}" alt="">` : musicIcon;
+      const imgHtml = podcast.image 
+        ? `<img src="${esc(podcast.image)}" alt="" onerror="this.style.display='none';this.parentElement.innerHTML='${musicIconSVG.replace(/"/g,"\\'")}'">`
+        : musicIconSVG;
       
       const catsHtml = podcast.categories.length>0 ? `<div class="detail-cats">${podcast.categories.map(c=>`<span class="detail-cat">${esc(c)}</span>`).join('')}</div>` : '';
       
@@ -756,7 +771,7 @@
       
       let html = `
         <div class="detail-header">
-          <div class="detail-img">${img}</div>
+          <div class="detail-img">${imgHtml}</div>
           <div class="detail-title">${esc(podcast.title)}</div>
           ${catsHtml}
         </div>
@@ -802,13 +817,14 @@
         audio.pause(); audio.src=''; state.idx=0;
         $('playerTitle').textContent='Pilih podcast/Import dulu'; $('playerDesc').textContent='-';
         updatePlayUI();
+        setImage($('playerImg'), null);
       }
       saveData(); render(); toast(' Section dihapus (favorit aman)'); syncPopup();
     }
     
     function clearAll(e){e?.stopPropagation();if(!confirm('Hapus SEMUA data termasuk favorit?'))return;
       app={sections:[],tracks:[],settings:{autoRestore:true,autoResume:true,directLinkSupport:false},suggestions:[]};saveData();audio.pause();audio.src='';state.idx=0;state.playing=false;
-      $('playerTitle').textContent='Pilih podcast/Import dulu';$('playerDesc').textContent='-';updatePlayUI();render();toast(' Semua direset');syncPopup();
+      $('playerTitle').textContent='Pilih podcast/Import dulu';$('playerDesc').textContent='-';updatePlayUI();setImage($('playerImg'),null);render();toast(' Semua direset');syncPopup();
       updateDirectLinkUI();
       Object.keys(localStorage).forEach(k=>{if(k.startsWith('pod_pos_'))localStorage.removeItem(k);});
     }
@@ -840,9 +856,12 @@
         if(t.secId!==lastSec){lastSec=t.secId;const s=secMap[t.secId];if(s){const ds=s.date?new Date(s.date).toLocaleDateString('id-ID',{year:'numeric',month:'short'}):'-';
         html+=`<div class="section"><div class="sec-header"><div><h3>${esc(s.title)}</h3><p>${esc(s.desc).substring(0,100)}${s.desc.length>100?'...':''}</p><div class="meta"><span><i class="far fa-calendar"></i> ${ds}</span><span><i class="fas fa-list"></i> ${s.count} ep</span></div></div><button class="sec-del" onclick="deleteSection('${s.id}',event)"><i class="fas fa-trash"></i></button></div><div class="playlist">`;}}
         const act=ri===state.idx?' active':'';
-        const img=t.image?`<img src="${esc(t.image)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='${musicIcon.replace(/"/g,"\\'")}'">`:musicIcon;
+        // Use inline image with error handler
+        const imgHtml = t.image 
+          ? `<img src="${esc(t.image)}" alt="" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='${musicIconSVG.replace(/"/g,"\\'")}'">`
+          : musicIconSVG;
         const dur=t.duration?`<p><i class="fas fa-clock"></i> ${esc(t.duration)}</p>`:'';
-        html+=`<div class="item${act}" onclick="playAt(${ri})" role="listitem"><div class="item-img">${img}</div><div class="item-info"><div class="marquee-wrap"><h4 class="marquee-text">${esc(t.title)}</h4></div>${dur}</div><div class="item-actions"><button onclick="event.stopPropagation();toggleLike(${ri})" class="${t.liked?'liked':''}"><i class="${t.liked?'fas':'far'} fa-heart"></i></button><button onclick="event.stopPropagation();dlTrack(${ri})"><i class="fas fa-download"></i></button></div></div>`;
+        html+=`<div class="item${act}" onclick="playAt(${ri})" role="listitem"><div class="item-img">${imgHtml}</div><div class="item-info"><div class="marquee-wrap"><h4 class="marquee-text">${esc(t.title)}</h4></div>${dur}</div><div class="item-actions"><button onclick="event.stopPropagation();toggleLike(${ri})" class="${t.liked?'liked':''}"><i class="${t.liked?'fas':'far'} fa-heart"></i></button><button onclick="event.stopPropagation();dlTrack(${ri})"><i class="fas fa-download"></i></button></div></div>`;
       });
       c.innerHTML=html; setTimeout(()=>{ checkMarquees(); syncPopup(); }, 60);
     }
@@ -929,9 +948,9 @@
     function openPopup(e){e?.stopPropagation();if(innerWidth<768){toast('Mini player buat desktop bre','info');return;}if(popupWin&&!popupWin.closed){popupWin.focus();return;}popupWin=window.open('','podMini','width=340,height=500,resizable=no,scrollbars=no');if(!popupWin){toast('✗ Izinkan popup bre','✗');return;}
       popupWin.document.write(`<!DOCTYPE html><html><head><title>Mini - Jirang</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"><style>
         :root{--bg:#0b0b0f;--bg2:#101016;--bg3:#12121a;--bg4:#14141c;--bg5:#16161f;--bg6:#181822;--border:#16161f;--text:#e0e0e0;--text2:#aaa;--text3:#777;--text4:#666;--primary:#007bff}
-        *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;display:flex;flex-direction:column;height:100vh;overflow:hidden}.wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:15px;text-align:center}.cover{width:150px;height:150px;border-radius:12px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;box-shadow:0 6px 20px rgba(0,0,0,.4)}.cover img{width:100%;height:100%;object-fit:cover}.cover svg{width:45px;height:45px;fill:#444;position:absolute}.info h3{font-size:14px;margin-bottom:4px;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.info p{font-size:11px;color:var(--text4);margin:2px 0;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.badges{display:flex;gap:6px;justify-content:center;margin:6px 0}.badge{background:var(--bg4);color:var(--primary);padding:2px 8px;border-radius:6px;font-size:9px;display:none;align-items:center;gap:3px}.badge.show{display:flex}.ctrl{display:flex;gap:14px;margin:12px 0}.btn{background:var(--bg6);color:var(--text2);border:none;width:36px;height:36px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s}.btn:active{transform:scale(.95);background:var(--bg7);color:#fff}.bar{width:92%;height:5px;background:var(--bg5);border-radius:3px;margin:10px auto;cursor:pointer;position:relative}.fill{height:100%;background:var(--primary);border-radius:3px;width:0%;transition:width .1s linear}.time{font-size:10px;color:var(--text4);font-variant-numeric:tabular-nums}.footer{padding:8px;text-align:center;font-size:10px;color:var(--text4);border-top:1px solid var(--border)}.marquee{white-space:nowrap;display:inline-block;will-change:transform;backface-visibility:hidden}.marquee.active{animation:scroll 22s linear infinite;padding-left:100%}@media(hover:hover){.marquee:hover{animation-play-state:paused}}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;display:flex;flex-direction:column;height:100vh;overflow:hidden}.wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:15px;text-align:center}.cover{width:150px;height:150px;border-radius:12px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;box-shadow:0 6px 20px rgba(0,0,0,.4)}.cover img{width:100%;height:100%;object-fit:cover;display:block}.cover svg{width:45px;height:45px;fill:#444;display:block;position:absolute}.info h3{font-size:14px;margin-bottom:4px;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.info p{font-size:11px;color:var(--text4);margin:2px 0;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.badges{display:flex;gap:6px;justify-content:center;margin:6px 0}.badge{background:var(--bg4);color:var(--primary);padding:2px 8px;border-radius:6px;font-size:9px;display:none;align-items:center;gap:3px}.badge.show{display:flex}.ctrl{display:flex;gap:14px;margin:12px 0}.btn{background:var(--bg6);color:var(--text2);border:none;width:36px;height:36px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s}.btn:active{transform:scale(.95);background:var(--bg7);color:#fff}.bar{width:92%;height:5px;background:var(--bg5);border-radius:3px;margin:10px auto;cursor:pointer;position:relative}.fill{height:100%;background:var(--primary);border-radius:3px;width:0%;transition:width .1s linear}.time{font-size:10px;color:var(--text4);font-variant-numeric:tabular-nums}.footer{padding:8px;text-align:center;font-size:10px;color:var(--text4);border-top:1px solid var(--border)}.marquee{white-space:nowrap;display:inline-block;will-change:transform;backface-visibility:hidden}.marquee.active{animation:scroll 22s linear infinite;padding-left:100%}@media(hover:hover){.marquee:hover{animation-play-state:paused}}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
       </style></head><body><div class="wrap">
-        <div class="cover" id="cv">${musicIcon}</div>
+        <div class="cover" id="cv">${musicIconSVG}</div>
         <div class="info"><h3 id="tt" class="marquee">Memuat...</h3><p id="td" class="marquee">-</p><div class="badges"><span class="badge" id="pbShuffle"><i class="fas fa-random"></i>Acak</span><span class="badge" id="pbRepeat"><i class="fas fa-redo"></i><span id="pbRepTxt">Ulang</span></span></div></div>
         <div class="time" id="tm">0:00 / 0:00</div>
         <div class="bar" id="seekBar" onclick="sk(event)" role="progressbar"><div class="fill" id="fl"></div></div>
@@ -946,13 +965,18 @@
           const tt=document.getElementById('tt'),td=document.getElementById('td'),cv=document.getElementById('cv');
           if(e.data.empty){
             tt.textContent='Pilih podcast/Import dulu';td.textContent='';
-            cv.innerHTML='${musicIcon.replace(/"/g,"\\'")}';
+            cv.innerHTML='${musicIconSVG.replace(/"/g,"\\'")}';
             document.getElementById('pb').innerHTML='<i class="fas fa-pause" style="opacity:.3"></i>';
             document.getElementById('fl').style.width='0%';document.getElementById('tm').textContent='0:00 / 0:00';
             document.getElementById('pbShuffle').classList.remove('show');document.getElementById('pbRepeat').classList.remove('show');return;
           }
           tt.textContent=e.data.title||'Pilih podcast/Import dulu';td.textContent=e.data.desc||'';
-          if(e.data.image){const img=new Image();img.onload=()=>{cv.innerHTML='<img src="'+e.data.image+'">';checkMarquee('tt');checkMarquee('td');};img.onerror=()=>{cv.innerHTML='${musicIcon.replace(/"/g,"\\'")}';};img.src=e.data.image;}else{cv.innerHTML='${musicIcon.replace(/"/g,"\\'")}';}
+          if(e.data.image){
+            const img=new Image();
+            img.onload=()=>{cv.innerHTML='';cv.appendChild(img);checkMarquee('tt');checkMarquee('td');};
+            img.onerror=()=>{cv.innerHTML='${musicIconSVG.replace(/"/g,"\\'")}';};
+            img.src=e.data.image;
+          }else{cv.innerHTML='${musicIconSVG.replace(/"/g,"\\'")}';}
           document.getElementById('pb').innerHTML='<i class="fas fa-'+(e.data.playing?'pause':'play')+'"></i>';document.getElementById('fl').style.width=(e.data.time||0)+'%';document.getElementById('seekBar').setAttribute('aria-valuenow',Math.round(e.data.time||0));document.getElementById('tm').textContent=e.data.timeTxt||'0:00 / 0:00';
           document.getElementById('pbShuffle').classList.toggle('show',e.data.shuffle);document.getElementById('pbRepeat').classList.toggle('show',e.data.repeat>0);document.getElementById('pbRepTxt').textContent=e.data.repeat===1?'1x':e.data.repeat===2?'All':'Ulang';
           setTimeout(()=>{checkMarquee('tt');checkMarquee('td');},80);
