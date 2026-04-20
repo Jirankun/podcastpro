@@ -10,33 +10,33 @@
     *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
     body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;overflow-y:hidden;height:100vh;touch-action:manipulation;line-height:1.3}
     .app{display:flex;flex-direction:column;height:100vh;position:relative;max-width:100vw;overflow:hidden}
-
+    
     /* HEADER */
     .header{position:sticky;top:0;z-index:130;background:var(--bg2);border-bottom:1px solid var(--border2);padding:8px 10px;display:flex;gap:8px;align-items:center;flex-shrink:0}
     .menu-toggle,.icon-btn{background:var(--bg7);border:none;color:var(--text2);padding:10px;border-radius:8px;cursor:pointer;font-size:14px;flex-shrink:0;transition:all .15s;display:flex;align-items:center;justify-content:center;min-width:40px;min-height:40px}
     .menu-toggle:active,.icon-btn:active{transform:scale(.95);background:var(--bg8)}
     .search-box{flex:1;min-width:0;padding:10px 12px;border-radius:8px;border:1px solid var(--border3);background:var(--bg5);color:var(--text);font-size:14px}
     .search-box:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 2px rgba(0,123,255,.25)}
-
+    
     .badge{background:var(--bg4);color:var(--primary);padding:3px 8px;border-radius:6px;font-size:13px;display:none;align-items:center;gap:5px;box-shadow:0 2px 6px rgba(0,0,0,.3);font-weight:500}
     .badge.show{display:flex}
     .badge i{font-size:9px}
-
+    
     /* TABS */
     .tabs{position:sticky;top:56px;z-index:125;background:var(--bg);border-bottom:1px solid var(--border);padding:6px 10px;display:flex;gap:6px;flex-shrink:0;align-items:center;flex-wrap:wrap}
     .tab{padding:6px 12px;background:var(--bg5);border:none;border-radius:8px;color:var(--text3);cursor:pointer;font-size:11px;font-weight:600;transition:all .15s;min-height:34px;white-space:nowrap}
     .tab:active{transform:scale(.98)}
     .tab.active{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(0,123,255,.4)}
-
+    
     /* MAIN WRAPPER */
     .main-wrapper{display:flex;flex:1;overflow:hidden;position:relative;max-width:100vw}
-
+    
     /* SIDEBAR */
     .sidebar{width:200px;background:var(--bg);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:10px;gap:6px;overflow-y:auto;flex-shrink:0;z-index:50;height:calc(100vh - 56px);padding-bottom:100px;position:relative}
     .sidebar button{background:var(--bg4);color:var(--text2);border:none;padding:10px 12px;border-radius:8px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:10px;font-size:12px;transition:background .15s;min-height:42px}
     .sidebar button:active{transform:scale(.98);background:var(--bg7);color:#fff}
     .sidebar button i{width:16px;text-align:center;font-size:13px}
-
+    
     /* DEV CREDIT */
     .dev-credit{
       margin-top:8px;padding:8px 10px;background:linear-gradient(135deg,var(--bg7),var(--bg8));
@@ -64,11 +64,11 @@
     }
     .dev-gh:hover{color:#fff;background:var(--bg6);transform:translateY(-1px)}
     .dev-gh:active{transform:scale(0.95)}
-
+    
     /* OVERLAY */
     .overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:140;pointer-events:none;opacity:0;transition:opacity .2s}
     .overlay.active{opacity:1;pointer-events:auto}
-
+    
     /* CONTENT */
     .content{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 12px 125px;position:relative;z-index:10;-webkit-overflow-scrolling:touch;width:100%}
     .section{margin-bottom:16px;width:100%}
@@ -78,14 +78,14 @@
     .sec-header .meta{font-size:10px;color:var(--text5);display:flex;gap:10px;flex-wrap:wrap}
     .sec-del{background:none;border:none;color:var(--text5);cursor:pointer;font-size:11px;padding:6px;transition:color .15s;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center;border-radius:6px;flex-shrink:0}
     .sec-del:active{color:var(--danger);background:rgba(255,77,77,.15)}
-
+    
     /* PLAYLIST */
     .playlist{display:flex;flex-direction:column;gap:6px;width:100%}
     .item{display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--bg3);border-radius:10px;cursor:pointer;border:1px solid transparent;transition:border-color .15s,background .15s;touch-action:manipulation;min-height:62px;width:100%;flex-wrap:nowrap}
     .item:active{transform:scale(.99);background:var(--bg6);border-color:var(--primary)}
     .item-info{flex:1 1 0%;min-width:0;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
     .item-actions{flex:0 0 auto;flex-shrink:0;display:flex;gap:6px;align-items:center;margin-left:auto}
-
+    
     /* HOVER FIX */
     @media (hover: hover) and (pointer: fine) {
       .item:hover{border-color:var(--primary);background:var(--bg6)}
@@ -98,7 +98,7 @@
       .sec-del:hover{color:var(--danger);background:rgba(255,77,77,.15)}
       .search-box:hover{border-color:var(--border3)}
     }
-
+    
     /* MARQUEE */
     .marquee-wrap{overflow:hidden;width:100%;position:relative}
     .marquee-text{white-space:nowrap;display:inline-block;will-change:transform;backface-visibility:hidden;transition:transform .1s}
@@ -107,13 +107,13 @@
       .marquee-text:hover{animation-play-state:paused}
     }
     @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-
+    
     .item-info h4{font-size:13px;color:#ddd;margin-bottom:2px;line-height:1.3;overflow:hidden;text-overflow:ellipsis}
     .item-info p{font-size:10px;color:var(--text4);margin:1px 0;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .item-actions button{background:var(--bg6);color:var(--text2);border:none;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:10px;min-width:32px;min-height:32px;display:flex;align-items:center;justify-content:center;transition:all .15s}
     .item-actions button:active{transform:scale(.95);background:var(--bg7);color:#fff}
     .item-actions button.liked{color:var(--danger)}
-
+    
     /* PLAYER */
     .player{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);padding:8px 10px;z-index:200;pointer-events:auto;box-shadow:0 -3px 15px rgba(0,0,0,.4);width:100%}
     .player-controls{display:flex;align-items:center;gap:8px}
@@ -128,12 +128,12 @@
     .progress{flex:1;min-width:60px;height:4px;background:var(--bg5);border-radius:3px;cursor:pointer;position:relative}
     .progress-bar{height:100%;background:var(--primary);border-radius:3px;width:0%;transition:width .1s linear}
     .time{font-size:10px;color:var(--text5);min-width:55px;text-align:right;pointer-events:none;font-variant-numeric:tabular-nums}
-
+    
     /* EMPTY STATE */
     .empty{text-align:center;padding:30px 15px;color:var(--text5);width:100%}
     .empty i{font-size:40px;color:#333;margin-bottom:12px;display:block}
     .empty p{font-size:13px;line-height:1.4}
-
+    
     /* MODAL */
     .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:200;align-items:center;justify-content:center;padding:15px;backdrop-filter:blur(5px)}
     .modal.active{display:flex}
@@ -142,34 +142,37 @@
     .modal-box input{width:100%;padding:10px 12px;margin:6px 0;border-radius:10px;border:1px solid var(--border3);background:var(--bg5);color:var(--text);font-size:13px;transition:border-color .15s}
     .modal-box input:focus{border-color:var(--primary);outline:none}
     .modal-box input::placeholder{color:var(--text4)}
-
-    /* SUGGESTIONS GRID */
-    .sug-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:10px 0;max-height:55vh;overflow-y:auto;padding-right:4px}
-    .sug-card{background:var(--bg3);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:all .15s;border:1px solid transparent}
-    .sug-card:active{transform:scale(.98);background:var(--bg6);border-color:var(--primary)}
-    .sug-img{width:100%;aspect-ratio:1;border-radius:8px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden}
+    
+    /* SUGGESTIONS GRID - COMPACT */
+    .sug-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin:10px 0;max-height:60vh;overflow-y:auto;padding-right:4px}
+    .sug-card{background:var(--bg3);border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:all .15s;border:1px solid transparent;position:relative}
+    .sug-card:active{transform:scale(.97);background:var(--bg6);border-color:var(--primary)}
+    .sug-img{width:100%;aspect-ratio:1;border-radius:6px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden}
     .sug-img img{width:100%;height:100%;object-fit:cover}
-    .sug-img svg{width:32px;height:32px;fill:#444}
-    .sug-title{font-size:11px;font-weight:600;color:#ddd;line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .sug-desc{font-size:9px;color:var(--text4);line-height:1.1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .sug-add{background:var(--primary);color:#fff;border:none;padding:6px;border-radius:6px;font-size:10px;font-weight:600;cursor:pointer;margin-top:auto;transition:background .15s}
+    .sug-img svg{width:24px;height:24px;fill:#444}
+    .sug-title{font-size:10px;font-weight:600;color:#ddd;line-height:1.1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .sug-desc{font-size:8px;color:var(--text4);line-height:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .sug-add{background:var(--primary);color:#fff;border:none;padding:5px;border-radius:5px;font-size:9px;font-weight:600;cursor:pointer;margin-top:auto;transition:background .15s;z-index:10}
     .sug-add:active{background:#0056b3}
-
-    /* TOC - UNLIMITED ITEMS FIX */
-    .toc-list{max-height:70vh;overflow-y:auto;margin:10px 0;padding-right:4px;-webkit-overflow-scrolling:touch}
-    .toc-sec{margin-bottom:10px;border-bottom:1px solid var(--bg7);padding-bottom:8px}
-    .toc-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:6px 0;color:#ddd;font-size:13px;gap:10px}
-    .toc-header i{transition:transform .2s;flex-shrink:0}
-    .toc-header.collapsed i{transform:rotate(-90deg)}
-    .toc-episodes{max-height:0;overflow:hidden;transition:max-height .3s ease}
-    .toc-episodes.open{max-height:50000px;overflow:visible} /* UNLIMITED: 50000px ~ 1500+ items */
-    .toc-episodes div{padding:5px 0;border-bottom:1px dashed var(--bg5);font-size:11px;display:flex;justify-content:space-between;gap:10px}
-    .toc-episodes span{color:var(--text5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .toc-episodes span:last-child{flex-shrink:0}
-    .toc-site{font-size:10px;color:var(--primary);margin-top:6px;padding-top:6px;border-top:1px dashed var(--border3);display:flex;align-items:center;gap:6px}
-    .toc-site a{color:var(--primary);text-decoration:none;word-break:break-all}
-    .toc-site a:hover{text-decoration:underline}
-
+    
+    /* PODCAST DETAIL MODAL */
+    .detail-header{position:relative;margin-bottom:12px}
+    .detail-img{width:100%;aspect-ratio:1;border-radius:12px;background:var(--bg6);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:10px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+    .detail-img img{width:100%;height:100%;object-fit:cover}
+    .detail-img svg{width:64px;height:64px;fill:#444}
+    .detail-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.3}
+    .detail-meta{display:flex;flex-direction:column;gap:8px}
+    .detail-row{display:flex;gap:8px;align-items:flex-start;font-size:11px}
+    .detail-row i{color:var(--primary);width:16px;text-align:center;margin-top:2px;flex-shrink:0}
+    .detail-row span{color:var(--text2);line-height:1.4;word-break:break-word}
+    .detail-row a{color:var(--primary);text-decoration:none;word-break:break-all}
+    .detail-row a:hover{text-decoration:underline}
+    .detail-cats{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+    .detail-cat{background:var(--bg5);color:var(--primary);padding:3px 8px;border-radius:4px;font-size:9px;font-weight:600}
+    .detail-section{margin-top:12px;padding-top:12px;border-top:1px solid var(--border3)}
+    .detail-section h4{font-size:12px;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+    .detail-section h4 i{color:var(--primary)}
+    
     .modal-box .actions{display:flex;gap:8px;margin-top:12px;justify-content:flex-end;flex-wrap:wrap}
     .modal-box .actions button{padding:8px 16px;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:all .15s;min-height:38px}
     .modal-box .actions button:active{transform:scale(.98)}
@@ -179,23 +182,23 @@
     .modal-box .actions button.secondary:active{background:var(--bg7);color:#fff}
     .modal-box .actions button.danger{background:#3a2025;color:#ff6b6b}
     .modal-box .actions button.danger:active{background:#4a2830}
-
+    
     .toggle{width:44px;height:24px;position:relative;border-radius:12px;background:var(--bg7);cursor:pointer;transition:background .2s;flex-shrink:0}
     .toggle::after{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:3px;left:3px;transition:transform .2s;box-shadow:0 2px 4px rgba(0,0,0,.3)}
     .toggle.active{background:var(--primary)}
     .toggle.active::after{transform:translateX(20px)}
-
+    
     .loading{position:relative;pointer-events:none;opacity:.7}
     .loading::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.2);border-radius:8px}
     .loading::before{content:'\f1ce';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--primary);animation:spin 1s linear infinite;font-size:18px;z-index:1}
     @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-
+    
     .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--bg8);color:#fff;padding:10px 18px;border-radius:10px;font-size:12px;z-index:300;box-shadow:0 6px 20px rgba(0,0,0,.4);animation:toastAnim 2.5s forwards;display:flex;align-items:center;gap:8px;max-width:90%;text-align:center}
     .toast i{font-size:13px}
     @keyframes toastAnim{0%{opacity:0;transform:translate(-50%,20px)}10%,90%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-10px)}}
-
+    
     ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg7);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--bg8)}
-
+    
     /* RESPONSIVE */
     @media(max-width:768px){
       .menu-toggle{display:flex}
@@ -220,8 +223,9 @@
       .dev-credit{margin-top:6px;padding:7px 9px}
       .dev-name{font-size:9px}
       .dev-gh{width:22px;height:22px}
-      .sug-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
-      .toc-list{max-height:65vh}
+      .sug-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:6px}
+      .sug-card{padding:6px}
+      .sug-title{font-size:9px}
     }
     @media(min-width:769px){.menu-toggle{display:none !important;}}
     @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.marquee-text{white-space:normal!important}.dev-credit{animation:none!important}}
@@ -235,7 +239,7 @@
       <button class="icon-btn" onclick="openTOC()" title="Daftar Isi" aria-label="Daftar isi"><i class="fas fa-list-ul"></i></button>
       <button class="icon-btn" onclick="openImport('url')" title="Import" aria-label="Import podcast"><i class="fas fa-plus"></i></button>
     </div>
-
+    
     <div class="tabs" role="tablist">
       <button class="tab" data-tab="suggestions" onclick="setTab('suggestions')" role="tab" aria-selected="false">✨ Saran</button>
       <button class="tab active" data-tab="all" onclick="setTab('all')" role="tab" aria-selected="true">Semua</button>
@@ -243,7 +247,7 @@
       <span class="badge" id="badgeShuffle"><i class="fas fa-random"></i><span>Acak</span></span>
       <span class="badge" id="badgeRepeat"><i class="fas fa-redo-alt"></i><span id="repeatText">Ulang</span></span>
     </div>
-
+    
     <div class="main-wrapper">
       <div class="sidebar" id="sidebar" aria-label="Menu">
         <button onclick="openSettings()"><i class="fas fa-cog"></i>Pengaturan</button>
@@ -251,7 +255,7 @@
         <button onclick="toggleRepeat()"><i class="fas fa-redo"></i>Mode Ulang</button>
         <button onclick="openPopup()"><i class="fas fa-external-link-alt"></i>Mini Player</button>
         <button onclick="clearAll()"><i class="fas fa-trash-can"></i>Hapus Semua</button>
-
+        
         <!-- DEV CREDIT -->
         <div class="dev-credit">
           <a href="https://jirankun.github.io/portofoliozhyllan" target="_blank" rel="noopener noreferrer" class="dev-name" title="Portofolio Zhyllan">ZHYLLAN-FYLLAH</a>
@@ -266,7 +270,7 @@
         <div id="suggestionsContainer" style="display:none" role="list"></div>
       </div>
     </div>
-
+    
     <div class="player" role="region" aria-label="Pemuter">
       <div class="player-controls">
         <div class="player-img" id="playerImg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
@@ -301,7 +305,18 @@
       <div class="actions"><button class="secondary" onclick="closeModal('importModal')">Batal</button><button class="primary" id="btnImport">Import</button></div>
     </div>
   </div>
-
+  
+  <!-- PODCAST DETAIL MODAL -->
+  <div class="modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal-box">
+      <div id="detailContent"></div>
+      <div class="actions">
+        <button class="secondary" onclick="closeModal('detailModal')">Tutup</button>
+        <button class="primary" id="btnImportFromDetail">+ Import Podcast</button>
+      </div>
+    </div>
+  </div>
+  
   <div class="modal" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
     <div class="modal-box">
       <h3 id="settingsTitle"><i class="fas fa-sliders-h"></i> Pengaturan</h3>
@@ -324,7 +339,7 @@
       </div>
     </div>
   </div>
-
+  
   <div class="modal" id="tocModal" role="dialog" aria-modal="true" aria-labelledby="tocTitle">
     <div class="modal-box">
       <h3 id="tocTitle"><i class="fas fa-list-ul"></i> Daftar Isi</h3>
@@ -332,19 +347,19 @@
       <div class="actions"><button class="primary" onclick="closeModal('tocModal')">Tutup</button></div>
     </div>
   </div>
-
+  
   <audio id="audio" crossorigin="anonymous" preload="metadata"></audio>
 
   <script>
     const $ = id => document.getElementById(id);
     const esc = s => { if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML; };
     const fmt = s => { if(!s||isNaN(s)||!isFinite(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+String(sec).padStart(2,'0'); };
-
+    
     let app = { sections:[], tracks:[], settings:{ autoRestore:true, autoResume:true, directLinkSupport:false }, suggestions:[] };
-    let state = { idx:0, playing:false, shuffle:false, repeat:0, tab:'all', importType:'url' };
+    let state = { idx:0, playing:false, shuffle:false, repeat:0, tab:'all', importType:'url', currentDetailUrl:'' };
     const audio = $('audio');
     let popupWin = null, marqueeTimers = [], toastTimer = null, resumeTimer = null;
-
+    
     function init() {
       loadData(); render(); updateBadges(); setupEvents(); updateDirectLinkUI();
       setupAutoResume();
@@ -354,7 +369,7 @@
       }
       if(state.tab==='suggestions') loadSuggestions();
     }
-
+    
     function loadData() {
       try {
         const s = localStorage.getItem('podApp');
@@ -367,11 +382,11 @@
       $('toggleResume').setAttribute('aria-checked', app.settings.autoResume);
       $('toggleDirectLink').setAttribute('aria-checked', app.settings.directLinkSupport);
     }
-    function saveData() {
+    function saveData() { 
       localStorage.setItem('podApp', JSON.stringify(app));
       localStorage.setItem('pod_lastIdx', state.idx);
     }
-
+    
     function setupAutoResume(){
       audio.addEventListener('timeupdate', () => {
         if(app.settings.autoResume && audio.duration && isFinite(audio.duration) && state.idx >= 0){
@@ -386,7 +401,7 @@
         }
       });
     }
-
+    
     function loadTrack(i,autoPlay=true) {
       if(i<0||i>=app.tracks.length)return; state.idx=i; const t=app.tracks[i];
       $('playerTitle').textContent=t.title||'Tanpa judul'; $('playerDesc').textContent=t.desc?(t.desc.length>40?t.desc.substring(0,40)+'...':t.desc):'-';
@@ -394,7 +409,7 @@
       if(t.image){const img=new Image();img.onload=()=>{imgEl.innerHTML=`<img src="${esc(t.image)}" alt="">`;checkMarquees();};img.onerror=()=>{imgEl.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';};img.src=t.image;}
       else imgEl.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
       audio.src=t.link; audio.load(); updatePlayUI(); render($('searchInput').value.toLowerCase()); setTimeout(checkMarquees,100); $('progress').setAttribute('aria-valuenow','0');
-
+      
       if(app.settings.autoResume){
         const savedPos = localStorage.getItem(`pod_pos_${t.id}`);
         if(savedPos && parseFloat(savedPos) > 5 && parseFloat(savedPos) < (audio.duration||999999)){
@@ -402,10 +417,10 @@
           toast(` ▶ Lanjut dari ${fmt(savedPos)}`, 'info');
         }
       }
-
+      
       if(autoPlay&&state.playing) audio.play().catch(()=>{});
     }
-
+    
     function setupEvents() {
       document.addEventListener('keydown', e=>{
         if(e.target.tagName==='INPUT'||e.target.isContentEditable)return;
@@ -413,16 +428,16 @@
         if(e.code==='ArrowRight'){e.preventDefault();audio.currentTime=Math.min(audio.duration||0,audio.currentTime+5);}
         if(e.code==='ArrowLeft'){e.preventDefault();audio.currentTime=Math.max(0,audio.currentTime-5);}
       });
-      ['importModal','settingsModal','tocModal'].forEach(id=>{
+      ['importModal','settingsModal','tocModal','detailModal'].forEach(id=>{
         $(id)?.addEventListener('click',e=>{ if(e.target===$(id))closeModal(id); });
       });
-      window.addEventListener('resize', ()=>{
+      window.addEventListener('resize', ()=>{ 
         if(window.innerWidth>768){ $('sidebar').classList.remove('active');$('overlay').classList.remove('active'); }
         clearTimeout(marqueeTimers[0]);
         marqueeTimers[0] = setTimeout(checkMarquees, 150);
       });
     }
-
+    
     function toggleSidebar(e) {
       if(e && e.target !== $('overlay')) return;
       $('sidebar').classList.toggle('active');
@@ -464,7 +479,7 @@
         toast(app.settings.directLinkSupport?' Direct Link ON':' Direct Link OFF');
       }
     }
-
+    
     function updateDirectLinkUI(){
       const btn=$('typeDirect');
       if(!btn)return;
@@ -477,7 +492,7 @@
         if(state.importType==='direct') switchImport('url');
       }
     }
-
+    
     function resetSettings() {
       if(confirm('Reset pengaturan ke default? Data podcast & favorit TETAP ADA.')){
         app.settings = {autoRestore:true, autoResume:true, directLinkSupport:false}; saveData();
@@ -498,9 +513,9 @@
       updateDirectLinkUI();
       Object.keys(localStorage).forEach(k=>{if(k.startsWith('pod_pos_'))localStorage.removeItem(k);});
     }
-
+    
     function openSettings(e) { e?.stopPropagation(); $('settingsModal').classList.add('active'); }
-
+    
     function toast(msg, icon='') {
       if(toastTimer) clearTimeout(toastTimer);
       document.querySelector('.toast')?.remove();
@@ -509,7 +524,7 @@
       document.body.appendChild(t);
       toastTimer = setTimeout(()=>{t?.remove()},2500);
     }
-
+    
     function openImport(type) {
       state.importType = type || 'url'; switchImport(state.importType);
       $('importModal').classList.add('active'); $('fileInput').value=''; $('urlInput').value=''; $('directInput').value=''; $('directTitle').value='';
@@ -521,32 +536,32 @@
     function switchImport(type) {
       state.importType = type;
       const isFile=type==='file', isDirect=type==='direct', isUrl=type==='url';
-
+      
       $('typeFile').style.background=isFile?'var(--primary)':'var(--bg5)';
       $('typeFile').style.color=isFile?'#fff':'var(--text2)'; $('typeFile').setAttribute('aria-selected',isFile);
       $('typeUrl').style.background=isUrl?'var(--primary)':'var(--bg5)';
       $('typeUrl').style.color=isUrl?'#fff':'var(--text2)'; $('typeUrl').setAttribute('aria-selected',isUrl);
       $('typeDirect').style.background=isDirect?'var(--primary)':'var(--bg5)';
       $('typeDirect').style.color=isDirect?'#fff':'var(--text2)'; $('typeDirect').setAttribute('aria-selected',isDirect);
-
+      
       $('fileInput').style.display=isFile?'block':'none';
       $('urlInput').style.display=isUrl?'block':'none';
       $('directInput').style.display=isDirect?'block':'none';
       $('directTitle').style.display=isDirect?'block':'none';
-
+      
       if(isFile) setTimeout(()=>$('fileInput')?.click(),50);
       if(isDirect){
         $('directInput').placeholder='https://cdn.example.com/audio.mp3';
         setTimeout(()=>$('directInput')?.focus(),50);
       }
     }
-
+    
     function isValidAudioUrl(url){
       if(!url) return false;
       try{ new URL(url); }catch(e){ return false; }
       return /\.(mp3|m4a|aac|ogg|wav|opus|flac)(\?|#|$)/i.test(url);
     }
-
+    
     function addDirectTrack(url, title){
       const cleanTitle = (title||url.split('/').pop()||'Audio').replace(/\.[^/.]+$/,'').replace(/[^a-z0-9\s\-_]/gi,' ').trim();
       const newTrack = {
@@ -575,12 +590,12 @@
       saveData();
       return newTrack;
     }
-
+    
     $('btnImport').onclick = async (e) => {
       e?.stopPropagation(); const btn=$('btnImport');
       try {
         btn.classList.add('loading'); btn.disabled=true;
-
+        
         if(state.importType==='direct'){
           if(!app.settings.directLinkSupport) throw new Error('Fitur Direct Link belum diaktifkan di Pengaturan');
           const url = $('directInput').value.trim();
@@ -595,7 +610,7 @@
           btn.classList.remove('loading'); btn.disabled=false;
           return;
         }
-
+        
         let xml='';
         if(state.importType==='file'){
           const f=$('fileInput').files[0]; if(!f) throw new Error('Pilih file RSS/XML dulu'); xml=await f.text();
@@ -610,27 +625,44 @@
       }catch(e){ console.error(e); toast(e.message,'✗'); }
       finally{ btn.classList.remove('loading'); btn.disabled=false; }
     };
-
+    
     function parseXML(xml, isSuggestion=false) {
       const p=new DOMParser(), doc=p.parseFromString(xml,'text/xml');
       if(doc.querySelector('parsererror')) throw new Error('XML invalid');
-
-      if(isSuggestion){
-        const ch=doc.querySelector('channel, feed');
-        return {
-          title: ch?.querySelector('title')?.textContent?.trim()||'Podcast',
-          image: ch?.querySelector('itunes\\:image')?.getAttribute('href')||ch?.querySelector('image\\:href')?.textContent||null,
-          desc: ch?.querySelector('description, subtitle')?.textContent?.replace(/<[^>]*>/g,'').trim()||'-',
-          link: ch?.querySelector('link')?.textContent?.trim()||ch?.querySelector('link')?.getAttribute('href')||'',
-          xml
-        };
-      }
-
+      
+      const ch=doc.querySelector('channel, feed');
+      
+      // Extract ALL header metadata
+      const categories = [];
+      const catElements = ch?.querySelectorAll('itunes\\:category')||[];
+      catElements.forEach(cat=>{
+        const text = cat.getAttribute('text');
+        if(text) categories.push(text);
+      });
+      
+      const metadata = {
+        title: ch?.querySelector('title')?.textContent?.trim()||'Podcast',
+        image: ch?.querySelector('itunes\\:image')?.getAttribute('href')||ch?.querySelector('image\\:href')?.textContent||null,
+        desc: ch?.querySelector('description, subtitle')?.textContent?.replace(/<[^>]*>/g,'').trim()||'-',
+        link: ch?.querySelector('link')?.textContent?.trim()||ch?.querySelector('link')?.getAttribute('href')||'',
+        author: ch?.querySelector('itunes\\:author')?.textContent?.trim()||'',
+        copyright: ch?.querySelector('copyright')?.textContent?.trim()||'',
+        language: ch?.querySelector('language')?.textContent?.trim()||'',
+        lastBuildDate: ch?.querySelector('lastBuildDate')?.textContent?.trim()||'',
+        explicit: ch?.querySelector('itunes\\:explicit')?.textContent?.trim()||'',
+        subtitle: ch?.querySelector('itunes\\:subtitle')?.textContent?.replace(/<[^>]*>/g,'').trim()||'',
+        categories: categories,
+        xml
+      };
+      
+      if(isSuggestion) return metadata;
+      
+      // Normal import
       const items=doc.querySelectorAll('item, entry');
       if(items.length===0) throw new Error('Gak ada episode');
-      const ch=doc.querySelector('channel, feed'), secId='sec_'+Date.now();
-      const siteLink = ch?.querySelector('link')?.textContent?.trim()||ch?.querySelector('link')?.getAttribute('href')||'';
-      app.sections.push({id:secId,title:ch?.querySelector('title')?.textContent?.trim()||'Podcast',desc:ch?.querySelector('description, subtitle')?.textContent?.replace(/<[^>]*>/g,'').trim()||'-',date:ch?.querySelector('pubDate, updated')?.textContent||'-',count:0,siteLink});
+      const secId='sec_'+Date.now();
+      const siteLink = metadata.link;
+      app.sections.push({id:secId,title:metadata.title,desc:metadata.desc,date:metadata.lastBuildDate||'-',count:0,siteLink,author:metadata.author,copyright:metadata.copyright,language:metadata.language,explicit:metadata.explicit,categories:metadata.categories,image:metadata.image});
       items.forEach(item=>{
         const t=item.querySelector('title')?.textContent?.trim()||'Tanpa Judul'; let url='';
         const enc=item.querySelector('enclosure'); if(enc&&enc.getAttribute('type')?.startsWith('audio/')) url=enc.getAttribute('url');
@@ -643,21 +675,21 @@
       if(app.tracks.length===0) throw new Error('Gak ada audio valid');
       saveData(); render(); toast(` ${app.tracks.length} episode diimport`); syncPopup();
     }
-
+    
     async function loadSuggestions(){
       const container = $('suggestionsContainer');
       if(!container) return;
       container.innerHTML = '<div class="empty"><i class="fas fa-spinner fa-spin"></i><p>Memuat saran...</p></div>';
-
+      
       try {
         const res = await fetch('saran.json', { cache: 'no-store' });
         if(!res.ok) throw new Error('Gagal load saran.json');
         const urls = await res.json();
         if(!Array.isArray(urls) || urls.length===0) throw new Error('saran.json kosong');
-
+        
         app.suggestions = [];
         let html = '';
-
+        
         for(const feedUrl of urls){
           try {
             let xml = '';
@@ -665,26 +697,70 @@
               try{ const r = await fetch(proxyUrl, { mode: 'cors' }); if(r.ok){ xml = await r.text(); break; } }catch(e){}
             }
             if(!xml) continue;
-
+            
             const meta = parseXML(xml, true);
-            app.suggestions.push({ url: feedUrl, ...meta });
-
-            const img = meta.image ? `<img src="${esc(meta.image)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<svg viewBox=\\'0 0 24 24\\'><path d=\\'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z\\'/></svg>'">`
+            meta.url = feedUrl;
+            app.suggestions.push(meta);
+            
+            const img = meta.image ? `<img src="${esc(meta.image)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<svg viewBox=\\'0 0 24 24\\'><path d=\\'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z\\'/></svg>'">` 
               : '<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
-
-            html += `<div class="sug-card" onclick="openSuggestionImport('${esc(feedUrl)}')"><div class="sug-img">${img}</div><div class="sug-title">${esc(meta.title)}</div><div class="sug-desc">${esc(meta.desc)}</div><button class="sug-add">+ Tambah</button></div>`;
+            
+            // Card click opens detail (not button)
+            html += `<div class="sug-card" onclick="showPodcastDetail('${esc(feedUrl)}')"><div class="sug-img">${img}</div><div class="sug-title">${esc(meta.title)}</div><div class="sug-desc">${esc(meta.desc.substring(0,40))}${meta.desc.length>40?'...':''}</div><button class="sug-add" onclick="event.stopPropagation();openSuggestionImport('${esc(feedUrl)}')">+ Tambah</button></div>`;
           }catch(e){ console.warn('Skip suggestion:', feedUrl, e); }
         }
-
+        
         if(app.suggestions.length===0) throw new Error('Gak ada podcast valid');
         container.innerHTML = html;
-
+        
       }catch(e){
         console.error(e);
         container.innerHTML = `<div class="empty"><i class="fas fa-exclamation-triangle"></i><p>${esc(e.message)}<br><small style="color:var(--text4)">Pastikan saran.json ada di server & berisi array URL RSS</small></p></div>`;
       }
     }
-
+    
+    // Show podcast detail modal
+    function showPodcastDetail(url){
+      const podcast = app.suggestions.find(s=>s.url===url);
+      if(!podcast) return;
+      
+      state.currentDetailUrl = url;
+      
+      const img = podcast.image ? `<img src="${esc(podcast.image)}" alt="">` 
+        : '<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>';
+      
+      const catsHtml = podcast.categories.length>0 ? `<div class="detail-cats">${podcast.categories.map(c=>`<span class="detail-cat">${esc(c)}</span>`).join('')}</div>` : '';
+      
+      const explicitBadge = podcast.explicit==='clean' ? '<span style="color:var(--success);font-size:9px">✓ Clean</span>' : podcast.explicit==='yes' ? '<span style="color:var(--danger);font-size:9px">⚠ Explicit</span>' : '';
+      
+      let html = `
+        <div class="detail-header">
+          <div class="detail-img">${img}</div>
+          <div class="detail-title">${esc(podcast.title)}</div>
+          ${catsHtml}
+        </div>
+        <div class="detail-meta">
+          ${podcast.author ? `<div class="detail-row"><i class="fas fa-user"></i><span>${esc(podcast.author)}</span></div>` : ''}
+          ${podcast.copyright ? `<div class="detail-row"><i class="fas fa-copyright"></i><span>${esc(podcast.copyright)}</span></div>` : ''}
+          ${podcast.language ? `<div class="detail-row"><i class="fas fa-language"></i><span>${esc(podcast.language)}</span></div>` : ''}
+          ${podcast.lastBuildDate ? `<div class="detail-row"><i class="fas fa-calendar"></i><span>${new Date(podcast.lastBuildDate).toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'})}</span></div>` : ''}
+          ${explicitBadge ? `<div class="detail-row"><i class="fas fa-shield-alt"></i><span>${explicitBadge}</span></div>` : ''}
+          ${podcast.link ? `<div class="detail-row"><i class="fas fa-link"></i><a href="${esc(podcast.link)}" target="_blank" rel="noopener">${esc(podcast.link)}</a></div>` : ''}
+        </div>
+        <div class="detail-section">
+          <h4><i class="fas fa-info-circle"></i> Deskripsi</h4>
+          <div style="font-size:11px;color:var(--text2);line-height:1.5">${esc(podcast.desc)}</div>
+        </div>
+      `;
+      
+      $('detailContent').innerHTML = html;
+      $('btnImportFromDetail').onclick = () => {
+        closeModal('detailModal');
+        openSuggestionImport(url);
+      };
+      $('detailModal').classList.add('active');
+    }
+    
     function openSuggestionImport(url){
       state.importType = 'url';
       switchImport('url');
@@ -693,7 +769,7 @@
       $('btnImport').focus();
       toast(' URL terisi, klik Import untuk lanjut', 'info');
     }
-
+    
     function deleteSection(secId,e){
       e?.stopPropagation(); if(!confirm('Hapus section ini?\n\nTrack favorit TETAP DISIMPAN.'))return;
       app.tracks = app.tracks.filter(t => t.secId !== secId || t.liked);
@@ -708,27 +784,25 @@
       }
       saveData(); render(); toast(' Section dihapus (favorit aman)'); syncPopup();
     }
-
+    
     function clearAll(e){e?.stopPropagation();if(!confirm('Hapus SEMUA data termasuk favorit?'))return;
       app={sections:[],tracks:[],settings:{autoRestore:true,autoResume:true,directLinkSupport:false},suggestions:[]};saveData();audio.pause();audio.src='';state.idx=0;state.playing=false;
       $('playerTitle').textContent='Pilih podcast/Import dulu';$('playerDesc').textContent='-';updatePlayUI();render();toast(' Semua direset');syncPopup();
       updateDirectLinkUI();
       Object.keys(localStorage).forEach(k=>{if(k.startsWith('pod_pos_'))localStorage.removeItem(k);});
     }
-
-    // ===== TOC FIX: UNLIMITED ITEMS =====
+    
     function openTOC(e){e?.stopPropagation();let html='';
       if(app.sections.length===0) html='<div class="empty"><i class="fas fa-podcast"></i><p>Belum ada podcast bre<br>Import dulu yuk.</p></div>';
       else{ app.sections.slice().reverse().forEach((s,i)=>{
         const eps=app.tracks.filter(t=>t.secId===s.id), tid=`tocEp${i}`;
         const siteHtml = s.siteLink ? `<div class="toc-site"><i class="fas fa-globe"></i><a href="${esc(s.siteLink)}" target="_blank" rel="noopener">${esc(s.siteLink.replace(/^https?:\/\//,''))}</a></div>` : '';
-        // Render ALL episodes, no limit
         html+=`<div class="toc-sec"><div class="toc-header" onclick="toggleTOC(${i})" role="button" tabindex="0"><span>${esc(s.title)} (${s.count})</span><i class="fas fa-chevron-down"></i></div><div class="toc-episodes open" id="${tid}">${eps.map(e=>`<div><span title="${esc(e.title)}">${esc(e.title)}</span><span>${e.pubDate?new Date(e.pubDate).toLocaleDateString('id-ID'):'-'}</span></div>`).join('')}</div>${siteHtml}</div>`;
       });}
       $('tocList').innerHTML=html; $('tocModal').classList.add('active');
     }
     function toggleTOC(idx){const el=$(`tocEp${idx}`),hdr=el?.previousElementSibling;if(!el||!hdr)return;const open=el.classList.toggle('open');hdr.classList.toggle('collapsed',!open);}
-
+    
     function render(filter='') {
       const c=$('playlistContainer');
       if(app.tracks.length===0){c.innerHTML='<div class="empty"><i class="fas fa-podcast"></i><p>Belum ada podcast bre.<br>Import dari file/URL.</p></div>';return;}
@@ -752,7 +826,7 @@
       c.innerHTML=html; setTimeout(()=>{ checkMarquees(); syncPopup(); }, 60);
     }
     function filterPlaylist(){render($('searchInput').value.toLowerCase());}
-
+    
     function checkMarquees() {
       marqueeTimers.forEach(clearTimeout); marqueeTimers=[];
       const targets = document.querySelectorAll('.marquee-text');
@@ -765,7 +839,7 @@
         }, 250));
       });
     }
-
+    
     function playAt(i){loadTrack(i);togglePlay();closeSidebarMobile();}
     function closeSidebarMobile(){if(window.innerWidth<=768 && $('sidebar').classList.contains('active')){$('sidebar').classList.remove('active');$('overlay').classList.remove('active');}}
     function togglePlay(){if(!audio.src&&app.tracks.length>0)loadTrack(0);if(audio.paused){audio.play().catch(()=>{});state.playing=true;}else{audio.pause();state.playing=false;}updatePlayUI();syncPopup();}
@@ -783,7 +857,7 @@
     audio.addEventListener('ended',()=>{state.repeat===1?(audio.currentTime=0,audio.play().catch(()=>{})):nextTrack();});
     audio.addEventListener('play',()=>{state.playing=true;updatePlayUI();syncPopup();});
     audio.addEventListener('pause',()=>{state.playing=false;updatePlayUI();syncPopup();});
-
+    
     function toggleLike(i){
       if(i<0||i>=app.tracks.length)return;
       app.tracks[i].liked = !app.tracks[i].liked;
@@ -793,7 +867,7 @@
       toast(app.tracks[i].liked?' Favorit':' Dihapus dari favorit');
     }
     function toggleLikeCurrent(){toggleLike(state.idx);}
-
+    
     async function dlTrack(i){
       if(i<0||i>=app.tracks.length)return;
       const t=app.tracks[i];
@@ -830,7 +904,7 @@
       }
     }
     function downloadCurrent(){dlTrack(state.idx);}
-
+    
     function openPopup(e){e?.stopPropagation();if(innerWidth<768){toast('Mini player buat desktop bre','info');return;}if(popupWin&&!popupWin.closed){popupWin.focus();return;}popupWin=window.open('','podMini','width=340,height=500,resizable=no,scrollbars=no');if(!popupWin){toast('✗ Izinkan popup bre','✗');return;}
       popupWin.document.write(`<!DOCTYPE html><html><head><title>Mini - Jirang</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"><style>
         :root{--bg:#0b0b0f;--bg2:#101016;--bg3:#12121a;--bg4:#14141c;--bg5:#16161f;--bg6:#181822;--border:#16161f;--text:#e0e0e0;--text2:#aaa;--text3:#777;--text4:#666;--primary:#007bff}
@@ -884,7 +958,7 @@
       },'*');
     }
     window.addEventListener('message', e=>{if(popupWin&&e.source!==popupWin)return;if(e.data?.type==='ctrl'){if(e.data.action==='play')togglePlay();if(e.data.action==='prev')prevTrack();if(e.data.action==='next')nextTrack();}else if(e.data?.type==='seek'){if(e.data.percent!==undefined&&audio.duration&&isFinite(audio.duration)){audio.currentTime=e.data.percent*audio.duration;}else if(e.data.delta){audio.currentTime=Math.max(0,Math.min(audio.duration,audio.currentTime+e.data.delta));}}}, false);
-
+    
     if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
   </script>
 </body>
