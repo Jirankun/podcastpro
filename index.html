@@ -47,7 +47,8 @@
     
     .content{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 12px 125px;position:relative;z-index:10;-webkit-overflow-scrolling:touch;width:100%}
     .section{margin-bottom:16px;width:100%}
-    .sec-header{background:var(--bg3);padding:12px;border-radius:10px;margin-bottom:10px;border-left:3px solid var(--primary);display:flex;justify-content:space-between;align-items:flex-start;gap:10px;width:100%}    .sec-header h3{font-size:14px;color:#fff;margin-bottom:4px;line-height:1.3}
+    .sec-header{background:var(--bg3);padding:12px;border-radius:10px;margin-bottom:10px;border-left:3px solid var(--primary);display:flex;justify-content:space-between;align-items:flex-start;gap:10px;width:100%}
+    .sec-header h3{font-size:14px;color:#fff;margin-bottom:4px;line-height:1.3}
     .sec-header p{font-size:11px;color:var(--text3);margin-bottom:3px;max-width:75%;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
     .sec-header .meta{font-size:10px;color:var(--text5);display:flex;gap:10px;flex-wrap:wrap}
     .sec-del{background:none;border:none;color:var(--text5);cursor:pointer;font-size:11px;padding:6px;transition:color .15s;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center;border-radius:6px;flex-shrink:0}
@@ -96,7 +97,8 @@
     .modal-box input:focus{border-color:var(--primary);outline:none}
     .modal-box input::placeholder{color:var(--text4)}
     
-    .sug-list{display:flex;flex-direction:column;gap:8px;margin:10px 0;max-height:65vh;overflow-y:auto;padding-right:4px}    .sug-item{background:var(--bg3);border-radius:10px;padding:10px;display:flex;gap:10px;align-items:center;cursor:pointer;transition:all .15s;border:1px solid transparent}
+    .sug-list{display:flex;flex-direction:column;gap:8px;margin:10px 0;max-height:65vh;overflow-y:auto;padding-right:4px}
+    .sug-item{background:var(--bg3);border-radius:10px;padding:10px;display:flex;gap:10px;align-items:center;cursor:pointer;transition:all .15s;border:1px solid transparent}
     .sug-item:active{transform:scale(.98);background:var(--bg6);border-color:var(--primary)}
     .sug-item-info{flex:1;min-width:0}
     .sug-item-title{font-size:12px;font-weight:600;color:#ddd;margin-bottom:3px;line-height:1.2;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
@@ -145,7 +147,8 @@
     .toc-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:4px 0;color:var(--text2);font-size:11px;gap:8px;font-weight:500}
     .toc-header i{transition:transform .2s;flex-shrink:0;font-size:10px}
     .toc-header.collapsed i{transform:rotate(-90deg)}
-    .toc-episodes{max-height:0;overflow:hidden;transition:max-height .3s ease}    .toc-episodes.open{max-height:50000px;overflow:visible}
+    .toc-episodes{max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .toc-episodes.open{max-height:50000px;overflow:visible}
     .toc-episodes div{padding:4px 0;border-bottom:1px solid var(--border);font-size:9px;display:flex;justify-content:space-between;gap:8px;color:var(--text4)}
     .toc-episodes span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .toc-episodes span:last-child{flex-shrink:0;color:var(--text5)}
@@ -243,7 +246,8 @@
         <button class="player-btn" id="btnLike" onclick="toggleLikeCurrent()" aria-label="Favorit"><i class="far fa-heart"></i></button>
         <button class="player-btn" onclick="prevTrack()" aria-label="Sebelumnya"><i class="fas fa-step-backward"></i></button>
         <button class="player-btn" id="btnPlay" onclick="togglePlay()" aria-label="Play"><i class="fas fa-play"></i></button>
-        <button class="player-btn" onclick="nextTrack()" aria-label="Selanjutnya"><i class="fas fa-step-forward"></i></button>        <div class="progress" id="progress" onclick="seek(event)" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" id="progressBar"></div></div>
+        <button class="player-btn" onclick="nextTrack()" aria-label="Selanjutnya"><i class="fas fa-step-forward"></i></button>
+        <div class="progress" id="progress" onclick="seek(event)" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" id="progressBar"></div></div>
         <span class="time" id="timeDisplay">0:00 / 0:00</span>
         <button class="player-btn" onclick="downloadCurrent()" aria-label="Download"><i class="fas fa-download"></i></button>
       </div>
@@ -341,7 +345,8 @@
     const fmt = s => { if(!s||isNaN(s)||!isFinite(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+String(sec).padStart(2,'0'); };
     
     let app = { sections:[], tracks:[], settings:{ autoRestore:true, autoResume:true, directLinkSupport:false }, suggestions:[] };
-    let state = { idx:0, playing:false, shuffle:false, repeat:0, tab:'all', importType:'url', currentDetailUrl:'' };    const audio = $('audio');
+    let state = { idx:0, playing:false, shuffle:false, repeat:0, tab:'all', importType:'url', currentDetailUrl:'' };
+    const audio = $('audio');
     let popupWin = null, marqueeTimers = [], toastTimer = null;
     
     function setImage(container, imgUrl, feedBaseUrl = ''){
@@ -439,7 +444,8 @@
         const savedPos = localStorage.getItem('pod_pos_' + t.id);
         if(savedPos && parseFloat(savedPos) > 5 && parseFloat(savedPos) < (audio.duration||999999)){
           audio.currentTime = parseFloat(savedPos);
-          toast(' ▶ Lanjut dari ' + fmt(savedPos), 'info');        }
+          toast(' ▶ Lanjut dari ' + fmt(savedPos), 'info');
+        }
       }
       if(autoPlay) {
         state.playing = true;
@@ -488,7 +494,8 @@
       // ✅ Play click sound pas toggle switch di pengaturan
       playClickSound();
       
-      app.settings[k] = !app.settings[k]; saveData();      if(k==='autoRestore'){ $('toggleRestore').classList.toggle('active', app.settings.autoRestore); $('toggleRestore').setAttribute('aria-checked', app.settings.autoRestore); toast(app.settings.autoRestore?' Auto-restore ON':' Auto-restore OFF'); }
+      app.settings[k] = !app.settings[k]; saveData();
+      if(k==='autoRestore'){ $('toggleRestore').classList.toggle('active', app.settings.autoRestore); $('toggleRestore').setAttribute('aria-checked', app.settings.autoRestore); toast(app.settings.autoRestore?' Auto-restore ON':' Auto-restore OFF'); }
       if(k==='autoResume'){ $('toggleResume').classList.toggle('active', app.settings.autoResume); $('toggleResume').setAttribute('aria-checked', app.settings.autoResume); toast(app.settings.autoResume?' Auto-resume ON':' Auto-resume OFF'); }
       if(k==='directLinkSupport'){ $('toggleDirectLink').classList.toggle('active', app.settings.directLinkSupport); $('toggleDirectLink').setAttribute('aria-checked', app.settings.directLinkSupport); updateDirectLinkUI(); toast(app.settings.directLinkSupport?' Direct Link ON':' Direct Link OFF'); }
     }
@@ -537,7 +544,8 @@
           
           // ✅ FIX: Load track DULU sebelum render, biar state.idx gak bentrok
           if(newIdx >= 0) {
-            loadTrack(newIdx, false);          } else {
+            loadTrack(newIdx, false);
+          } else {
             loadTrack(0, false); // fallback
           }
           
@@ -586,7 +594,8 @@
         app.suggestions = []; let html = '';
         for(const feedUrl of urls){
           try {
-            let xml = ''; for(const proxyUrl of [feedUrl, 'https://api.allorigins.win/raw?url='+encodeURIComponent(feedUrl)]){ try{ const r = await fetch(proxyUrl, { mode: 'cors' }); if(r.ok){ xml = await r.text(); break; } }catch(e){} }            if(!xml) continue;
+            let xml = ''; for(const proxyUrl of [feedUrl, 'https://api.allorigins.win/raw?url='+encodeURIComponent(feedUrl)]){ try{ const r = await fetch(proxyUrl, { mode: 'cors' }); if(r.ok){ xml = await r.text(); break; } }catch(e){} }
+            if(!xml) continue;
             const meta = parseXML(xml, true, feedUrl); meta.url = feedUrl; app.suggestions.push(meta);
             html += '<div class="sug-item" onclick="showPodcastDetail(\''+esc(feedUrl)+'\')">' + getImageHTML(meta.image, 'sug-item-img', '', feedUrl) + '<div class="sug-item-info"><div class="sug-item-title">'+esc(meta.title)+'</div><div class="sug-item-desc">'+esc(meta.desc.substring(0,80))+(meta.desc.length>80?'...':'')+'</div></div><button class="sug-item-add" onclick="event.stopPropagation();openSuggestionImport(\''+esc(feedUrl)+'\')">+ Tambah</button></div>';
           }catch(e){ console.warn('Skip suggestion:', feedUrl, e); }
@@ -635,7 +644,8 @@
     function toggleShuffle(){ state.shuffle=!state.shuffle; updateBadges(); syncPopup(); toast(state.shuffle?' Acak ON':' Acak OFF'); }
     function toggleRepeat(){ state.repeat=(state.repeat+1)%3; updateBadges(); syncPopup(); const txt=['Mat','1x','All']; toast(' Repeat: '+txt[state.repeat]); }
     function updateBadges(){ $('badgeShuffle').classList.toggle('show',state.shuffle); $('badgeRepeat').classList.toggle('show',state.repeat>0); $('repeatText').textContent=state.repeat===1?'1x':state.repeat===2?'All':'Ulang'; syncPopup(); }
-    function seek(e){ const bar=$('progress'),rect=bar.getBoundingClientRect(); const pct=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width)); audio.currentTime=pct*(audio.duration||0); bar.setAttribute('aria-valuenow',Math.round(pct*100)); }    audio.addEventListener('timeupdate',()=>{ if(audio.duration&&isFinite(audio.duration)){ const pct=(audio.currentTime/audio.duration)*100; $('progressBar').style.width=pct+'%'; $('timeDisplay').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration); $('progress').setAttribute('aria-valuenow',Math.round(pct)); syncPopup(); } });
+    function seek(e){ const bar=$('progress'),rect=bar.getBoundingClientRect(); const pct=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width)); audio.currentTime=pct*(audio.duration||0); bar.setAttribute('aria-valuenow',Math.round(pct*100)); }
+    audio.addEventListener('timeupdate',()=>{ if(audio.duration&&isFinite(audio.duration)){ const pct=(audio.currentTime/audio.duration)*100; $('progressBar').style.width=pct+'%'; $('timeDisplay').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration); $('progress').setAttribute('aria-valuenow',Math.round(pct)); syncPopup(); } });
     audio.addEventListener('loadedmetadata',()=>{ if(audio.duration&&isFinite(audio.duration))$('timeDisplay').textContent='0:00 / '+fmt(audio.duration); });
     audio.addEventListener('error',()=>{ toast('✗ Error audio','✗'); if(state.playing)nextTrack(); });
     audio.addEventListener('ended',()=>{ state.repeat===1?(audio.currentTime=0,audio.play().catch(()=>{})):nextTrack(); });
