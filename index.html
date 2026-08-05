@@ -198,9 +198,30 @@
     }
     @media(min-width:769px){.menu-toggle{display:none !important;}}
     @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.marquee-text{white-space:normal!important}.dev-credit{animation:none!important}}
+    
+    /* Splash Screen Styles */
+    .splash-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.8s ease,visibility 0.8s ease}
+    .splash-screen.hidden{opacity:0;visibility:pointer-events:none}
+    .splash-title{font-size:42px;font-weight:800;color:#007bff;margin-bottom:8px;letter-spacing:2px;text-transform:uppercase;opacity:0;transform:scale(0.9)}
+    .splash-subtitle{font-size:16px;color:#ffffff;opacity:0;transform:translateY(10px)}
+    .splash-shine{background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,0.6) 50%,transparent 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shineEffect 1s ease-out forwards}
+    .splash-subtitle-shine{background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,0.8) 50%,transparent 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shineEffect 1s ease-out forwards}
+    @keyframes shineEffect{0%{background-position:200% center}100%{background-position:-200% center}}
+    .splash-fade-out{animation:splashFadeOut 0.8s ease forwards}
+    @keyframes splashFadeOut{0%{opacity:1}100%{opacity:0}}
+    .splash-text-fade{transition:opacity 0.8s ease}
+    .splash-text-fade-out{opacity:0}
+    .splash-bg-fade{transition:opacity 0.8s ease}
+    .splash-bg-fade-out{opacity:0}
   </style>
 </head>
-<body>  <div class="app">
+<body>
+  <!-- Splash Screen -->
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-title" id="splashTitle">PODCASTPRO</div>
+    <div class="splash-subtitle" id="splashSubtitle">by Zhyllan Fyllah (Jirankun)</div>
+  </div>
+  <div class="app">
     <div class="header">
       <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Menu"><i class="fas fa-bars"></i></button>
       <input type="text" class="search-box" id="searchInput" placeholder="Cari episode..." oninput="filterPlaylist()" aria-label="Cari">
@@ -404,6 +425,8 @@
     }
     
     function init() {
+      // Show splash screen animation
+      showSplashScreen();
       loadData(); render(); updateBadges(); setupEvents(); updateDirectLinkUI();
       setupAutoResume();
       setImage($('playerImg'), null);
@@ -413,6 +436,45 @@
       }
       if(state.tab==='suggestions') loadSuggestions();
       showInfoModalIfNeeded();
+    }
+    
+    function showSplashScreen() {
+      const splashScreen = document.getElementById('splashScreen');
+      const splashTitle = document.getElementById('splashTitle');
+      const splashSubtitle = document.getElementById('splashSubtitle');
+      
+      // Fade in title and subtitle
+      setTimeout(() => {
+        splashTitle.style.opacity = '1';
+        splashTitle.style.transform = 'scale(1)';
+        splashTitle.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        splashSubtitle.style.opacity = '1';
+        splashSubtitle.style.transform = 'translateY(0)';
+        splashSubtitle.style.transition = 'opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s';
+      }, 100);
+      
+      // Add shine effect after texts appear
+      setTimeout(() => {
+        splashTitle.classList.add('splash-shine');
+        splashSubtitle.classList.add('splash-subtitle-shine');
+      }, 600);
+      
+      // Wait 2 seconds, then fade out texts first
+      setTimeout(() => {
+        splashTitle.classList.add('splash-text-fade-out');
+        splashSubtitle.classList.add('splash-text-fade-out');
+        
+        // Then fade out background after text fade completes
+        setTimeout(() => {
+          splashScreen.classList.add('splash-bg-fade-out');
+          
+          // Remove splash screen from DOM after fade out completes
+          setTimeout(() => {
+            splashScreen.style.display = 'none';
+          }, 800);
+        }, 800);
+      }, 2600);
     }
         function loadData() {
       try {
